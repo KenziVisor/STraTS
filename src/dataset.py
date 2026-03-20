@@ -1,5 +1,6 @@
 import pickle
 import numpy as np
+import pandas as pd
 from tqdm import tqdm
 import torch
 from utils import CycleIndex
@@ -42,11 +43,31 @@ class Dataset:
         data['ts_ind'] = data['ts_id'].map(ts_id_to_ind)
 
         # Get y and N
-        oc = oc.loc[oc.ts_id.isin(sup_ts_ids)]
-        oc['ts_ind'] = oc['ts_id'].map(ts_id_to_ind)
-        oc = oc.sort_values(by='ts_ind')
-        y = np.array(oc['in_hospital_mortality'])
-        N = len(sup_ts_ids)
+        latent_df = pd.read_csv(args.latent_csv_path)
+        latent_df['ts_id'] = latent_df['ts_id'].astype(str)
+
+        sup_ts_ids_str = [str(x) for x in sup_ts_ids]
+        ts_id_to_ind = {str(ts_id): i for i, ts_id in enumerate(sup_ts_ids_str)}
+
+        latent_df = latent_df.loc[latent_df['ts_id'].isin(sup_ts_ids_str)].copy()
+
+        missing_ids = set(sup_ts_ids_str) - set(latent_df['ts_id'])
+        if missing_ids:
+            raise ValueError(f"Missing latent labels for {len(missing_ids)} supervised ts_ids")
+
+        if latent_df['ts_id'].duplicated().any():
+            dup_ids = latent_df.loc[latent_df['ts_id'].duplicated(), 'ts_id'].tolist()
+            raise ValueError(f"Duplicate ts_id values found in latent CSV, e.g. {dup_ids[:10]}")
+
+        latent_df['ts_ind'] = latent_df['ts_id'].map(ts_id_to_ind)
+        latent_df = latent_df.sort_values(by='ts_ind')
+
+        target_columns = [c for c in latent_df.columns if c != 'ts_id']
+        y = latent_df[target_columns].to_numpy(dtype=np.float32)
+
+        args.num_targets = len(target_columns)
+        args.target_columns = target_columns
+        N = len(sup_ts_ids_str)
 
         # To save
         self.N = N
@@ -57,9 +78,11 @@ class Dataset:
                        'val':[ts_id_to_ind[i] for i in val_ids],
                        'test':[ts_id_to_ind[i] for i in test_ids]}
         self.splits['eval_train'] = self.splits['train'][:2000]
+        self.sup_ts_ids = sup_ts_ids_str
+        self.target_columns = target_columns
         self.train_cycler = CycleIndex(self.splits['train'], args.train_batch_size)
-        num_train, num_train_pos = len(train_ids), y[self.splits['train']].sum()
-        args.pos_class_weight = (num_train-num_train_pos)/num_train_pos
+        num_train, num_train_pos = len(train_ids), y[self.splits['train']].sum(axis=0)
+        args.pos_class_weight = (num_train - num_train_pos) / num_train_pos
         args.logger.write('pos class weight: '+str(args.pos_class_weight))
         args.logger.write('% pos class in train, val, test splits: '
                           +str([num_train_pos/num_train, 
@@ -188,7 +211,10 @@ class Dataset:
             elif args.model_type=='interpnet':
                 self.times = times
                 self.holdout_masks = holdout_masks
-        
+
+    def get_supervised_ts_ids(self):
+        return self.sup_ts_ids
+
     def get_static_varis(self, dataset):
         if dataset=='mimic_iii':
             static_varis = ['Age', 'Gender']

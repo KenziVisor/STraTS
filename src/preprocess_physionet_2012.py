@@ -5,7 +5,7 @@ import pickle
 import numpy as np
 
 
-RAW_DATA_PATH = '/home/datasets/physionet_2012'
+RAW_DATA_PATH = '../../physionet2012'
 
 
 def read_ts(raw_data_path, set_name):

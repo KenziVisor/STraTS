@@ -1,5 +1,6 @@
 import argparse
 import os
+import pandas as pd
 from utils import Logger, set_all_seeds
 import torch
 from dataset_pretrain import PretrainDataset
@@ -24,8 +25,16 @@ def parse_args() -> argparse.Namespace:
 
     # dataset related arguments
     parser.add_argument('--dataset', type=str, default='physionet_2012')
+    parser.add_argument('--latent_csv_path', type=str, default='../data/latent_tags.csv',
+                        help='Path to latent tags CSV file')
     parser.add_argument('--train_frac', type=float, default=0.5)
     parser.add_argument('--run', type=str, default='1o10')
+
+    parser.add_argument('--save_pred_csv_path', type=str, default=None,
+                        help='Where to save predicted latent tags CSV')
+    parser.add_argument('--predict_split', type=str, default='all',
+                        choices=['train', 'valid', 'test', 'all'],
+                        help='Which split to export predictions for')
 
     # model related arguments
     parser.add_argument('--model_type', type=str, default='strats',
@@ -67,7 +76,62 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument('--validate_every', type=int, default=None)
 
     args = parser.parse_args()
+    if torch.cuda.is_available():
+        args.device = torch.device('cuda')
+    else:
+        args.device = torch.device('cpu')
     return args
+
+
+def export_latent_predictions(model, dataset, args):
+    model.eval()
+
+    if args.predict_split == 'train':
+        pred_indices = dataset.splits['train']
+    elif args.predict_split == 'valid':
+        pred_indices = dataset.splits['val']
+    elif args.predict_split == 'test':
+        pred_indices = dataset.splits['test']
+    elif args.predict_split == 'all':
+        pred_indices = np.arange(len(dataset.sup_ts_ids))
+    else:
+        raise ValueError(f"Unknown predict_split: {args.predict_split}")
+
+    all_probs = []
+    all_ts_ids = []
+
+    batch_size = args.eval_batch_size
+
+    with torch.no_grad():
+        for start in range(0, len(pred_indices), batch_size):
+            batch_ind = pred_indices[start:start + batch_size]
+            batch = dataset.get_batch(batch_ind)
+            batch = {k: v.to(args.device) for k, v in batch.items()}
+
+            # In your code, when labels=None, the model already returns sigmoid probabilities
+            probs = model(
+                values=batch['values'],
+                times=batch['times'],
+                varis=batch['varis'],
+                obs_mask=batch['obs_mask'],
+                demo=batch['demo'],
+                labels=None
+            )
+
+            all_probs.append(probs.detach().cpu())
+            all_ts_ids.extend([dataset.sup_ts_ids[i] for i in batch_ind])
+
+    probs = torch.cat(all_probs, dim=0).numpy()
+    preds = (probs >= 0.5).astype(int)
+
+    prob_cols = [f"{c}_prob" for c in dataset.target_columns]
+
+    df_probs = pd.DataFrame(probs, columns=prob_cols)
+    df_preds = pd.DataFrame(preds, columns=dataset.target_columns)
+    df_out = pd.concat([pd.DataFrame({'ts_id': all_ts_ids}), df_probs, df_preds], axis=1)
+
+    df_out.to_csv(args.save_pred_csv_path, index=False)
+    print(f"Saved predicted latent tags to: {args.save_pred_csv_path}")
 
 
 def set_output_dir(args: argparse.Namespace) -> None:
@@ -87,8 +151,6 @@ def set_output_dir(args: argparse.Namespace) -> None:
             for param in ['train_frac', 'run']:
                 args.output_dir += '|'+param+':'+str(getattr(args, param))
     os.makedirs(args.output_dir, exist_ok=True)
-
-
 
 
 if __name__ == "__main__":
@@ -200,3 +262,8 @@ if __name__ == "__main__":
     # print final res
     args.logger.write('Final val res: '+str(best_val_res))
     args.logger.write('Final test res: '+str(best_test_res))
+
+    if args.save_pred_csv_path is not None:
+        if os.path.exists(model_path_best):
+            model.load_state_dict(torch.load(model_path_best))
+        export_latent_predictions(model, dataset, args)

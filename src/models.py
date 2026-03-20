@@ -40,16 +40,21 @@ class TimeSeriesModel(nn.Module):
             ts_demo_emb_size = args.hid_dim*args.M+args.hid_dim
         else:
             ts_demo_emb_size = args.hid_dim*2
-        self.pretrain = args.pretrain==1
+
+        self.pretrain = args.pretrain == 1
         self.finetune = args.load_ckpt_path is not None
+
+        if not hasattr(args, 'num_targets'):
+            args.num_targets = 1
+
         if self.pretrain:
             self.forecast_head = nn.Linear(ts_demo_emb_size, args.V)
         elif self.finetune:
             self.forecast_head = nn.Linear(ts_demo_emb_size, args.V)
-            self.binary_head = nn.Linear(args.V,1)
+            self.binary_head = nn.Linear(args.V, args.num_targets)
             self.pos_class_weight = torch.tensor(args.pos_class_weight)
         else:
-            self.binary_head = nn.Linear(ts_demo_emb_size,1)
+            self.binary_head = nn.Linear(ts_demo_emb_size, args.num_targets)
             self.pos_class_weight = torch.tensor(args.pos_class_weight)
 
     def binary_cls_final(self, logits, labels):
