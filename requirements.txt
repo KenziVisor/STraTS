@@ -1,0 +1,26 @@
+# Core
+torch
+torchvision
+torchaudio
+
+# Data handling
+numpy
+pandas
+
+# ML / evaluation
+scikit-learn
+
+# Utilities
+tqdm
+
+# Optimization (used in your pipeline)
+optuna
+
+# Graph / causal structure (you used causal DAG scripts)
+networkx
+
+# Optional but often required
+scipy
+
+# Plotting (if you analyze results)
+matplotlib
