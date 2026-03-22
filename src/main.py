@@ -13,7 +13,7 @@ from modeling_grud import GRUD_TS
 from modeling_interpnet import InterpNet
 import numpy as np
 from tqdm import tqdm
-from transformers.optimization import AdamW
+from torch.optim import AdamW
 from models import count_parameters
 from evaluator import Evaluator
 from evaluator_pretrain import PretrainEvaluator
@@ -33,7 +33,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument('--save_pred_csv_path', type=str, default=None,
                         help='Where to save predicted latent tags CSV')
     parser.add_argument('--predict_split', type=str, default='all',
-                        choices=['train', 'valid', 'test', 'all'],
+                        choices=['train', 'val', 'test', 'all'],
                         help='Which split to export predictions for')
 
     # model related arguments
@@ -76,10 +76,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument('--validate_every', type=int, default=None)
 
     args = parser.parse_args()
-    if torch.cuda.is_available():
-        args.device = torch.device('cuda')
-    else:
-        args.device = torch.device('cpu')
+    args.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     return args
 
 
@@ -88,7 +85,7 @@ def export_latent_predictions(model, dataset, args):
 
     if args.predict_split == 'train':
         pred_indices = dataset.splits['train']
-    elif args.predict_split == 'valid':
+    elif args.predict_split == 'val':
         pred_indices = dataset.splits['val']
     elif args.predict_split == 'test':
         pred_indices = dataset.splits['test']
@@ -159,7 +156,6 @@ if __name__ == "__main__":
     set_output_dir(args)
     args.logger = Logger(args.output_dir, 'log.txt')
     args.logger.write('\n'+str(args))
-    args.device = torch.device('cuda')
     set_all_seeds(args.seed+int(args.run.split('o')[0]))
     model_path_best = os.path.join(args.output_dir, 'checkpoint_best.bin')
 
@@ -174,12 +170,12 @@ if __name__ == "__main__":
     count_parameters(args.logger, model)
     if args.load_ckpt_path is not None:
         curr_state_dict = model.state_dict()
-        pt_state_dict = torch.load(args.load_ckpt_path)
+        pt_state_dict = torch.load(args.load_ckpt_path, map_location=args.device)
         for k,v in pt_state_dict.items():
             if k in curr_state_dict:
                 curr_state_dict[k] = v
-        model.load_state_dict(curr_state_dict)
-
+        model.load_state_dict(torch.load(model_path_best, map_location=args.device))
+        model.to(args.device)
     # training loop
     num_train = len(dataset.splits['train'])
     num_batches_per_epoch = num_train/args.train_batch_size

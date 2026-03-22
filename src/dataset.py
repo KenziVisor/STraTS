@@ -81,13 +81,29 @@ class Dataset:
         self.sup_ts_ids = sup_ts_ids_str
         self.target_columns = target_columns
         self.train_cycler = CycleIndex(self.splits['train'], args.train_batch_size)
-        num_train, num_train_pos = len(train_ids), y[self.splits['train']].sum(axis=0)
-        args.pos_class_weight = (num_train - num_train_pos) / num_train_pos
-        args.logger.write('pos class weight: '+str(args.pos_class_weight))
-        args.logger.write('% pos class in train, val, test splits: '
-                          +str([num_train_pos/num_train, 
-                                y[self.splits['val']].sum()/len(val_ids),
-                                y[self.splits['test']].sum()/len(test_ids)]))
+
+        train_y = y[self.splits['train']]
+        val_y = y[self.splits['val']]
+        test_y = y[self.splits['test']]
+
+        num_train = train_y.shape[0]
+        train_pos = train_y.sum(axis=0)
+        val_pos = val_y.sum(axis=0)
+        test_pos = test_y.sum(axis=0)
+
+        safe_den = np.where(train_pos > 0, train_pos, 1.0)
+        pos_class_weight = (num_train - train_pos) / safe_den
+        pos_class_weight = np.where(train_pos > 0, pos_class_weight, 0.0)
+
+        args.pos_class_weight = pos_class_weight.astype(np.float32)
+
+        args.logger.write('pos class weight per target: ' + str(dict(zip(target_columns, args.pos_class_weight))))
+        args.logger.write('positive rate per target in train: ' + str(
+            dict(zip(target_columns, (train_pos / max(len(train_y), 1)).tolist()))))
+        args.logger.write('positive rate per target in val: ' + str(
+            dict(zip(target_columns, (val_pos / max(len(val_y), 1)).tolist()))))
+        args.logger.write('positive rate per target in test: ' + str(
+            dict(zip(target_columns, (test_pos / max(len(test_y), 1)).tolist()))))
         
         if 'llm' in args.model_type:
             self.data = data

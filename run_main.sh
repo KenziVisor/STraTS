@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export CUDA_VISIBLE_DEVICES=2
+
 run_commands(){
     eval template="$1"
     for train_frac in 0.5 0.4 0.3 0.2 0.1; do
@@ -40,7 +42,7 @@ python main.py \
   --dropout 0.2 \
   --attention_dropout 0.2 \
   --lr 5e-5 \
-  --load_ckpt_path <finetune_output_dir>/checkpoint_best.bin \
+  --load_ckpt_path ../outputs/physionet_2012/pretrain/checkpoint_best.bin \
   --latent_csv_path ../data/latent_tags.csv \
   --save_pred_csv_path ../outputs/predicted_latent_tags.csv \
   --predict_split all

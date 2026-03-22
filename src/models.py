@@ -52,10 +52,10 @@ class TimeSeriesModel(nn.Module):
         elif self.finetune:
             self.forecast_head = nn.Linear(ts_demo_emb_size, args.V)
             self.binary_head = nn.Linear(args.V, args.num_targets)
-            self.pos_class_weight = torch.tensor(args.pos_class_weight)
+            self.register_buffer('pos_class_weight', torch.tensor(args.pos_class_weight, dtype=torch.float32))
         else:
             self.binary_head = nn.Linear(ts_demo_emb_size, args.num_targets)
-            self.pos_class_weight = torch.tensor(args.pos_class_weight)
+            self.register_buffer('pos_class_weight', torch.tensor(args.pos_class_weight, dtype=torch.float32))
 
     def binary_cls_final(self, logits, labels):
         if labels is not None:
