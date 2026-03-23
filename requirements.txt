@@ -24,3 +24,5 @@ scipy
 
 # Plotting (if you analyze results)
 matplotlib
+transformers
+pytz

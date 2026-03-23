@@ -173,7 +173,6 @@ class Strats(TimeSeriesModel):
         if self.pretrain:
             return self.forecast_final(ts_demo_emb, forecast_values, forecast_mask)
 
-        logits = self.binary_head(self.forecast_head(ts_demo_emb)) \
-            if self.finetune else self.binary_head(ts_demo_emb)
+        logits = self.project_logits(ts_demo_emb)
 
         return self.binary_cls_final(logits, labels)

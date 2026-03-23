@@ -57,12 +57,17 @@ class TimeSeriesModel(nn.Module):
             self.binary_head = nn.Linear(ts_demo_emb_size, args.num_targets)
             self.register_buffer('pos_class_weight', torch.tensor(args.pos_class_weight, dtype=torch.float32))
 
+    def project_logits(self, ts_demo_emb):
+        if self.finetune:
+            return self.binary_head(self.forecast_head(ts_demo_emb))
+        return self.binary_head(ts_demo_emb)
+
     def binary_cls_final(self, logits, labels):
         if labels is not None:
             return F.binary_cross_entropy_with_logits(logits, labels, 
                                     pos_weight=self.pos_class_weight)
         else:
-            return F.sigmoid(logits)
+            return torch.sigmoid(logits)
         
     def forecast_final(self, ts_emb, forecast_values, forecast_mask):
         pred = self.forecast_head(ts_emb) # bsz, V

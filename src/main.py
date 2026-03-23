@@ -18,6 +18,15 @@ from models import count_parameters
 from evaluator import Evaluator
 from evaluator_pretrain import PretrainEvaluator
 
+SRC_DIR = os.path.dirname(os.path.abspath(__file__))
+
+
+def resolve_from_src(path: str | None) -> str | None:
+    """Resolve relative paths as if they were passed from the src/ directory."""
+    if path is None or os.path.isabs(path):
+        return path
+    return os.path.normpath(os.path.join(SRC_DIR, path))
+
 
 def parse_args() -> argparse.Namespace:
     """Function to parse arguments."""
@@ -25,7 +34,7 @@ def parse_args() -> argparse.Namespace:
 
     # dataset related arguments
     parser.add_argument('--dataset', type=str, default='physionet_2012')
-    parser.add_argument('--latent_csv_path', type=str, default='data/latent_tags.csv',
+    parser.add_argument('--latent_csv_path', type=str, default='../data/latent_tags.csv',
                         help='Path to latent tags CSV file')
     parser.add_argument('--train_frac', type=float, default=0.5)
     parser.add_argument('--run', type=str, default='1o10')
@@ -76,6 +85,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument('--validate_every', type=int, default=None)
 
     args = parser.parse_args()
+    args.latent_csv_path = resolve_from_src(args.latent_csv_path)
+    args.load_ckpt_path = resolve_from_src(args.load_ckpt_path)
+    args.save_pred_csv_path = resolve_from_src(args.save_pred_csv_path)
+    args.output_dir = resolve_from_src(args.output_dir)
     args.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     return args
 
@@ -103,17 +116,9 @@ def export_latent_predictions(model, dataset, args):
         for start in range(0, len(pred_indices), batch_size):
             batch_ind = pred_indices[start:start + batch_size]
             batch = dataset.get_batch(batch_ind)
+            batch.pop('labels', None)
             batch = {k: v.to(args.device) for k, v in batch.items()}
-
-            # In your code, when labels=None, the model already returns sigmoid probabilities
-            probs = model(
-                values=batch['values'],
-                times=batch['times'],
-                varis=batch['varis'],
-                obs_mask=batch['obs_mask'],
-                demo=batch['demo'],
-                labels=None
-            )
+            probs = model(**batch)
 
             all_probs.append(probs.detach().cpu())
             all_ts_ids.extend([dataset.sup_ts_ids[i] for i in batch_ind])
@@ -136,23 +141,38 @@ def set_output_dir(args: argparse.Namespace) -> None:
     if it is not passed in args."""
     if args.output_dir is None:
         if args.pretrain:
-            args.output_dir = 'outputs/'+args.dataset+'/'+args.output_dir_prefix+'pretrain/'
+            args.output_dir = os.path.join(
+                SRC_DIR,
+                '..',
+                'outputs',
+                args.dataset,
+                args.output_dir_prefix + 'pretrain',
+            )
         else:
             if args.load_ckpt_path is not None:
                 args.output_dir_prefix = 'finetune_'+args.output_dir_prefix
-            args.output_dir = 'outputs/'+args.dataset+'/'+args.output_dir_prefix
-            args.output_dir += args.model_type 
+            args.output_dir = os.path.join(
+                SRC_DIR,
+                '..',
+                'outputs',
+                args.dataset,
+                args.output_dir_prefix,
+            )
+            args.output_dir += args.model_type
             if args.model_type=='strats':
                 for param in ['num_layers', 'hid_dim', 'num_heads', 'dropout', 'attention_dropout', 'lr']:
                     args.output_dir += ','+param+':'+str(getattr(args, param))
             for param in ['train_frac', 'run']:
                 args.output_dir += '|'+param+':'+str(getattr(args, param))
+        args.output_dir = os.path.normpath(args.output_dir)
     os.makedirs(args.output_dir, exist_ok=True)
 
 
 if __name__ == "__main__":
     # Preliminary setup.
     args = parse_args()
+    if args.pretrain and args.model_type not in ['strats', 'istrats']:
+        raise ValueError('Pretraining is only supported for model_type in {strats, istrats}.')
     set_output_dir(args)
     args.logger = Logger(args.output_dir, 'log.txt')
     args.logger.write('\n'+str(args))
@@ -171,16 +191,25 @@ if __name__ == "__main__":
     if args.load_ckpt_path is not None:
         curr_state_dict = model.state_dict()
         pt_state_dict = torch.load(args.load_ckpt_path, map_location=args.device)
-        for k,v in pt_state_dict.items():
+        for k, v in pt_state_dict.items():
             if k in curr_state_dict:
                 curr_state_dict[k] = v
-        model.load_state_dict(torch.load(model_path_best, map_location=args.device))
+        model.load_state_dict(curr_state_dict)
         model.to(args.device)
     # training loop
     num_train = len(dataset.splits['train'])
     num_batches_per_epoch = num_train/args.train_batch_size
     args.logger.write('\nNo. of training batches per epoch = '
                       +str(num_batches_per_epoch))
+    if args.pretrain and args.eval_batch_size > args.train_batch_size:
+        args.logger.write(
+            'Reducing eval_batch_size from '
+            + str(args.eval_batch_size)
+            + ' to '
+            + str(args.train_batch_size)
+            + ' for pretraining to limit attention memory usage.'
+        )
+        args.eval_batch_size = args.train_batch_size
     args.max_steps = int(round(num_batches_per_epoch)*args.max_epochs)
     if args.validate_every is None:
         args.validate_every = int(np.ceil(num_batches_per_epoch))
@@ -198,7 +227,7 @@ if __name__ == "__main__":
         if not(args.pretrain):
             evaluator.evaluate(model, dataset, 'eval_train', train_step=-1)
             evaluator.evaluate(model, dataset, 'test', train_step=-1)
-    
+
     model.train()
     for step in train_bar:
         # load batch
@@ -241,7 +270,7 @@ if __name__ == "__main__":
 
             # Save ckpt if there is an improvement.
             curr_val_metric = val_res['loss_neg'] if args.pretrain \
-                                else val_res['auprc']+val_res['auroc']
+                                else val_res['auprc'] + val_res['auroc']
             if curr_val_metric>best_val_metric:
                 best_val_metric = curr_val_metric
                 best_val_res, best_test_res = val_res, test_res
@@ -254,12 +283,12 @@ if __name__ == "__main__":
                 if wait==0:
                     args.logger.write('Patience reached')
                     break
-    
+
     # print final res
     args.logger.write('Final val res: '+str(best_val_res))
     args.logger.write('Final test res: '+str(best_test_res))
 
     if args.save_pred_csv_path is not None:
         if os.path.exists(model_path_best):
-            model.load_state_dict(torch.load(model_path_best))
+            model.load_state_dict(torch.load(model_path_best, map_location=args.device))
         export_latent_predictions(model, dataset, args)
