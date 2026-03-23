@@ -5,10 +5,14 @@ import torch
 from dataset import Dataset
 import os
 
+SRC_DIR = os.path.dirname(os.path.abspath(__file__))
+
 class PretrainDataset(Dataset):
     def __init__(self, args):
         # read data
-        filepath = '../data/processed/'+args.dataset+'.pkl'
+        filepath = os.path.normpath(os.path.join(
+            SRC_DIR, '..', 'data', 'processed', args.dataset + '.pkl'
+        ))
         data, _, train_ids, val_ids, test_ids = pickle.load(open(filepath,'rb'))
         args.logger.write('\nPreparing dataset '+args.dataset)
         static_varis = self.get_static_varis(args.dataset)

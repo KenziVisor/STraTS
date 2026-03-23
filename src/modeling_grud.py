@@ -148,7 +148,7 @@ class GRUD_TS(TimeSeriesModel):
         demo_emb = self.demo_emb(demo)
         ts_demo_emb = torch.cat((ts_emb, demo_emb), dim=-1)
         # prediction
-        logits = self.binary_head(ts_demo_emb)[:,0]
+        logits = self.project_logits(ts_demo_emb)
         # prediction/loss
         return self.binary_cls_final(logits, labels)
     

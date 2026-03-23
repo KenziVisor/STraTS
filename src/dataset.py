@@ -6,11 +6,15 @@ import torch
 from utils import CycleIndex
 import os
 
+SRC_DIR = os.path.dirname(os.path.abspath(__file__))
+
 
 class Dataset:
     def __init__(self, args) -> None:
         # read data
-        filepath = '../data/processed/'+args.dataset+'.pkl'
+        filepath = os.path.normpath(os.path.join(
+            SRC_DIR, '..', 'data', 'processed', args.dataset + '.pkl'
+        ))
         data, oc, train_ids, val_ids, test_ids = pickle.load(open(filepath,'rb'))
         run, totalruns = list(map(int, args.run.split('o')))
         num_train = int(np.ceil(args.train_frac*len(train_ids)))
@@ -25,7 +29,7 @@ class Dataset:
             # Filter labeled data in first 24h and fill missing age for old patients.
             data = data.loc[(data.minute>=0)&(data.minute<=24*60)]
             data.loc[(data.variable=='Age')&(data.value>200), 'value'] = 91.4
-            
+
         # keep variables seen in training set only
         train_variables = data.loc[data.ts_id.isin(train_ids)].variable.unique()
         all_variables = data.variable.unique()
@@ -38,16 +42,16 @@ class Dataset:
         test_ids = np.intersect1d(test_ids, curr_ids)
         args.logger.write('# train, val, test TS: '+str([len(train_ids), len(val_ids), len(test_ids)]))
         sup_ts_ids = np.concatenate((train_ids, val_ids, test_ids))
-        ts_id_to_ind = {ts_id:i for i,ts_id in enumerate(sup_ts_ids)}
+        raw_ts_id_to_ind = {ts_id:i for i,ts_id in enumerate(sup_ts_ids)}
         data = data.loc[data.ts_id.isin(sup_ts_ids)]
-        data['ts_ind'] = data['ts_id'].map(ts_id_to_ind)
+        data['ts_ind'] = data['ts_id'].map(raw_ts_id_to_ind)
 
         # Get y and N
         latent_df = pd.read_csv(args.latent_csv_path)
         latent_df['ts_id'] = latent_df['ts_id'].astype(str)
 
         sup_ts_ids_str = [str(x) for x in sup_ts_ids]
-        ts_id_to_ind = {str(ts_id): i for i, ts_id in enumerate(sup_ts_ids_str)}
+        str_ts_id_to_ind = {ts_id: i for i, ts_id in enumerate(sup_ts_ids_str)}
 
         latent_df = latent_df.loc[latent_df['ts_id'].isin(sup_ts_ids_str)].copy()
 
@@ -59,10 +63,9 @@ class Dataset:
             dup_ids = latent_df.loc[latent_df['ts_id'].duplicated(), 'ts_id'].tolist()
             raise ValueError(f"Duplicate ts_id values found in latent CSV, e.g. {dup_ids[:10]}")
 
-        latent_df['ts_ind'] = latent_df['ts_id'].map(ts_id_to_ind)
-        latent_df = latent_df.sort_values(by='ts_ind')
-
         target_columns = [c for c in latent_df.columns if c != 'ts_id']
+        latent_df['ts_ind'] = latent_df['ts_id'].map(str_ts_id_to_ind)
+        latent_df = latent_df.sort_values(by='ts_ind')
         y = latent_df[target_columns].to_numpy(dtype=np.float32)
 
         args.num_targets = len(target_columns)
@@ -74,9 +77,9 @@ class Dataset:
         self.y = y
         self.args = args
         self.static_varis = static_varis
-        self.splits = {'train':[ts_id_to_ind[i] for i in train_ids],
-                       'val':[ts_id_to_ind[i] for i in val_ids],
-                       'test':[ts_id_to_ind[i] for i in test_ids]}
+        self.splits = {'train':[raw_ts_id_to_ind[i] for i in train_ids],
+                       'val':[raw_ts_id_to_ind[i] for i in val_ids],
+                       'test':[raw_ts_id_to_ind[i] for i in test_ids]}
         self.splits['eval_train'] = self.splits['train'][:2000]
         self.sup_ts_ids = sup_ts_ids_str
         self.target_columns = target_columns
@@ -104,11 +107,11 @@ class Dataset:
             dict(zip(target_columns, (val_pos / max(len(val_y), 1)).tolist()))))
         args.logger.write('positive rate per target in test: ' + str(
             dict(zip(target_columns, (test_pos / max(len(test_y), 1)).tolist()))))
-        
+
         if 'llm' in args.model_type:
             self.data = data
             return
-        
+
         # Get static data with missingness indicator.
         data = self.get_static_data(data)
 
@@ -124,7 +127,7 @@ class Dataset:
         # normalize if not aggregating, also get max_minute for strats
         args.finetune = args.load_ckpt_path is not None
         if args.finetune:
-            pt_var_path = os.path.join(os.path.dirname(args.load_ckpt_path), 
+            pt_var_path = os.path.join(os.path.dirname(args.load_ckpt_path),
                                        'pt_saved_variables.pkl')
             variables, means_stds, max_minute = pickle.load(open(pt_var_path,'rb'))
         if args.model_type in ['strats','istrats','grud','interpnet']:
@@ -136,7 +139,7 @@ class Dataset:
                 max_minute = data['minute'].max()
             data = data.merge(means_stds.reset_index(), on='variable', how='left')
             data['value'] = (data['value']-data['mean'])/data['std']
-            
+
         # prepare time series inputs
         if not(args.finetune):
             variables = data.variable.unique()
@@ -165,8 +168,8 @@ class Dataset:
             delta = delta/T
             # mean fill obs
             train_ind = self.splits['train']
-            means = (values[train_ind]*obs[train_ind]).sum(axis=(0,1))\
-                        /obs[train_ind].sum(axis=(0,1))
+            means = (values[train_ind] * obs[train_ind]).sum(axis=(0, 1)) / \
+                    obs[train_ind].sum(axis=(0, 1))
             values = values*obs + (1-obs)*means.reshape((1,1,V))
             # normalize values
             means = values[train_ind].mean(axis=(0,1), keepdims=True)
@@ -205,8 +208,8 @@ class Dataset:
                 if args.model_type=='grud':
                     curr_delta = np.zeros((T,V))
                     for t in range(1,T):
-                        curr_delta[t,:] = curr_times[t]-curr_times[t-1] \
-                                        + (1-curr_mask[t-1])*curr_delta[t-1,:]
+                        curr_delta[t,:] = curr_times[t] - curr_times[t-1] + \
+                                        (1 - curr_mask[t-1]) * curr_delta[t-1,:]
                     deltas[ts_ind] = curr_delta/(24*60*60) # days
                 elif args.model_type=='interpnet':
                     times[ts_ind] = list(np.array(curr_times)/60) # hours
@@ -292,10 +295,10 @@ class Dataset:
             return self.get_batch_interpnet(ind)
         elif self.args.model_type in ['gru', 'tcn', 'sand']:
             return {'ts':torch.FloatTensor(self.X[ind]),
-                    'demo':torch.FloatTensor(self.demo[ind]), 
+                    'demo':torch.FloatTensor(self.demo[ind]),
                     'labels':torch.FloatTensor(self.y[ind])}
-        
-        
+
+
     def get_batch_grud(self, ind):
         deltas = [self.deltas[i] for i in ind]
         values = [self.values[i] for i in ind]
@@ -305,17 +308,17 @@ class Dataset:
         pad_lens = max_timestamps-num_timestamps
         V = self.args.V
         pad_mats = [np.zeros((l,V)) for l in pad_lens]
-        deltas = torch.FloatTensor(np.stack([np.concatenate((delta,pad), axis=0) 
+        deltas = torch.FloatTensor(np.stack([np.concatenate((delta,pad), axis=0)
                                     for delta,pad in zip(deltas,pad_mats)]))
-        values = torch.FloatTensor(np.stack([np.concatenate((delta,pad), axis=0) 
+        values = torch.FloatTensor(np.stack([np.concatenate((delta,pad), axis=0)
                                     for delta,pad in zip(values,pad_mats)]))
-        masks = torch.FloatTensor(np.stack([np.concatenate((delta,pad), axis=0) 
+        masks = torch.FloatTensor(np.stack([np.concatenate((delta,pad), axis=0)
                                     for delta,pad in zip(masks,pad_mats)]))
-        return {'delta_t':deltas, 'x_t':values, 'm_t':masks, 
+        return {'delta_t':deltas, 'x_t':values, 'm_t':masks,
                 'seq_len':torch.LongTensor(num_timestamps),
-                'demo':torch.FloatTensor(self.demo[ind]), 
+                'demo':torch.FloatTensor(self.demo[ind]),
                 'labels':torch.FloatTensor(self.y[ind])}
-    
+
     def get_batch_interpnet(self, ind):
         times = [self.times[i] for i in ind]
         values = [self.values[i] for i in ind]
@@ -327,15 +330,15 @@ class Dataset:
         pad_lens = max_timestamps-num_timestamps
         V = self.args.V
         pad_mats = [np.zeros((l,V)) for l in pad_lens]
-        hmasks = torch.FloatTensor(np.stack([np.concatenate((delta,pad), axis=0) 
+        hmasks = torch.FloatTensor(np.stack([np.concatenate((delta,pad), axis=0)
                                     for delta,pad in zip(hmasks,pad_mats)]))
-        values = torch.FloatTensor(np.stack([np.concatenate((delta,pad), axis=0) 
+        values = torch.FloatTensor(np.stack([np.concatenate((delta,pad), axis=0)
                                     for delta,pad in zip(values,pad_mats)]))
-        masks = torch.FloatTensor(np.stack([np.concatenate((delta,pad), axis=0) 
+        masks = torch.FloatTensor(np.stack([np.concatenate((delta,pad), axis=0)
                                     for delta,pad in zip(masks,pad_mats)]))
         times = torch.FloatTensor([t+[0]*p for t,p in zip(times, pad_lens)])
         return {'t':times, 'x':values, 'm':masks, 'h':hmasks,
-                'demo':torch.FloatTensor(self.demo[ind]), 
+                'demo':torch.FloatTensor(self.demo[ind]),
                 'labels':torch.FloatTensor(self.y[ind])}
 
 
@@ -354,9 +357,3 @@ class Dataset:
         return {'values':values, 'times':times, 'varis':varis,
                 'obs_mask':obs_mask, 'demo':demo,
                 'labels':torch.FloatTensor(self.y[ind])}
-
-        
-            
-            
-
-
