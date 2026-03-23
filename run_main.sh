@@ -1,6 +1,9 @@
 #!/bin/bash
 
+set -euo pipefail
+
 export CUDA_VISIBLE_DEVICES=2
+export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 
 run_commands(){
     eval template="$1"

@@ -26,7 +26,7 @@ class CVE(nn.Module):
         x = self.activation(x)
         x = torch.matmul(x,self.W2) #bsz,max_len,hid_dim
         return x
-        
+
 
 class FusionAtt(nn.Module):
     def __init__(self, args):
@@ -44,10 +44,10 @@ class FusionAtt(nn.Module):
         att = torch.matmul(x,self.W) + self.b[None,None,:] # bsz,max_len,int_dim
         att = self.activation(att)
         att = torch.matmul(att,self.u)[:,:,0] # bsz,max_len
-        att = att + (1-mask)*torch.finfo(att.dtype).min  
+        att = att + (1-mask)*torch.finfo(att.dtype).min
         att = torch.softmax(att,dim=-1) # bsz,max_len
-        return att 
-    
+        return att
+
 
 class Transformer(nn.Module):
     def __init__(self, args):
@@ -60,6 +60,9 @@ class Transformer(nn.Module):
         self.h = args.num_heads
         self.dk = self.d//self.h
         self.all_head_size = self.dk*self.h
+        # Smaller query chunks keep the original attention math but avoid
+        # materializing full [batch, heads, L, L] dropout masks on GPU.
+        self.attention_query_chunk_size = 64
 
         self.Wq = nn.Parameter(self.init_proj((self.N, self.h, self.d, self.dk)), requires_grad=True)
         self.Wk = nn.Parameter(self.init_proj((self.N, self.h, self.d, self.dk)), requires_grad=True)
@@ -78,14 +81,41 @@ class Transformer(nn.Module):
         scale = gain*np.sqrt(6/fan_in_out)
         x = x*2*scale - scale
         return x
-    
+
+    def apply_chunked_attention(self, q, k, v, mask, dtype):
+        bsz, _, max_len, _ = q.size()
+        all_head_outputs = []
+        mask = mask[:, 0]
+        min_value = torch.finfo(dtype).min
+
+        for head_index in range(self.h):
+            q_head = q[:, head_index]
+            k_head = k[:, head_index]
+            v_head = v[:, head_index]
+            head_outputs = []
+
+            for start in range(0, max_len, self.attention_query_chunk_size):
+                end = min(start + self.attention_query_chunk_size, max_len)
+                scores = torch.einsum('bqd,bkd->bqk', q_head[:, start:end], k_head)
+                layer_mask = mask[:, start:end, :]
+                if self.training and self.attention_dropout > 0:
+                    dropout_mask = (
+                        (torch.rand_like(scores) < self.attention_dropout).float()
+                        * min_value
+                    )
+                    layer_mask = layer_mask + dropout_mask
+                probs = torch.softmax(scores + layer_mask, dim=-1)
+                head_outputs.append(torch.einsum('bqk,bkd->bqd', probs, v_head))
+
+            all_head_outputs.append(torch.cat(head_outputs, dim=1))
+
+        return torch.cat(all_head_outputs, dim=-1)
+
     def forward(self, x, mask):
         # x: bsz, max_len, d
         # mask: bsz, max_len
-        bsz, max_len, _ = x.size()
         mask = mask[:,:,None]*mask[:,None,:]
         mask = (1-mask)[:,None,:,:]*torch.finfo(x.dtype).min
-        layer_mask = mask
         for i in range(self.N):
             # MHA
             q = torch.einsum('bld,hde->bhle', x, self.Wq[i]) # bsz,h,max_len,dk
@@ -95,17 +125,7 @@ class Transformer(nn.Module):
             # q = (x_for_qkv*self.Wq[i][None,:,None,:,:]).sum(dim=-2) # bsz,h,max_len,dk
             # k = (x_for_qkv*self.Wk[i][None,:,None,:,:]).sum(dim=-2) # bsz,h,max_len,dk
             # v = (x_for_qkv*self.Wv[i][None,:,None,:,:]).sum(dim=-2) # bsz,h,max_len,dk
-            A = torch.einsum('bhle,bhke->bhlk', q, k) # bsz,h,max_len,max_len
-            # A = (q[:,:,:,None,:]*k[:,:,None,:,:]).sum(dim=-1) # bsz,h,max_len,max_len
-            if self.training:
-                dropout_mask = (torch.rand_like(A)<self.attention_dropout
-                                ).float()*torch.finfo(x.dtype).min
-                layer_mask = mask+dropout_mask
-            A = A+layer_mask
-            A = torch.softmax(A, dim=-1)
-            v = torch.einsum('bhkl,bhle->bkhe',A,v) # bsz,max_len,h,dk
-            # v = (A[:,:,:,:,None]*v[:,:,None,:,:]).sum(dim=-2).transpose(1,2) # bsz,max_len,h,dk
-            all_head_op = v.reshape((bsz, max_len, -1))
+            all_head_op = self.apply_chunked_attention(q, k, v, mask, x.dtype)
             all_head_op = torch.matmul(all_head_op, self.Wo[i])
             all_head_op = F.dropout(all_head_op, self.dropout, self.training)
             # Add+layernorm
@@ -134,7 +154,7 @@ class Strats(TimeSeriesModel):
         self.fusion_att = FusionAtt(args)
         self.dropout = args.dropout
         self.V = args.V
-        
+
 
     def forward(self, values, times, varis, obs_mask, demo,
                 labels=None, forecast_values=None, forecast_mask=None):
@@ -148,8 +168,7 @@ class Strats(TimeSeriesModel):
                     obs_mask = obs_mask*(1-mask_pos)
 
         # demographics embedding
-        demo_emb = self.demo_emb(demo) if self.args.model_type=='strats' \
-                    else demo
+        demo_emb = self.demo_emb(demo) if self.args.model_type=='strats'                     else demo
         # initial triplet embedding
         time_emb = self.cve_time(times)
         value_emb = self.cve_value(values)
@@ -160,7 +179,7 @@ class Strats(TimeSeriesModel):
         triplet_emb = time_emb+value_emb+vari_emb
         triplet_emb = F.dropout(triplet_emb, self.dropout, self.training)
         # contextual triplet emb
-        contextual_emb = self.transformer(triplet_emb, obs_mask) 
+        contextual_emb = self.transformer(triplet_emb, obs_mask)
         # fusion attention
         attention_weights = self.fusion_att(contextual_emb, obs_mask)[:,:,None]
         if self.args.model_type=='istrats':
