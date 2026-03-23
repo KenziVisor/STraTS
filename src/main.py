@@ -25,7 +25,7 @@ def parse_args() -> argparse.Namespace:
 
     # dataset related arguments
     parser.add_argument('--dataset', type=str, default='physionet_2012')
-    parser.add_argument('--latent_csv_path', type=str, default='../data/latent_tags.csv',
+    parser.add_argument('--latent_csv_path', type=str, default='data/latent_tags.csv',
                         help='Path to latent tags CSV file')
     parser.add_argument('--train_frac', type=float, default=0.5)
     parser.add_argument('--run', type=str, default='1o10')
@@ -136,11 +136,11 @@ def set_output_dir(args: argparse.Namespace) -> None:
     if it is not passed in args."""
     if args.output_dir is None:
         if args.pretrain:
-            args.output_dir = '../outputs/'+args.dataset+'/'+args.output_dir_prefix+'pretrain/'
+            args.output_dir = 'outputs/'+args.dataset+'/'+args.output_dir_prefix+'pretrain/'
         else:
             if args.load_ckpt_path is not None:
                 args.output_dir_prefix = 'finetune_'+args.output_dir_prefix
-            args.output_dir = '../outputs/'+args.dataset+'/'+args.output_dir_prefix
+            args.output_dir = 'outputs/'+args.dataset+'/'+args.output_dir_prefix
             args.output_dir += args.model_type 
             if args.model_type=='strats':
                 for param in ['num_layers', 'hid_dim', 'num_heads', 'dropout', 'attention_dropout', 'lr']:
