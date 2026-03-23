@@ -28,6 +28,12 @@ def resolve_from_src(path: str | None) -> str | None:
     return os.path.normpath(os.path.join(SRC_DIR, path))
 
 
+def clear_cuda_cache(device: torch.device) -> None:
+    if device.type == 'cuda':
+        torch.cuda.empty_cache()
+
+
+
 def parse_args() -> argparse.Namespace:
     """Function to parse arguments."""
     parser = argparse.ArgumentParser()
@@ -189,6 +195,11 @@ if __name__ == "__main__":
     model.to(args.device)
     count_parameters(args.logger, model)
     if args.load_ckpt_path is not None:
+        if not os.path.exists(args.load_ckpt_path):
+            raise FileNotFoundError(
+                f'Checkpoint not found: {args.load_ckpt_path}. '
+                'Pretraining likely failed before checkpoint_best.bin was created.'
+            )
         curr_state_dict = model.state_dict()
         pt_state_dict = torch.load(args.load_ckpt_path, map_location=args.device)
         for k, v in pt_state_dict.items():
@@ -227,6 +238,7 @@ if __name__ == "__main__":
         if not(args.pretrain):
             evaluator.evaluate(model, dataset, 'eval_train', train_step=-1)
             evaluator.evaluate(model, dataset, 'test', train_step=-1)
+        clear_cuda_cache(args.device)
 
     model.train()
     for step in train_bar:
@@ -266,6 +278,7 @@ if __name__ == "__main__":
                 test_res = evaluator.evaluate(model, dataset, 'test', train_step=step)
             else:
                 test_res = None
+            clear_cuda_cache(args.device)
             model.train(True)
 
             # Save ckpt if there is an improvement.
