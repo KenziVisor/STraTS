@@ -810,7 +810,8 @@ events = pd.concat((data, events), ignore_index=True)
 # Drop duplicate events.
 events.drop_duplicates(inplace=True)
 
-# Add mortality label.
+# Add the legacy outcomes table used in the processed pickle.
+# Supervised latent-tag training reads targets from --latent_csv_path instead.
 adm = pd.read_csv(os.path.join(RAW_DATA_PATH,'ADMISSIONS.csv'), 
                   usecols=['HADM_ID', 'HOSPITAL_EXPIRE_FLAG'])
 oc = icu_full[['ts_id', 'HADM_ID', 'SUBJECT_ID']].merge(adm, on='HADM_ID', how='left')

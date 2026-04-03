@@ -8,7 +8,7 @@
   2. default supervised mode: multi-label latent-tag prediction from `--latent_csv_path`.
 - `src/main.py` is the only real entry point.
 - `run_main.sh` shows the intended sequence: pretrain STraTS -> fine-tune on latent tags -> export predictions.
-- In this fork, the end-to-end path is centered on `strats` / `istrats`. Other backends still contain original single-output assumptions; see `Known issues / limitations`.
+- All supervised backends now consume the same multi-label latent-tag targets; pretraining remains `strats` / `istrats` only.
 - `README.md` is empty. Use this file as the main repo map.
 
 ## Files that matter
@@ -51,7 +51,7 @@ Required for supervised mode via `--latent_csv_path`.
 Expected shape:
 
 - one `ts_id` column
-- every other column is treated as a binary label
+- every other column is treated as a binary latent-tag target
 
 Loader behavior:
 
@@ -119,6 +119,9 @@ Behavior:
 - static variables are removed from the event stream and normalized separately into `demo`
 - PhysioNet static demo = `Age`, `Gender`, `Height`, `ICUType_1..4`, plus `Gender_missing` and `Height_missing`
 - MIMIC static demo = `Age`, `Gender`
+- latent targets come only from `--latent_csv_path`; the `oc` table is not the supervised label source
+- `args.num_targets` and `args.target_columns` are derived from the latent CSV at runtime
+- `args.pos_class_weight` is a per-target vector, not a scalar
 - evaluator computes per-target AUROC, AUPRC, and max min(precision, recall), then averages across non-degenerate label columns
 - `eval_train` is only the first 2000 train examples
 
@@ -152,7 +155,7 @@ Important behavior:
 Practical truth:
 
 - only STraTS / iSTraTS are wired for pretraining
-- only STraTS / iSTraTS appear fully adapted to this fork's multi-label latent-tag task
+- all supervised model families use the shared multi-label BCE head and return `[batch, num_targets]` probabilities at inference
 
 ## STraTS internals
 
@@ -170,7 +173,7 @@ Practical truth:
 - scratch supervised: `binary_head(ts_demo_emb -> K)`
 - fine-tune (`load_ckpt_path` set): `forecast_head(ts_demo_emb -> V)` then `binary_head(V -> K)`
 
-This means "fine-tune from pretraining" is architecturally designed around models that explicitly route through `forecast_head` before classification. In the current code, that is only true for `Strats.forward()`.
+All supervised backends now call `project_logits(...)`, so finetune mode consistently routes through `forecast_head -> binary_head`. In practice, only `strats` / `istrats` have a matching self-supervised pretraining path.
 
 ## Training and checkpointing
 
@@ -195,22 +198,13 @@ Auto output-dir naming:
 1. Warm-start loading in `src/main.py` is likely broken.
    The code loads `args.load_ckpt_path`, merges overlapping keys into `curr_state_dict`, then ignores it and calls `model.load_state_dict(torch.load(model_path_best, ...))`. This likely defeats the intended checkpoint initialization.
 
-2. Multi-label support is not consistently ported beyond STraTS / iSTraTS.
-   `GRU_TS`, `TCN_TS`, `SAND`, `GRUD_TS`, and `InterpNet` all squeeze logits with `[:,0]`, while the dataset and evaluator now expect `K` outputs. These backends still look like single-target code.
+2. Future MIMIC latent-tag work must keep `ts_id` aligned between the processed pickle and the latent CSV.
+   The loader now raises on missing labels and duplicate `ts_id`, but the CSV still has to match the processed split ids exactly.
 
-3. Fine-tuning from a pretrained checkpoint looks STraTS-only.
-   In finetune mode, `TimeSeriesModel` makes `binary_head` expect input size `V`, but the non-STraTS backends still feed `ts_demo_emb` directly into `binary_head`. That is a shape mismatch.
+3. `preprocess_mimic_iii_large.py` still writes `oc.in_hospital_mortality` for lineage.
+   Supervised training ignores that column and instead reads targets from `--latent_csv_path`.
 
-4. Pretraining is not enforced to be STraTS-only, but the code path is.
-   `PretrainDataset.get_batch()` returns STraTS-style irregular inputs plus forecast targets. Non-STraTS backends do not accept that signature.
-
-5. Prediction export is STraTS-specific.
-   `export_latent_predictions()` hardcodes `values/times/varis/obs_mask/demo` and calls the model with the STraTS signature.
-
-6. Supervised MIMIC latent-tag loading may break on numeric `ts_id`.
-   `Dataset` stringifies `sup_ts_ids` for latent-label alignment, but later builds `self.splits` with raw `train_ids/val_ids/test_ids` against a string-keyed mapping. That looks unsafe for MIMIC, where `ts_id` is numeric in preprocessing.
-
-7. `requirements.txt` is incomplete for current imports.
+4. `requirements.txt` is incomplete for current imports.
    At minimum, `transformers` and `pytz` are imported by runtime code but not listed.
 
 ## Fast re-entry
