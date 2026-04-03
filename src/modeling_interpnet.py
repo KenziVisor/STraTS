@@ -5,7 +5,6 @@ from models import TimeSeriesModel
 import torch.nn as nn
 import torch
 import numpy as np
-import torch.nn.functional as F
 
 
 class SingleChannelInterp(nn.Module):
@@ -94,14 +93,12 @@ class InterpNet(TimeSeriesModel):
         ts_demo_emb = torch.cat((ts_emb, demo_emb), dim=-1)
         # prediction
         logits = self.project_logits(ts_demo_emb)
-        # prediction/loss
+        cls_result = self.binary_cls_final(logits, labels)
         if labels is None:
-            return torch.sigmoid(logits)
-        main_loss = F.binary_cross_entropy_with_logits(logits, labels, 
-                                    pos_weight=self.pos_class_weight)
-        
+            return cls_result
+
 
         sigma, lambda_ = self.sci(x,m,t,h,reconstruction=True)
         aux_output = self.cci(sigma, lambda_) # bsz,T,V
         aux_loss = self.custom_loss(x,m,h,aux_output)
-        return main_loss+aux_loss
+        return cls_result+aux_loss
