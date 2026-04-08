@@ -6,7 +6,7 @@ import os
 import yaml
 
 
-RAW_DATA_PATH = '/home/datasets/mimiciii1.4'
+RAW_DATA_PATH = '../mimiciii'
 
 # Get all ICU stays.
 icu = pd.read_csv(os.path.join(RAW_DATA_PATH,'ICUSTAYS.csv'), 
