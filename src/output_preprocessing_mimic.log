@@ -1,961 +1,0 @@
-nohup: ignoring input
-0it [00:00, ?it/s]1it [00:08,  8.20s/it]2it [00:16,  7.99s/it]3it [00:24,  8.11s/it]/home/guest3/.conda/envs/strats-env/lib/python3.10/site-packages/tqdm/std.py:1181: DtypeWarning: Columns (8) have mixed types. Specify dtype option on import or set low_memory=False.
-  for obj in iterable:
-4it [00:32,  8.26s/it]5it [00:41,  8.32s/it]6it [00:49,  8.33s/it]7it [00:57,  8.30s/it]8it [01:05,  8.22s/it]9it [01:14,  8.35s/it]10it [01:22,  8.38s/it]11it [01:31,  8.37s/it]12it [01:39,  8.36s/it]13it [01:48,  8.46s/it]14it [01:56,  8.47s/it]15it [02:05,  8.40s/it]16it [02:12,  8.25s/it]17it [02:21,  8.24s/it]18it [02:30,  8.44s/it]19it [02:38,  8.37s/it]20it [02:46,  8.41s/it]21it [02:55,  8.46s/it]22it [03:03,  8.43s/it]23it [03:12,  8.46s/it]24it [03:20,  8.43s/it]25it [03:28,  8.32s/it]/home/guest3/.conda/envs/strats-env/lib/python3.10/site-packages/tqdm/std.py:1181: DtypeWarning: Columns (8,10) have mixed types. Specify dtype option on import or set low_memory=False.
-  for obj in iterable:
-26it [03:37,  8.37s/it]/home/guest3/.conda/envs/strats-env/lib/python3.10/site-packages/tqdm/std.py:1181: DtypeWarning: Columns (8) have mixed types. Specify dtype option on import or set low_memory=False.
-  for obj in iterable:
-27it [03:45,  8.28s/it]28it [03:53,  8.16s/it]29it [04:00,  7.96s/it]30it [04:08,  7.86s/it]31it [04:15,  7.76s/it]32it [04:23,  7.79s/it]33it [04:31,  7.77s/it]34it [04:31,  5.60s/it]34it [04:31,  8.00s/it]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:79: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ch_gcs.loc[ch_gcs.ITEMID.isin(gcs_eye), 'NAME'] = 'GCS_eye'
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:82: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ch_gcs['VALUEUOM'] = None
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:83: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ch_gcs['VALUE'] = None
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:114: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ch_temp_f.VALUENUM = (ch_temp_f.VALUENUM-32)*5/9
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:130: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ch_we_lb.VALUENUM = ch_we_lb.VALUENUM * 0.453592
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:146: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ch_he_in.VALUENUM = ch_he_in.VALUENUM * 2.54
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:226: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  la_itb['VALUEUOM'] = None
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:227: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  la_itb['NAME'] = 'Intubated'
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:390: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:391: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:390: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:391: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:390: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:391: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:390: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:391: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:390: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:391: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:390: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:391: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:390: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:391: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:390: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:391: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:390: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:391: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:390: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:391: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:396: DtypeWarning: Columns (7) have mixed types. Specify dtype option on import or set low_memory=False.
-  ie_cv = pd.read_csv(os.path.join(RAW_DATA_PATH,'INPUTEVENTS_CV.csv'),
-Read chartevents
-Read labevents
-O2 Saturation
-Sodium
-Potassium
-Magnesium
-Phosphate
-Calcium Total
-Calcium Free
-WBC
-Hct
-Hgb
-Chloride
-Bicarbonate
-ALT
-ALP
-AST
-Albumin
-Lactate
-LDH
-SG Urine
-pH Urine
-pH Blood
-PO2
-PCO2
-Total CO2
-Base Excess
-Monocytes
-Basophils
-Eoisinophils
-Neutrophils
-Lymphocytes
-Lymphocytes (Absolute)
-PT
-PTT
-INR
-Anion Gap
-BUN
-Creatinine Blood
-Creatinine Urine
-MCH
-MCHC
-MCV
-RDW
-Platelet Count
-RBC
-Ultrafiltrate
-Urine
-Stool
-Chest Tube
-Gastric
-EBL
-Emesis
-Jackson-Pratt
-Residual
-Pre-admission Output
-0it [00:00, ?it/s]1it [00:03,  3.86s/it]896it [00:03, 319.56it/s]1640it [00:04, 664.85it/s]2533it [00:04, 1200.29it/s]3554it [00:04, 1963.26it/s]4481it [00:04, 2751.82it/s]5376it [00:04, 3579.69it/s]6252it [00:04, 4399.91it/s]7124it [00:04, 5104.58it/s]8016it [00:04, 5890.35it/s]8986it [00:04, 6756.49it/s]9926it [00:04, 7403.56it/s]10920it [00:05, 8062.04it/s]11992it [00:05, 8779.50it/s]12967it [00:05, 9048.83it/s]13942it [00:05, 9100.61it/s]14959it [00:05, 9405.60it/s]15936it [00:05, 9364.48it/s]16898it [00:05, 9409.96it/s]17919it [00:05, 9643.37it/s]18897it [00:05, 9665.44it/s]19888it [00:05, 9735.22it/s]20869it [00:06, 9735.63it/s]21848it [00:06, 9340.76it/s]22801it [00:06, 9391.39it/s]23745it [00:06, 9372.43it/s]24686it [00:06, 9376.97it/s]25706it [00:06, 9620.01it/s]26671it [00:06, 9627.72it/s]27636it [00:06, 9623.44it/s]28600it [00:06, 9604.37it/s]29562it [00:07, 3412.12it/s]30517it [00:07, 4218.57it/s]31561it [00:07, 5201.45it/s]32499it [00:07, 5970.64it/s]33482it [00:08, 6774.02it/s]34443it [00:08, 7422.69it/s]35411it [00:08, 7978.66it/s]36502it [00:08, 8741.86it/s]37488it [00:08, 8994.12it/s]38468it [00:08, 9209.43it/s]39447it [00:08, 9289.76it/s]40427it [00:08, 9436.07it/s]41483it [00:08, 9760.94it/s]42481it [00:08, 9801.80it/s]43489it [00:09, 9882.02it/s]44488it [00:09, 9720.21it/s]45469it [00:09, 9645.93it/s]46480it [00:09, 9780.53it/s]47558it [00:09, 10073.11it/s]48569it [00:09, 9943.81it/s] 49567it [00:09, 9442.47it/s]50566it [00:09, 9597.91it/s]51532it [00:09, 9599.40it/s]52523it [00:09, 9689.61it/s]53521it [00:10, 9773.56it/s]54540it [00:10, 9895.84it/s]55544it [00:10, 9936.42it/s]56539it [00:10, 9905.44it/s]57539it [00:10, 9931.02it/s]58576it [00:10, 10061.48it/s]59583it [00:10, 10046.64it/s]60589it [00:10, 9795.21it/s] 61571it [00:10, 9562.82it/s]62580it [00:10, 9714.64it/s]63554it [00:11, 9587.45it/s]64526it [00:11, 9618.32it/s]65567it [00:11, 9849.35it/s]66671it [00:11, 10199.75it/s]67717it [00:11, 10274.14it/s]68780it [00:11, 10379.23it/s]69840it [00:11, 10443.40it/s]70897it [00:11, 10480.08it/s]71946it [00:11, 10399.75it/s]72987it [00:11, 10367.17it/s]74034it [00:12, 10396.81it/s]75085it [00:12, 10430.02it/s]76129it [00:12, 10425.30it/s]77230it [00:12, 10599.14it/s]78291it [00:12, 10415.97it/s]79334it [00:12, 10095.84it/s]80346it [00:12, 9773.71it/s] 81327it [00:12, 9693.57it/s]82359it [00:12, 9874.09it/s]83429it [00:13, 10113.82it/s]84480it [00:13, 10230.32it/s]85541it [00:13, 10341.30it/s]86577it [00:13, 10242.85it/s]87603it [00:13, 10244.06it/s]88665it [00:13, 10354.64it/s]89725it [00:13, 10425.54it/s]90795it [00:13, 10501.90it/s]91880it [00:13, 10605.50it/s]92941it [00:13, 10592.66it/s]94002it [00:14, 10595.40it/s]95062it [00:14, 10520.55it/s]96115it [00:15, 3151.14it/s] 97208it [00:15, 4030.66it/s]98268it [00:15, 4944.21it/s]99338it [00:15, 5895.89it/s]100387it [00:15, 6774.89it/s]101472it [00:15, 7648.73it/s]102541it [00:15, 8361.80it/s]103599it [00:15, 8917.51it/s]104702it [00:15, 9474.33it/s]105762it [00:15, 9735.35it/s]106817it [00:16, 9916.28it/s]107867it [00:16, 10060.64it/s]108915it [00:16, 10137.35it/s]109990it [00:16, 10314.36it/s]111047it [00:16, 10387.85it/s]112101it [00:16, 10431.00it/s]113155it [00:16, 10457.62it/s]114209it [00:16, 10359.06it/s]115251it [00:16, 10278.75it/s]116317it [00:16, 10390.07it/s]117384it [00:17, 10470.39it/s]118452it [00:17, 10529.28it/s]119507it [00:17, 10417.83it/s]120554it [00:17, 10431.67it/s]121599it [00:17, 10178.55it/s]122619it [00:17, 9991.37it/s] 123620it [00:17, 9968.62it/s]124618it [00:17, 9927.31it/s]125612it [00:17, 9910.84it/s]126687it [00:17, 10157.76it/s]127770it [00:18, 10356.30it/s]128807it [00:18, 10242.07it/s]129832it [00:18, 10220.10it/s]130855it [00:18, 10165.25it/s]131904it [00:18, 10260.62it/s]132943it [00:18, 10298.85it/s]133974it [00:18, 10146.00it/s]135037it [00:18, 10284.61it/s]136155it [00:18, 10548.57it/s]137217it [00:18, 10568.66it/s]138275it [00:19, 10514.38it/s]139366it [00:19, 10629.96it/s]140446it [00:19, 10679.82it/s]141530it [00:19, 10725.56it/s]142603it [00:19, 10712.69it/s]143677it [00:19, 10719.60it/s]144763it [00:19, 10759.83it/s]145840it [00:19, 10736.21it/s]146933it [00:19, 10793.08it/s]148013it [00:19, 10600.80it/s]149074it [00:20, 10491.03it/s]150124it [00:20, 10427.64it/s]151210it [00:20, 10554.41it/s]152304it [00:20, 10665.72it/s]153390it [00:20, 10723.45it/s]154475it [00:20, 10758.79it/s]155552it [00:20, 10637.71it/s]156617it [00:20, 10588.40it/s]157684it [00:20, 10604.22it/s]158745it [00:20, 10576.79it/s]159804it [00:21, 10580.59it/s]160865it [00:21, 10585.16it/s]161924it [00:21, 10474.68it/s]162972it [00:21, 10458.76it/s]164019it [00:21, 10242.74it/s]165067it [00:21, 10312.15it/s]166100it [00:21, 10229.13it/s]167204it [00:21, 10467.68it/s]168272it [00:21, 10529.17it/s]169326it [00:22, 10259.14it/s]170354it [00:22, 9949.87it/s] 171391it [00:22, 10070.63it/s]172401it [00:22, 9817.61it/s] 173448it [00:22, 10003.82it/s]174549it [00:22, 10296.98it/s]175619it [00:22, 10413.23it/s]176701it [00:22, 10533.19it/s]177775it [00:22, 10594.22it/s]178863it [00:22, 10677.09it/s]179932it [00:23, 10652.07it/s]181005it [00:23, 10673.81it/s]182076it [00:23, 10682.61it/s]183145it [00:23, 10397.57it/s]184187it [00:23, 10217.13it/s]185243it [00:23, 10315.21it/s]186322it [00:23, 10452.10it/s]187369it [00:24, 2695.09it/s] 188432it [00:24, 3474.23it/s]189455it [00:24, 4305.27it/s]190529it [00:25, 5266.96it/s]191509it [00:25, 6063.31it/s]192558it [00:25, 6951.85it/s]193594it [00:25, 7710.86it/s]194683it [00:25, 8476.29it/s]195735it [00:25, 8999.98it/s]196814it [00:25, 9472.48it/s]197914it [00:25, 9893.26it/s]198998it [00:25, 10160.54it/s]200068it [00:25, 10287.10it/s]201166it [00:26, 10486.91it/s]202242it [00:26, 10520.78it/s]203313it [00:26, 10543.56it/s]204381it [00:26, 10462.66it/s]205437it [00:26, 10467.99it/s]206491it [00:26, 10400.48it/s]207536it [00:26, 10387.49it/s]208600it [00:26, 10460.00it/s]209663it [00:26, 10509.20it/s]210723it [00:26, 10533.76it/s]211800it [00:27, 10603.10it/s]212862it [00:27, 10287.74it/s]213894it [00:27, 10168.68it/s]214913it [00:27, 10156.87it/s]215930it [00:27, 10126.03it/s]216944it [00:27, 10101.79it/s]217957it [00:27, 10109.13it/s]219018it [00:27, 10256.00it/s]220045it [00:27, 10252.91it/s]221101it [00:27, 10343.63it/s]222182it [00:28, 10480.41it/s]223231it [00:28, 10363.40it/s]224268it [00:28, 10345.83it/s]225303it [00:28, 10337.80it/s]226338it [00:28, 10340.69it/s]227411it [00:28, 10454.32it/s]228457it [00:28, 10388.94it/s]229497it [00:28, 8499.79it/s] 230519it [00:28, 8942.28it/s]231551it [00:29, 9312.82it/s]232534it [00:29, 9455.85it/s]233596it [00:29, 9784.39it/s]234675it [00:29, 10074.38it/s]235795it [00:29, 10401.83it/s]236853it [00:29, 10451.46it/s]237919it [00:29, 10512.88it/s]238977it [00:29, 10517.46it/s]240033it [00:29, 10525.31it/s]241096it [00:29, 10556.30it/s]242154it [00:30, 10438.14it/s]243240it [00:30, 10562.62it/s]244317it [00:30, 10622.48it/s]245407it [00:30, 10704.08it/s]246479it [00:30, 10643.77it/s]247585it [00:30, 10767.60it/s]248663it [00:30, 10746.77it/s]249739it [00:30, 10717.67it/s]250812it [00:30, 10705.25it/s]251883it [00:30, 10703.11it/s]252954it [00:31, 10624.95it/s]254017it [00:31, 10609.07it/s]255082it [00:31, 10620.34it/s]256145it [00:31, 10503.99it/s]257216it [00:31, 10564.14it/s]258310it [00:31, 10673.58it/s]259378it [00:31, 10672.23it/s]260446it [00:31, 10481.44it/s]261495it [00:31, 10355.70it/s]262538it [00:31, 10376.76it/s]263577it [00:32, 10339.47it/s]264613it [00:32, 10343.70it/s]265648it [00:32, 10343.16it/s]266737it [00:32, 10504.75it/s]267865it [00:32, 10734.72it/s]268987it [00:32, 10878.13it/s]270076it [00:32, 10852.89it/s]271164it [00:32, 10859.51it/s]272251it [00:32, 10760.01it/s]273328it [00:32, 10612.36it/s]274390it [00:33, 10425.14it/s]275434it [00:33, 10413.94it/s]276476it [00:33, 10336.58it/s]277527it [00:33, 10386.41it/s]278567it [00:33, 10364.38it/s]279604it [00:33, 10196.44it/s]280634it [00:33, 10225.29it/s]281670it [00:33, 10260.22it/s]282751it [00:33, 10423.20it/s]283804it [00:33, 10454.91it/s]284880it [00:34, 10545.45it/s]285939it [00:34, 10558.66it/s]286996it [00:34, 10561.12it/s]288053it [00:34, 10546.76it/s]289108it [00:34, 10513.73it/s]290160it [00:34, 10475.52it/s]291223it [00:34, 10519.88it/s]292276it [00:34, 10505.92it/s]293337it [00:34, 10536.19it/s]294395it [00:34, 10547.01it/s]295460it [00:35, 10570.92it/s]296547it [00:35, 10660.08it/s]297628it [00:35, 10702.22it/s]298725it [00:35, 10780.43it/s]299804it [00:35, 10754.42it/s]300893it [00:35, 10794.32it/s]301973it [00:36, 2292.56it/s] 303083it [00:37, 3026.01it/s]304192it [00:37, 3883.00it/s]305265it [00:37, 4785.54it/s]306363it [00:37, 5766.69it/s]307428it [00:37, 6667.67it/s]308461it [00:37, 7405.36it/s]309502it [00:37, 8091.44it/s]310588it [00:37, 8770.48it/s]311679it [00:37, 9326.95it/s]312740it [00:37, 9656.57it/s]313809it [00:38, 9943.42it/s]314899it [00:38, 10213.76it/s]315969it [00:38, 10310.94it/s]317035it [00:38, 10383.51it/s]318098it [00:38, 10453.30it/s]319185it [00:38, 10574.18it/s]320265it [00:38, 10640.71it/s]321338it [00:38, 10447.53it/s]322390it [00:38, 10205.72it/s]323429it [00:38, 10253.78it/s]324459it [00:39, 10108.87it/s]325519it [00:39, 10250.60it/s]326552it [00:39, 10272.62it/s]327582it [00:39, 10080.12it/s]328668it [00:39, 10307.81it/s]329757it [00:39, 10479.44it/s]330844it [00:39, 10594.17it/s]331923it [00:39, 10648.27it/s]332989it [00:39, 10552.51it/s]334046it [00:39, 10539.94it/s]335101it [00:40, 10524.65it/s]336154it [00:40, 10525.33it/s]337231it [00:40, 10595.81it/s]338320it [00:40, 10681.51it/s]339426it [00:40, 10794.18it/s]340506it [00:40, 10730.44it/s]341580it [00:40, 10696.30it/s]342650it [00:40, 10492.96it/s]343701it [00:40, 10452.46it/s]344747it [00:40, 10335.54it/s]345824it [00:41, 10462.13it/s]346877it [00:41, 10480.46it/s]347926it [00:41, 10460.18it/s]348973it [00:41, 10325.18it/s]350007it [00:41, 10156.12it/s]351050it [00:41, 10234.55it/s]352075it [00:41, 10177.84it/s]353106it [00:41, 10216.49it/s]354137it [00:41, 10242.68it/s]355162it [00:41, 10201.09it/s]356183it [00:42, 10193.83it/s]357204it [00:42, 10196.96it/s]358277it [00:42, 10355.38it/s]359362it [00:42, 10501.71it/s]360462it [00:42, 10648.43it/s]361557it [00:42, 10735.17it/s]362631it [00:42, 10641.65it/s]363696it [00:42, 10597.74it/s]364765it [00:42, 10623.84it/s]365828it [00:42, 10581.82it/s]366910it [00:43, 10651.21it/s]367989it [00:43, 10690.36it/s]369059it [00:43, 10539.11it/s]370114it [00:43, 10517.38it/s]371167it [00:43, 10456.86it/s]372213it [00:43, 10283.60it/s]373243it [00:43, 10155.42it/s]374260it [00:43, 10065.75it/s]375283it [00:43, 10111.66it/s]376295it [00:44, 10111.36it/s]377335it [00:44, 10195.05it/s]378371it [00:44, 10239.50it/s]379413it [00:44, 10290.18it/s]380443it [00:44, 10228.00it/s]381494it [00:44, 10311.53it/s]382550it [00:44, 10384.12it/s]383589it [00:44, 10341.67it/s]384663it [00:44, 10460.35it/s]385710it [00:44, 10423.36it/s]386768it [00:45, 10469.91it/s]387816it [00:45, 10255.10it/s]388848it [00:45, 10273.54it/s]389882it [00:45, 10290.13it/s]390921it [00:45, 10318.14it/s]391954it [00:45, 9975.51it/s] 392955it [00:45, 9949.30it/s]393952it [00:45, 9929.77it/s]394960it [00:45, 9973.63it/s]395973it [00:45, 10011.77it/s]396975it [00:46, 9723.54it/s] 397989it [00:46, 9841.48it/s]398975it [00:46, 8685.58it/s]399971it [00:46, 9028.97it/s]401076it [00:46, 9591.09it/s]402178it [00:46, 9997.29it/s]403243it [00:46, 10182.45it/s]404290it [00:46, 10264.48it/s]405360it [00:46, 10391.00it/s]406422it [00:47, 10457.02it/s]407473it [00:47, 10379.83it/s]408515it [00:47, 10383.48it/s]409556it [00:47, 10179.85it/s]410628it [00:47, 10334.58it/s]411694it [00:47, 10429.60it/s]412766it [00:47, 10515.44it/s]413819it [00:47, 10392.67it/s]414860it [00:47, 10355.49it/s]415897it [00:47, 10302.84it/s]416945it [00:48, 10353.18it/s]418003it [00:48, 10419.11it/s]419097it [00:48, 10572.54it/s]420155it [00:48, 10522.29it/s]421228it [00:48, 10583.79it/s]422320it [00:48, 10683.39it/s]423389it [00:48, 10618.36it/s]424452it [00:48, 10471.41it/s]425504it [00:48, 10482.30it/s]426558it [00:48, 10496.35it/s]427608it [00:49, 10493.92it/s]428704it [00:49, 10630.47it/s]429768it [00:49, 10586.24it/s]430845it [00:49, 10637.74it/s]431909it [00:49, 10261.42it/s]432938it [00:49, 10102.36it/s]433951it [00:49, 9942.79it/s] 435006it [00:49, 10116.54it/s]436059it [00:49, 10234.91it/s]437140it [00:49, 10403.19it/s]438199it [00:50, 10458.41it/s]439246it [00:50, 10460.53it/s]440293it [00:50, 10371.38it/s]441356it [00:50, 10446.44it/s]442424it [00:50, 10515.62it/s]443501it [00:50, 10590.72it/s]444561it [00:52, 1847.31it/s] 445594it [00:52, 2435.03it/s]446617it [00:52, 3136.92it/s]447667it [00:52, 3976.22it/s]448730it [00:52, 4907.60it/s]449774it [00:52, 5829.54it/s]450794it [00:52, 6669.58it/s]451923it [00:52, 7664.08it/s]452972it [00:53, 8328.12it/s]454080it [00:53, 9019.13it/s]455143it [00:53, 9427.34it/s]456248it [00:53, 9870.77it/s]457322it [00:53, 10013.46it/s]458385it [00:53, 9983.33it/s] 459455it [00:53, 10185.53it/s]460505it [00:53, 10275.44it/s]461587it [00:53, 10433.48it/s]462668it [00:53, 10543.52it/s]463752it [00:54, 10628.77it/s]464835it [00:54, 10687.23it/s]465910it [00:54, 10608.53it/s]466975it [00:54, 10577.26it/s]468036it [00:54, 10420.65it/s]469154it [00:54, 10643.91it/s]470252it [00:54, 10741.08it/s]471366it [00:54, 10847.16it/s]472460it [00:54, 10872.68it/s]473549it [00:54, 10794.48it/s]474630it [00:55, 10744.96it/s]475705it [00:55, 10745.81it/s]476796it [00:55, 10790.97it/s]477925it [00:55, 10938.56it/s]479046it [00:55, 11017.93it/s]480158it [00:55, 11046.95it/s]481263it [00:55, 10938.52it/s]482358it [00:55, 10845.24it/s]483443it [00:55, 10758.80it/s]484520it [00:55, 10756.91it/s]485596it [00:56, 10646.90it/s]486691it [00:56, 10735.95it/s]487768it [00:56, 10743.68it/s]488862it [00:56, 10800.09it/s]489966it [00:56, 10869.70it/s]491054it [00:56, 10870.94it/s]492142it [00:56, 10592.45it/s]493259it [00:56, 10759.07it/s]494348it [00:56, 10797.37it/s]495448it [00:56, 10854.95it/s]496555it [00:57, 10916.50it/s]497648it [00:57, 10871.36it/s]498736it [00:57, 10826.17it/s]499822it [00:57, 10834.60it/s]500906it [00:57, 10666.90it/s]501974it [00:57, 10635.61it/s]503047it [00:57, 10633.03it/s]504111it [00:57, 10622.09it/s]505174it [00:57, 10555.56it/s]506230it [00:58, 10322.70it/s]507290it [00:58, 10402.30it/s]508339it [00:58, 10426.61it/s]509385it [00:58, 10432.25it/s]510441it [00:58, 10466.32it/s]511488it [00:58, 10401.78it/s]512530it [00:58, 10407.10it/s]513571it [00:58, 10359.85it/s]514620it [00:58, 10398.46it/s]515660it [00:58, 10341.50it/s]516695it [00:59, 10243.27it/s]517720it [00:59, 10155.39it/s]518775it [00:59, 10270.15it/s]519835it [00:59, 10365.59it/s]520893it [00:59, 10423.03it/s]521943it [00:59, 10445.22it/s]522995it [00:59, 10467.45it/s]524042it [00:59, 10218.08it/s]525066it [00:59, 10045.30it/s]526091it [00:59, 10104.64it/s]527146it [01:00, 10233.14it/s]528212it [01:00, 10357.62it/s]529285it [01:00, 10467.26it/s]530333it [01:00, 10456.82it/s]531390it [01:00, 10489.35it/s]532440it [01:00, 10443.73it/s]533485it [01:00, 10348.86it/s]534521it [01:00, 10219.54it/s]535592it [01:00, 10361.81it/s]536629it [01:00, 10244.57it/s]537669it [01:01, 10290.03it/s]538725it [01:01, 10366.21it/s]539763it [01:01, 10360.54it/s]540900it [01:01, 10659.05it/s]541997it [01:01, 10749.83it/s]543073it [01:01, 10401.54it/s]544116it [01:01, 10044.92it/s]545125it [01:01, 10009.57it/s]546129it [01:01, 9942.51it/s] 547148it [01:01, 10014.40it/s]548184it [01:02, 10112.63it/s]549227it [01:02, 10205.15it/s]550258it [01:02, 10234.78it/s]551315it [01:02, 10332.51it/s]552373it [01:02, 10405.19it/s]553424it [01:02, 10429.19it/s]554468it [01:02, 10423.16it/s]555516it [01:02, 10439.64it/s]556598it [01:02, 10550.68it/s]557690it [01:02, 10659.69it/s]558757it [01:03, 10637.10it/s]559822it [01:03, 10640.58it/s]560887it [01:03, 10460.49it/s]561938it [01:03, 10473.41it/s]562994it [01:03, 10496.97it/s]564045it [01:03, 10415.92it/s]565102it [01:03, 10461.56it/s]566164it [01:03, 10506.49it/s]567217it [01:03, 10511.23it/s]568291it [01:03, 10577.28it/s]569358it [01:04, 10603.26it/s]570442it [01:04, 10672.88it/s]571518it [01:04, 10696.37it/s]572588it [01:04, 10594.61it/s]573673it [01:04, 10668.56it/s]574776it [01:04, 10776.11it/s]575854it [01:04, 10642.24it/s]576919it [01:04, 10552.63it/s]577976it [01:04, 10556.74it/s]579032it [01:05, 10376.27it/s]580071it [01:05, 10325.93it/s]581105it [01:05, 10320.87it/s]582138it [01:05, 10299.11it/s]583184it [01:05, 10343.81it/s]584230it [01:05, 10378.28it/s]585268it [01:05, 10354.43it/s]586354it [01:05, 10504.38it/s]587468it [01:05, 10694.05it/s]588558it [01:05, 10753.15it/s]589669it [01:06, 10859.15it/s]590756it [01:06, 9405.83it/s] 591789it [01:06, 9655.29it/s]592869it [01:06, 9973.61it/s]593958it [01:06, 10230.81it/s]594998it [01:06, 10168.10it/s]596027it [01:06, 10152.46it/s]597073it [01:06, 10241.21it/s]598152it [01:06, 10401.04it/s]599210it [01:06, 10452.86it/s]600259it [01:07, 10269.34it/s]601314it [01:07, 10348.96it/s]602377it [01:07, 10432.02it/s]603422it [01:07, 10411.87it/s]604480it [01:07, 10460.41it/s]605527it [01:07, 10408.07it/s]606585it [01:07, 10457.59it/s]607632it [01:07, 10372.97it/s]608670it [01:07, 10342.08it/s]609714it [01:07, 10367.32it/s]610805it [01:08, 10526.27it/s]611898it [01:08, 10646.15it/s]612963it [01:08, 10405.21it/s]614006it [01:08, 10411.43it/s]615080it [01:08, 10505.68it/s]616164it [01:08, 10604.03it/s]617231it [01:08, 10621.95it/s]618333it [01:08, 10740.53it/s]619408it [01:08, 10678.51it/s]620477it [01:08, 10629.04it/s]621541it [01:09, 10562.13it/s]622617it [01:09, 10618.71it/s]623680it [01:09, 10600.27it/s]624741it [01:09, 10491.72it/s]625791it [01:09, 10231.50it/s]626816it [01:11, 1525.56it/s] 627777it [01:11, 1998.95it/s]628768it [01:11, 2609.53it/s]629729it [01:11, 3304.71it/s]630749it [01:11, 4161.15it/s]631806it [01:12, 5126.56it/s]632863it [01:12, 6090.32it/s]633909it [01:12, 6972.37it/s]634972it [01:12, 7790.80it/s]636013it [01:12, 8424.58it/s]637072it [01:12, 8980.38it/s]638111it [01:12, 9352.89it/s]639149it [01:12, 9519.36it/s]640216it [01:12, 9841.28it/s]641274it [01:12, 10052.48it/s]642345it [01:13, 10242.66it/s]643397it [01:13, 10265.40it/s]644443it [01:13, 10256.26it/s]645494it [01:13, 10329.15it/s]646537it [01:13, 10306.28it/s]647577it [01:13, 10332.05it/s]648615it [01:13, 10252.84it/s]649672it [01:13, 10346.53it/s]650729it [01:13, 10411.78it/s]651780it [01:13, 10440.40it/s]652826it [01:14, 10388.41it/s]653871it [01:14, 10404.41it/s]654916it [01:14, 10416.50it/s]655965it [01:14, 10438.40it/s]657010it [01:14, 10368.03it/s]658048it [01:14, 10079.51it/s]659130it [01:14, 10295.10it/s]660192it [01:14, 10389.97it/s]661275it [01:14, 10518.88it/s]662345it [01:14, 10570.41it/s]663403it [01:15, 10494.77it/s]664454it [01:15, 10494.02it/s]665504it [01:15, 10385.81it/s]666618it [01:15, 10607.99it/s]667686it [01:15, 10627.27it/s]668750it [01:15, 10605.75it/s]669844it [01:15, 10705.35it/s]670942it [01:15, 10784.60it/s]672021it [01:15, 10734.94it/s]673095it [01:16, 10691.27it/s]674165it [01:16, 10562.31it/s]675222it [01:16, 10501.73it/s]676282it [01:16, 10528.43it/s]677337it [01:16, 10533.20it/s]678445it [01:16, 10695.30it/s]679515it [01:16, 10488.39it/s]680565it [01:16, 10229.88it/s]681590it [01:16, 10164.14it/s]682668it [01:16, 10342.17it/s]683738it [01:17, 10445.47it/s]684784it [01:17, 10314.35it/s]685817it [01:17, 10294.77it/s]686848it [01:17, 10272.95it/s]687893it [01:17, 10322.17it/s]688926it [01:17, 9567.91it/s] 690053it [01:17, 10046.56it/s]691133it [01:17, 10261.18it/s]692180it [01:17, 10320.50it/s]693224it [01:17, 10354.42it/s]694264it [01:18, 10367.07it/s]695319it [01:18, 10418.47it/s]696363it [01:18, 10395.01it/s]697411it [01:18, 10419.91it/s]698539it [01:18, 10674.91it/s]699654it [01:18, 10814.72it/s]700737it [01:18, 10730.81it/s]701811it [01:18, 10451.22it/s]702858it [01:18, 10265.96it/s]703895it [01:18, 10293.81it/s]704960it [01:19, 10388.91it/s]706037it [01:19, 10496.97it/s]707112it [01:19, 10570.17it/s]708188it [01:19, 10624.28it/s]709299it [01:19, 10767.04it/s]710418it [01:19, 10891.66it/s]711508it [01:19, 10778.74it/s]712587it [01:19, 10580.13it/s]713647it [01:19, 10498.86it/s]714709it [01:19, 10534.07it/s]715763it [01:20, 10450.57it/s]716809it [01:20, 10418.67it/s]717905it [01:20, 10576.48it/s]718964it [01:20, 10561.62it/s]720044it [01:20, 10630.54it/s]721130it [01:20, 10698.90it/s]722201it [01:20, 10673.06it/s]723269it [01:20, 10672.90it/s]724353it [01:20, 10721.04it/s]725440it [01:20, 10764.32it/s]726539it [01:21, 10831.01it/s]727628it [01:21, 10847.74it/s]728730it [01:21, 10895.49it/s]729820it [01:21, 10709.02it/s]730892it [01:21, 10576.79it/s]732006it [01:21, 10741.57it/s]733087it [01:21, 10760.05it/s]734170it [01:21, 10778.15it/s]735256it [01:21, 10801.73it/s]736337it [01:22, 10745.66it/s]737412it [01:22, 10586.61it/s]738472it [01:22, 10372.49it/s]739511it [01:22, 10236.84it/s]740564it [01:22, 10320.33it/s]741692it [01:22, 10599.50it/s]742814it [01:22, 10781.13it/s]743912it [01:22, 10833.05it/s]744997it [01:22, 10801.85it/s]746142it [01:22, 10993.41it/s]747242it [01:23, 10995.14it/s]748342it [01:23, 10929.15it/s]749436it [01:23, 10863.04it/s]750523it [01:23, 10813.00it/s]751636it [01:23, 10907.05it/s]752727it [01:23, 10894.79it/s]753817it [01:23, 10865.21it/s]754904it [01:23, 10758.15it/s]755981it [01:23, 10703.07it/s]757052it [01:23, 10547.80it/s]758108it [01:24, 10488.60it/s]759158it [01:24, 10464.23it/s]760205it [01:24, 10381.95it/s]761273it [01:24, 10466.95it/s]762354it [01:24, 10567.64it/s]763417it [01:24, 10584.35it/s]764476it [01:24, 10522.16it/s]765566it [01:24, 10632.95it/s]766661it [01:24, 10724.49it/s]767734it [01:24, 10677.02it/s]768802it [01:25, 10633.04it/s]769866it [01:25, 10481.07it/s]770915it [01:25, 10482.75it/s]771964it [01:25, 10318.86it/s]773023it [01:25, 10397.23it/s]774064it [01:25, 10400.93it/s]775136it [01:25, 10495.69it/s]776213it [01:25, 10576.59it/s]777271it [01:25, 10555.94it/s]778327it [01:25, 10541.37it/s]779386it [01:26, 10554.35it/s]780450it [01:26, 10577.85it/s]781532it [01:26, 10648.28it/s]782597it [01:26, 10514.44it/s]783714it [01:26, 10706.26it/s]784786it [01:26, 10521.68it/s]785840it [01:26, 10486.96it/s]786890it [01:26, 10396.75it/s]787931it [01:26, 10282.61it/s]788960it [01:26, 10220.52it/s]789992it [01:27, 10249.77it/s]791018it [01:27, 10157.09it/s]792054it [01:27, 10216.78it/s]793132it [01:27, 10381.53it/s]794207it [01:27, 10490.15it/s]795321it [01:27, 10679.65it/s]796449it [01:27, 10857.50it/s]797589it [01:27, 11017.06it/s]798691it [01:27, 10923.34it/s]799784it [01:27, 10866.65it/s]800910it [01:28, 10981.55it/s]802009it [01:28, 10835.09it/s]803094it [01:28, 10799.91it/s]804175it [01:28, 10734.36it/s]805274it [01:28, 10806.90it/s]806369it [01:28, 10848.81it/s]807455it [01:28, 10844.49it/s]808540it [01:28, 10791.14it/s]809642it [01:28, 10857.99it/s]810736it [01:29, 10875.53it/s]811824it [01:29, 10840.27it/s]812909it [01:29, 10734.67it/s]813983it [01:29, 10590.36it/s]815043it [01:29, 10440.96it/s]816113it [01:29, 10514.55it/s]817178it [01:29, 10553.40it/s]818248it [01:29, 10596.42it/s]819348it [01:29, 10714.21it/s]820420it [01:29, 10715.86it/s]821494it [01:30, 10721.65it/s]822585it [01:30, 10776.69it/s]823663it [01:30, 10734.85it/s]824752it [01:30, 10781.09it/s]825831it [01:30, 10758.39it/s]826907it [01:30, 10708.60it/s]827978it [01:30, 10676.01it/s]829046it [01:30, 10620.00it/s]830126it [01:30, 10672.79it/s]831206it [01:30, 10709.02it/s]832277it [01:31, 10697.54it/s]833347it [01:31, 10287.49it/s]834450it [01:31, 10501.65it/s]835549it [01:31, 10643.50it/s]836655it [01:31, 10765.82it/s]837770it [01:31, 10878.26it/s]838878it [01:31, 10936.78it/s]839973it [01:31, 10844.03it/s]841059it [01:31, 10457.39it/s]842129it [01:31, 10526.81it/s]843241it [01:32, 10700.43it/s]844314it [01:32, 10609.06it/s]845377it [01:32, 10542.67it/s]846495it [01:32, 10721.46it/s]847569it [01:32, 10553.95it/s]848677it [01:32, 10707.96it/s]849759it [01:32, 10739.54it/s]850879it [01:32, 10874.15it/s]851994it [01:32, 10953.41it/s]853092it [01:32, 10953.66it/s]854188it [01:33, 10873.33it/s]855276it [01:33, 10798.72it/s]856357it [01:33, 10545.24it/s]857421it [01:33, 10572.46it/s]858480it [01:33, 10526.88it/s]859534it [01:36, 1293.10it/s] 860616it [01:36, 1762.38it/s]861697it [01:36, 2357.15it/s]862746it [01:36, 3055.32it/s]863808it [01:36, 3881.30it/s]864888it [01:36, 4814.96it/s]865962it [01:36, 5772.65it/s]866996it [01:36, 6613.94it/s]868081it [01:36, 7507.50it/s]869128it [01:36, 8177.60it/s]870172it [01:37, 8697.47it/s]871219it [01:37, 9158.15it/s]872261it [01:37, 9499.51it/s]873317it [01:37, 9793.56it/s]874398it [01:37, 10081.02it/s]875501it [01:37, 10351.00it/s]876571it [01:37, 10450.48it/s]877668it [01:37, 10603.28it/s]878746it [01:37, 10553.47it/s]879868it [01:37, 10748.68it/s]880989it [01:38, 10883.51it/s]882091it [01:38, 10923.41it/s]883188it [01:38, 10860.87it/s]884278it [01:38, 10785.24it/s]885359it [01:38, 10734.83it/s]886447it [01:38, 10777.64it/s]887526it [01:38, 10766.31it/s]888633it [01:38, 10855.29it/s]889793it [01:38, 11075.38it/s]890935it [01:38, 11176.75it/s]892054it [01:39, 10982.79it/s]893154it [01:39, 10929.87it/s]894261it [01:39, 10970.06it/s]895359it [01:39, 10781.38it/s]896439it [01:39, 10759.56it/s]897527it [01:39, 10790.91it/s]898676it [01:39, 10995.53it/s]899809it [01:39, 11094.29it/s]900919it [01:39, 10992.34it/s]902019it [01:39, 10970.40it/s]903117it [01:40, 10899.04it/s]904235it [01:40, 10979.18it/s]905342it [01:40, 11004.48it/s]906453it [01:40, 11030.01it/s]907557it [01:40, 10943.07it/s]908652it [01:40, 10767.02it/s]909730it [01:40, 10765.48it/s]910808it [01:40, 10635.64it/s]911873it [01:40, 10547.79it/s]912939it [01:40, 10580.22it/s]914054it [01:41, 10748.60it/s]915130it [01:41, 10701.86it/s]916201it [01:41, 10431.50it/s]917247it [01:41, 10438.19it/s]918292it [01:41, 10388.15it/s]919332it [01:41, 10244.69it/s]920445it [01:41, 10503.91it/s]921529it [01:41, 10600.84it/s]922590it [01:41, 10539.12it/s]923645it [01:41, 10478.12it/s]924698it [01:42, 10493.27it/s]925748it [01:42, 10320.35it/s]926851it [01:42, 10528.63it/s]927905it [01:42, 10513.88it/s]928958it [01:42, 10404.96it/s]930086it [01:42, 10661.69it/s]931177it [01:42, 10733.36it/s]932251it [01:42, 10704.40it/s]933322it [01:42, 10487.24it/s]934395it [01:42, 10555.33it/s]935471it [01:43, 10614.55it/s]936586it [01:43, 10770.84it/s]937682it [01:43, 10827.12it/s]938807it [01:43, 10952.64it/s]939903it [01:43, 10870.68it/s]941005it [01:43, 10912.67it/s]942113it [01:43, 10961.47it/s]943210it [01:43, 10854.44it/s]944296it [01:43, 10684.80it/s]945403it [01:44, 10793.43it/s]946484it [01:44, 10679.30it/s]947553it [01:44, 10605.36it/s]948614it [01:44, 10560.86it/s]949671it [01:44, 10513.36it/s]950746it [01:44, 10582.71it/s]951805it [01:44, 10582.14it/s]952864it [01:44, 10521.41it/s]953947it [01:44, 10612.82it/s]955009it [01:44, 10585.79it/s]956068it [01:45, 10551.21it/s]957139it [01:45, 10596.38it/s]958199it [01:45, 10464.42it/s]959248it [01:45, 10470.97it/s]960296it [01:45, 10435.27it/s]961340it [01:45, 10286.16it/s]962405it [01:45, 10392.48it/s]963445it [01:45, 10353.00it/s]964495it [01:45, 10393.29it/s]965548it [01:45, 10432.23it/s]966600it [01:46, 10457.20it/s]967698it [01:46, 10613.06it/s]968800it [01:46, 10734.00it/s]969913it [01:46, 10851.66it/s]970999it [01:46, 10724.04it/s]972141it [01:46, 10930.06it/s]973235it [01:46, 10863.08it/s]974340it [01:46, 10917.77it/s]975433it [01:46, 10834.33it/s]976527it [01:46, 10865.40it/s]977614it [01:47, 10751.09it/s]978690it [01:47, 10729.28it/s]979764it [01:47, 10672.40it/s]980843it [01:47, 10703.61it/s]981954it [01:47, 10824.46it/s]983037it [01:47, 10800.10it/s]984126it [01:47, 10825.40it/s]985209it [01:47, 10752.97it/s]986285it [01:47, 10413.14it/s]987329it [01:47, 10410.92it/s]988372it [01:48, 10274.61it/s]989420it [01:48, 10331.33it/s]990475it [01:48, 10395.15it/s]991527it [01:48, 10430.23it/s]992597it [01:48, 10509.29it/s]993657it [01:48, 10533.16it/s]994713it [01:48, 10539.21it/s]995811it [01:48, 10669.57it/s]996879it [01:48, 10648.92it/s]997993it [01:48, 10794.52it/s]999073it [01:49, 10710.02it/s]1000145it [01:49, 10679.80it/s]1001214it [01:49, 10626.34it/s]1002277it [01:49, 10615.77it/s]1003348it [01:49, 10642.76it/s]1004423it [01:49, 10673.54it/s]1005491it [01:49, 10635.49it/s]1006555it [01:49, 10591.21it/s]1007615it [01:49, 10536.54it/s]1008670it [01:49, 10539.10it/s]1009724it [01:50, 10528.40it/s]1010798it [01:50, 10590.59it/s]1011858it [01:50, 10485.62it/s]1012913it [01:50, 10501.91it/s]1013990it [01:50, 10579.60it/s]1015069it [01:50, 10640.83it/s]1016146it [01:50, 10677.21it/s]1017237it [01:50, 10744.90it/s]1018312it [01:50, 10731.33it/s]1019391it [01:50, 10748.60it/s]1020466it [01:51, 10689.42it/s]1021536it [01:51, 10213.22it/s]1022623it [01:51, 10401.32it/s]1023705it [01:51, 10523.54it/s]1024812it [01:51, 10683.31it/s]1025892it [01:51, 10716.49it/s]1026966it [01:51, 10627.99it/s]1028043it [01:51, 10664.94it/s]1029111it [01:51, 10541.81it/s]1030174it [01:52, 10567.43it/s]1031234it [01:52, 10576.55it/s]1032326it [01:52, 10677.69it/s]1033396it [01:52, 10683.38it/s]1034493it [01:52, 10766.68it/s]1035570it [01:52, 10578.81it/s]1036629it [01:52, 10520.13it/s]1037719it [01:52, 10631.33it/s]1038783it [01:52, 10620.94it/s]1039846it [01:52, 10559.90it/s]1040903it [01:53, 10340.57it/s]1041939it [01:53, 10315.73it/s]1042972it [01:53, 10188.72it/s]1043992it [01:53, 10087.83it/s]1045048it [01:53, 10224.29it/s]1046108it [01:53, 10333.06it/s]1047158it [01:53, 10381.10it/s]1048247it [01:53, 10531.14it/s]1049326it [01:53, 10607.02it/s]1050388it [01:53, 10496.72it/s]1051476it [01:54, 10603.43it/s]1052537it [01:54, 10569.36it/s]1053595it [01:54, 10551.47it/s]1054665it [01:54, 10594.36it/s]1055725it [01:54, 10506.41it/s]1056812it [01:54, 10611.17it/s]1057887it [01:54, 10650.57it/s]1058996it [01:54, 10781.08it/s]1060107it [01:54, 10878.04it/s]1061195it [01:54, 10786.24it/s]1062274it [01:55, 10705.96it/s]1063345it [01:55, 10664.15it/s]1064424it [01:55, 10701.24it/s]1065505it [01:55, 10730.02it/s]1066584it [01:55, 10744.41it/s]1067693it [01:55, 10847.30it/s]1068803it [01:55, 10921.48it/s]1069896it [01:55, 10807.39it/s]1070978it [01:55, 10540.63it/s]1072034it [01:55, 10506.74it/s]1073086it [01:56, 10471.62it/s]1074134it [01:56, 10385.99it/s]1075174it [01:56, 10370.06it/s]1076212it [01:56, 10363.86it/s]1077283it [01:56, 10465.64it/s]1078337it [01:56, 10484.56it/s]1079386it [01:56, 10455.44it/s]1080432it [01:56, 10442.52it/s]1081489it [01:56, 10475.29it/s]1082565it [01:56, 10558.71it/s]1083621it [01:57, 10519.33it/s]1084683it [01:57, 10548.73it/s]1085755it [01:57, 10590.94it/s]1086815it [01:57, 10495.62it/s]1087865it [01:57, 10300.35it/s]1088896it [01:57, 10195.49it/s]1089920it [01:57, 10207.42it/s]1090971it [01:57, 10296.42it/s]1092022it [01:57, 10359.29it/s]1093103it [01:57, 10491.57it/s]1094153it [01:58, 10402.76it/s]1095226it [01:58, 10492.68it/s]1096276it [01:58, 10440.04it/s]1097321it [01:58, 10315.38it/s]1098398it [01:58, 10449.16it/s]1099444it [01:58, 10388.49it/s]1100484it [01:58, 10368.59it/s]1101522it [01:58, 10362.58it/s]1102583it [01:58, 10435.11it/s]1103633it [01:59, 10453.98it/s]1104699it [01:59, 10515.42it/s]1105751it [01:59, 10445.31it/s]1106796it [01:59, 10359.11it/s]1107833it [01:59, 10234.60it/s]1108921it [01:59, 10422.69it/s]1109964it [01:59, 10359.85it/s]1111046it [01:59, 10492.20it/s]1112099it [01:59, 10500.89it/s]1113150it [01:59, 10482.28it/s]1114218it [02:00, 10539.59it/s]1115286it [02:00, 10580.31it/s]1116377it [02:00, 10678.75it/s]1117478it [02:00, 10775.22it/s]1118556it [02:00, 10653.01it/s]1119654it [02:00, 10748.17it/s]1120730it [02:00, 10710.17it/s]1121802it [02:00, 10648.41it/s]1122868it [02:00, 10626.16it/s]1123931it [02:00, 8798.20it/s] 1124967it [02:01, 9204.11it/s]1126018it [02:01, 9556.94it/s]1127140it [02:01, 10020.48it/s]1128250it [02:01, 10327.08it/s]1129363it [02:01, 10559.27it/s]1130435it [02:01, 10567.52it/s]1131523it [02:01, 10658.23it/s]1132616it [02:01, 10738.29it/s]1133708it [02:01, 10791.23it/s]1134791it [02:02, 10038.01it/s]1135808it [02:02, 9982.66it/s] 1136816it [02:02, 9940.44it/s]1137842it [02:02, 10031.08it/s]1138866it [02:02, 10089.17it/s]1139915it [02:02, 10205.98it/s]1141005it [02:02, 10408.60it/s]1142054it [02:02, 10431.76it/s]1143116it [02:02, 10485.97it/s]1144194it [02:02, 10571.74it/s]1145252it [02:03, 10011.47it/s]1146294it [02:03, 10125.15it/s]1147400it [02:03, 10394.20it/s]1148444it [02:06, 1009.65it/s] 1149552it [02:06, 1403.62it/s]1150573it [02:06, 1869.77it/s]1151629it [02:06, 2480.64it/s]1152706it [02:06, 3237.12it/s]1153789it [02:07, 4112.64it/s]1154836it [02:07, 5011.48it/s]1155893it [02:07, 5945.44it/s]1156992it [02:07, 6922.06it/s]1158070it [02:07, 7757.81it/s]1159131it [02:07, 8278.05it/s]1160247it [02:07, 8994.18it/s]1161324it [02:07, 9455.27it/s]1162411it [02:07, 9840.65it/s]1163483it [02:07, 10060.73it/s]1164578it [02:08, 10313.95it/s]1165655it [02:08, 10401.60it/s]1166728it [02:08, 10427.62it/s]1167840it [02:08, 10628.72it/s]1168920it [02:08, 10673.32it/s]1170005it [02:08, 10724.09it/s]1171086it [02:08, 10647.78it/s]1172157it [02:08, 10607.33it/s]1173222it [02:08, 10562.66it/s]1174282it [02:08, 10552.69it/s]1175351it [02:09, 10590.71it/s]1176412it [02:09, 10574.04it/s]1177471it [02:09, 10501.03it/s]1178522it [02:09, 10428.21it/s]1179566it [02:09, 10362.50it/s]1180603it [02:09, 10257.73it/s]1181696it [02:09, 10454.75it/s]1182767it [02:09, 10528.62it/s]1183856it [02:09, 10633.31it/s]1184920it [02:09, 10460.05it/s]1185967it [02:10, 10405.60it/s]1187010it [02:10, 10410.80it/s]1188052it [02:10, 10315.74it/s]1189152it [02:10, 10517.46it/s]1190226it [02:10, 10583.25it/s]1191285it [02:10, 10502.09it/s]1192336it [02:10, 10377.82it/s]1193376it [02:10, 10381.14it/s]1194415it [02:10, 10358.34it/s]1195512it [02:10, 10539.12it/s]1196577it [02:11, 10572.09it/s]1197635it [02:11, 10245.22it/s]1198670it [02:11, 10273.16it/s]1199709it [02:11, 10305.71it/s]1200786it [02:11, 10441.18it/s]1201832it [02:11, 10370.60it/s]1202943it [02:11, 10588.80it/s]1204008it [02:11, 10605.36it/s]1205070it [02:11, 10304.79it/s]1206126it [02:11, 10377.00it/s]1207168it [02:12, 10387.25it/s]1208218it [02:12, 10418.66it/s]1209300it [02:12, 10537.52it/s]1210355it [02:12, 10518.48it/s]1211447it [02:12, 10633.69it/s]1212511it [02:12, 10426.33it/s]1213569it [02:12, 10469.70it/s]1214617it [02:12, 10307.56it/s]1215649it [02:12, 10190.35it/s]1216669it [02:13, 10115.71it/s]1217697it [02:13, 10162.12it/s]1218717it [02:13, 10170.82it/s]1219746it [02:13, 10205.99it/s]1220780it [02:13, 10244.27it/s]1221825it [02:13, 10304.35it/s]1222881it [02:13, 10375.71it/s]1223919it [02:13, 10260.40it/s]1224963it [02:13, 10313.48it/s]1226054it [02:13, 10489.18it/s]1227185it [02:14, 10732.35it/s]1228284it [02:14, 10809.30it/s]1229391it [02:14, 10885.26it/s]1230480it [02:14, 10737.43it/s]1231570it [02:14, 10785.41it/s]1232671it [02:14, 10851.17it/s]1233757it [02:14, 10746.59it/s]1234859it [02:14, 10827.35it/s]1235994it [02:14, 10982.21it/s]1237093it [02:14, 10940.63it/s]1238221it [02:15, 11039.83it/s]1239326it [02:15, 10992.24it/s]1240426it [02:15, 10913.42it/s]1241518it [02:15, 10833.14it/s]1242613it [02:15, 10865.66it/s]1243700it [02:15, 10831.55it/s]1244784it [02:15, 10805.64it/s]1245873it [02:15, 10829.28it/s]1246957it [02:15, 10812.68it/s]1248039it [02:15, 10806.56it/s]1249143it [02:16, 10876.23it/s]1250239it [02:16, 10897.17it/s]1251329it [02:16, 10815.16it/s]1252411it [02:16, 10710.25it/s]1253488it [02:16, 10726.37it/s]1254566it [02:16, 10737.11it/s]1255640it [02:16, 10732.37it/s]1256714it [02:16, 10542.42it/s]1257769it [02:16, 10457.59it/s]1258816it [02:16, 10439.04it/s]1259884it [02:17, 10509.20it/s]1260955it [02:17, 10566.76it/s]1262038it [02:17, 10644.44it/s]1263103it [02:17, 10632.88it/s]1264167it [02:17, 10569.32it/s]1265238it [02:17, 10610.14it/s]1266335it [02:17, 10716.41it/s]1267407it [02:17, 10645.92it/s]1268472it [02:17, 10643.98it/s]1269543it [02:17, 10661.21it/s]1270616it [02:18, 10680.54it/s]1271685it [02:18, 10675.73it/s]1272753it [02:18, 10559.25it/s]1273812it [02:18, 10568.32it/s]1274884it [02:18, 10612.96it/s]1275946it [02:18, 10612.20it/s]1277008it [02:18, 10519.33it/s]1278061it [02:18, 10501.38it/s]1279114it [02:18, 10506.71it/s]1280165it [02:18, 10379.25it/s]1281204it [02:19, 10363.39it/s]1282241it [02:19, 10280.76it/s]1283292it [02:19, 10346.92it/s]1284348it [02:19, 10408.81it/s]1285390it [02:19, 10396.55it/s]1286441it [02:19, 10426.96it/s]1287502it [02:19, 10478.67it/s]1288631it [02:19, 10719.24it/s]1289704it [02:19, 10693.70it/s]1290779it [02:19, 10710.08it/s]1291851it [02:20, 10643.88it/s]1292916it [02:20, 10587.38it/s]1293982it [02:20, 10607.09it/s]1295056it [02:20, 10642.41it/s]1296123it [02:20, 10648.27it/s]1297188it [02:20, 10563.67it/s]1298245it [02:20, 10502.22it/s]1299351it [02:20, 10666.58it/s]1300418it [02:20, 10585.67it/s]1301477it [02:20, 10232.88it/s]1302561it [02:21, 10407.64it/s]1303605it [02:21, 10273.50it/s]1304635it [02:21, 10238.70it/s]1305661it [02:21, 9912.60it/s] 1306703it [02:21, 10059.00it/s]1307808it [02:21, 10347.55it/s]1308908it [02:21, 10538.50it/s]1310015it [02:21, 10693.83it/s]1311108it [02:21, 10757.90it/s]1312185it [02:22, 10598.86it/s]1313247it [02:22, 10530.50it/s]1314301it [02:22, 10402.94it/s]1315343it [02:22, 10325.17it/s]1316377it [02:22, 10322.55it/s]1317410it [02:22, 10256.51it/s]1317692it [02:22, 9243.47it/s] 
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:456: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_vaso['VALUEUOM'] = 'units'
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:457: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_vaso['NAME'] = 'Vasopressin'
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:466: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_vanc['VALUEUOM'] = 'g'
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:470: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_vanc['NAME'] = 'Vacomycin'
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:485: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_cagl['VALUEUOM'] = 'g'
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:486: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_cagl['NAME'] = 'Calcium Gluconate'
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:499: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_furo['VALUEUOM'] = 'mg'
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:500: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_furo['NAME'] = 'Furosemide'
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:513: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_famo['VALUEUOM'] = 'dose'
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:514: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_famo['NAME'] = 'Famotidine'
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:527: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_pipe['VALUEUOM'] = 'dose'
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:528: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_pipe['NAME'] = 'Piperacillin'
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:541: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_cefa['VALUEUOM'] = 'dose'
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:542: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_cefa['NAME'] = 'Cefazolin'
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:561: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_fibe['NAME'] = 'Fiber'
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:562: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_fibe['VALUEUOM'] = 'ml'
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:574: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_pant['NAME'] = 'Pantoprazole'
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:575: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_pant['VALUEUOM'] = 'dose'
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:590: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_masu['VALUEUOM'] = 'g'
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:591: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_masu['NAME'] = 'Magnesium Sulphate'
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:604: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_poch['VALUEUOM'] = 'mEq'
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:605: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_poch['NAME'] = 'KCl'
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:710: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:711: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:710: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:711: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:710: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:711: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:710: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:711: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:710: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:711: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:710: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:711: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:710: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:711: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:710: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:711: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:710: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:711: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:710: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:711: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:710: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:711: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:710: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:711: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:710: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:711: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:710: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:711: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:710: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:711: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:710: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:711: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:710: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:711: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:710: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:711: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:710: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:711: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:710: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:711: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:710: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:711: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:710: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:711: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:710: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:711: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:710: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:711: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:710: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:711: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:710: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:711: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:710: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:711: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:710: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:711: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:710: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:711: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:710: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:711: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:710: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:711: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:710: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:711: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:710: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:711: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:710: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:711: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:710: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:711: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:710: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:711: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:710: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:711: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:710: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:711: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:710: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:711: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:710: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:711: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:710: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:711: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:710: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:711: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:710: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = k
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:711: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = v[2]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:722: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['NAME'] = 'Heparin'
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:723: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  ev_k['VALUEUOM'] = 'units'
-Midazolam
-Propofol
-Albumin 25%
-Albumin 5%
-Fresh Frozen Plasma
-Lorazepam
-Morphine Sulfate
-Gastric Meds
-Lactated Ringers
-Milrinone
-OR/PACU Crystalloid
-Packed RBC
-PO intake
-Neosynephrine
-Piggyback
-Nitroglycerine
-Nitroprusside
-Metoprolol
-Norepinephrine
-Colloid
-Hydralazine
-GT Flush
-Hydromorphone
-Fentanyl
-Insulin Regular
-Insulin Humalog
-Insulin largine
-Insulin NPH
-Unknown
-D5W
-Dextrose Other
-Normal Saline
-Half Normal Saline
-Sterile Water
-Free Water
-Solution
-Dopamine
-Epinephrine
-Amiodarone
-TPN
-Magnesium Sulfate (Bolus)
-KCl (Bolus)
-Pre-admission Intake
-  0%|          | 0/17903413 [00:00<?, ?it/s]  0%|          | 1/17903413 [00:18<89564:24:08, 18.01s/it]  0%|          | 11847/17903413 [00:18<5:19:50, 932.32it/s]  0%|          | 24255/17903413 [00:18<2:09:28, 2301.44it/s]  0%|          | 36660/17903413 [00:18<1:10:49, 4204.87it/s]  0%|          | 48941/17903413 [00:18<43:48, 6791.54it/s]    0%|          | 61081/17903413 [00:18<28:59, 10256.80it/s]  0%|          | 73205/17903413 [00:18<20:00, 14853.02it/s]  0%|          | 85550/17903413 [00:18<14:11, 20918.94it/s]  1%|          | 97746/17903413 [00:18<10:27, 28373.55it/s]  1%|          | 109920/17903413 [00:18<07:57, 37236.47it/s]  1%|          | 122116/17903413 [00:19<06:15, 47390.90it/s]  1%|          | 134268/17903413 [00:19<05:05, 58227.92it/s]  1%|          | 146415/17903413 [00:19<04:17, 68946.54it/s]  1%|          | 158499/17903413 [00:19<03:44, 79042.50it/s]  1%|          | 170548/17903413 [00:19<03:21, 88135.51it/s]  1%|          | 182595/17903413 [00:19<03:06, 95236.89it/s]  1%|          | 194617/17903413 [00:19<02:54, 101560.64it/s]  1%|          | 206680/17903413 [00:19<02:45, 106625.29it/s]  1%|          | 218761/17903413 [00:19<02:40, 110525.40it/s]  1%|▏         | 230903/17903413 [00:19<02:35, 113598.73it/s]  1%|▏         | 243025/17903413 [00:20<02:32, 115785.22it/s]  1%|▏         | 255375/17903413 [00:20<02:29, 118027.57it/s]  1%|▏         | 267751/17903413 [00:20<02:27, 119709.57it/s]  2%|▏         | 280036/17903413 [00:20<02:26, 120637.15it/s]  2%|▏         | 292405/17903413 [00:20<02:24, 121542.59it/s]  2%|▏         | 304696/17903413 [00:20<02:24, 121949.45it/s]  2%|▏         | 317052/17903413 [00:20<02:23, 122429.52it/s]  2%|▏         | 329358/17903413 [00:20<02:23, 122580.88it/s]  2%|▏         | 341660/17903413 [00:20<02:23, 122435.63it/s]  2%|▏         | 353935/17903413 [00:20<02:24, 121612.25it/s]  2%|▏         | 366238/17903413 [00:21<02:23, 122033.72it/s]  2%|▏         | 378639/17903413 [00:21<02:22, 122621.07it/s]  2%|▏         | 391020/17903413 [00:21<02:22, 122975.46it/s]  2%|▏         | 403326/17903413 [00:21<02:22, 122903.83it/s]  2%|▏         | 415722/17903413 [00:21<02:21, 123219.24it/s]  2%|▏         | 428054/17903413 [00:21<02:21, 123247.96it/s]  2%|▏         | 440382/17903413 [00:21<02:22, 122899.99it/s]  3%|▎         | 452675/17903413 [00:21<02:23, 121903.60it/s]  3%|▎         | 464919/17903413 [00:21<02:22, 122062.45it/s]  3%|▎         | 477381/17903413 [00:21<02:21, 122824.44it/s]  3%|▎         | 489666/17903413 [00:22<02:22, 122522.63it/s]  3%|▎         | 501920/17903413 [00:22<02:22, 122316.55it/s]  3%|▎         | 514240/17903413 [00:22<02:21, 122579.95it/s]  3%|▎         | 526499/17903413 [00:22<02:21, 122386.54it/s]  3%|▎         | 538739/17903413 [00:22<02:22, 122228.26it/s]  3%|▎         | 550963/17903413 [00:22<02:22, 122071.66it/s]  3%|▎         | 563369/17903413 [00:22<02:21, 122665.79it/s]  3%|▎         | 575691/17903413 [00:22<02:21, 122830.49it/s]  3%|▎         | 588042/17903413 [00:22<02:20, 123033.71it/s]  3%|▎         | 600346/17903413 [00:22<02:21, 122419.87it/s]  3%|▎         | 612652/17903413 [00:23<02:21, 122609.90it/s]  3%|▎         | 624914/17903413 [00:23<02:21, 122522.09it/s]  4%|▎         | 637231/17903413 [00:23<02:20, 122715.38it/s]  4%|▎         | 649503/17903413 [00:23<02:21, 122017.45it/s]  4%|▎         | 661848/17903413 [00:23<02:20, 122444.02it/s]  4%|▍         | 674164/17903413 [00:23<02:20, 122657.36it/s]  4%|▍         | 686431/17903413 [00:23<02:21, 121641.36it/s]  4%|▍         | 698598/17903413 [00:23<02:22, 120640.78it/s]  4%|▍         | 710665/17903413 [00:23<02:25, 117900.63it/s]  4%|▍         | 722542/17903413 [00:23<02:25, 118153.44it/s]  4%|▍         | 734630/17903413 [00:24<02:24, 118955.52it/s]  4%|▍         | 746748/17903413 [00:24<02:23, 119614.57it/s]  4%|▍         | 759092/17903413 [00:24<02:21, 120750.63it/s]  4%|▍         | 771425/17903413 [00:24<02:20, 121519.00it/s]  4%|▍         | 783620/17903413 [00:24<02:20, 121645.46it/s]  4%|▍         | 795802/17903413 [00:24<02:20, 121695.62it/s]  5%|▍         | 808105/17903413 [00:24<02:20, 122093.06it/s]  5%|▍         | 820316/17903413 [00:24<02:20, 121689.94it/s]  5%|▍         | 832487/17903413 [00:24<02:20, 121566.59it/s]  5%|▍         | 844743/17903413 [00:24<02:19, 121861.64it/s]  5%|▍         | 857006/17903413 [00:25<02:19, 122091.16it/s]  5%|▍         | 869290/17903413 [00:25<02:19, 122315.07it/s]  5%|▍         | 881522/17903413 [00:25<02:19, 122304.61it/s]  5%|▍         | 893753/17903413 [00:25<02:19, 122177.73it/s]  5%|▌         | 905972/17903413 [00:25<02:20, 121355.66it/s]  5%|▌         | 918109/17903413 [00:25<02:20, 121018.19it/s]  5%|▌         | 930212/17903413 [00:25<02:20, 121018.39it/s]  5%|▌         | 942470/17903413 [00:25<02:19, 121482.70it/s]  5%|▌         | 954619/17903413 [00:25<02:19, 121470.11it/s]  5%|▌         | 966780/17903413 [00:25<02:19, 121510.98it/s]  5%|▌         | 978999/17903413 [00:26<02:19, 121713.46it/s]  6%|▌         | 991171/17903413 [00:26<02:18, 121715.10it/s]  6%|▌         | 1003468/17903413 [00:26<02:18, 122089.49it/s]  6%|▌         | 1015678/17903413 [00:26<02:18, 121690.77it/s]  6%|▌         | 1027938/17903413 [00:26<02:18, 121960.41it/s]  6%|▌         | 1040174/17903413 [00:26<02:18, 122079.40it/s]  6%|▌         | 1052429/17903413 [00:26<02:17, 122218.07it/s]  6%|▌         | 1064727/17903413 [00:26<02:17, 122443.84it/s]  6%|▌         | 1076972/17903413 [00:26<02:17, 122420.08it/s]  6%|▌         | 1089215/17903413 [00:26<02:17, 122250.59it/s]  6%|▌         | 1101441/17903413 [00:27<02:17, 121815.03it/s]  6%|▌         | 1113623/17903413 [00:27<02:18, 121248.17it/s]  6%|▋         | 1125825/17903413 [00:27<02:18, 121477.99it/s]  6%|▋         | 1138021/17903413 [00:27<02:17, 121620.66it/s]  6%|▋         | 1150184/17903413 [00:27<02:17, 121489.18it/s]  6%|▋         | 1162461/17903413 [00:27<02:17, 121870.41it/s]  7%|▋         | 1174817/17903413 [00:27<02:16, 122373.46it/s]  7%|▋         | 1187134/17903413 [00:27<02:16, 122610.11it/s]  7%|▋         | 1199396/17903413 [00:27<02:16, 122065.87it/s]  7%|▋         | 1211604/17903413 [00:27<02:17, 120998.47it/s]  7%|▋         | 1223788/17903413 [00:28<02:17, 121247.88it/s]  7%|▋         | 1236072/17903413 [00:28<02:16, 121721.29it/s]  7%|▋         | 1248246/17903413 [00:28<02:17, 121094.80it/s]  7%|▋         | 1260473/17903413 [00:28<02:17, 121444.95it/s]  7%|▋         | 1272672/17903413 [00:28<02:16, 121605.40it/s]  7%|▋         | 1284962/17903413 [00:28<02:16, 121992.18it/s]  7%|▋         | 1297163/17903413 [00:28<02:16, 121299.53it/s]  7%|▋         | 1309295/17903413 [00:28<02:17, 120936.59it/s]  7%|▋         | 1321390/17903413 [00:28<02:17, 120316.99it/s]  7%|▋         | 1333509/17903413 [00:28<02:17, 120575.93it/s]  8%|▊         | 1345568/17903413 [00:29<02:17, 120406.21it/s]  8%|▊         | 1357661/17903413 [00:29<02:17, 120560.30it/s]  8%|▊         | 1369943/17903413 [00:29<02:16, 121234.36it/s]  8%|▊         | 1382214/17903413 [00:29<02:15, 121674.45it/s]  8%|▊         | 1394382/17903413 [00:29<02:16, 121100.95it/s]  8%|▊         | 1406493/17903413 [00:29<02:25, 113055.65it/s]  8%|▊         | 1418689/17903413 [00:29<02:22, 115589.49it/s]  8%|▊         | 1430983/17903413 [00:29<02:19, 117713.90it/s]  8%|▊         | 1442940/17903413 [00:29<02:19, 118254.78it/s]  8%|▊         | 1455285/17903413 [00:29<02:17, 119783.72it/s]  8%|▊         | 1467562/17903413 [00:30<02:16, 120665.50it/s]  8%|▊         | 1479688/17903413 [00:30<02:15, 120839.30it/s]  8%|▊         | 1491792/17903413 [00:30<02:16, 120259.45it/s]  8%|▊         | 1503832/17903413 [00:30<02:16, 120135.79it/s]  8%|▊         | 1515999/17903413 [00:30<02:15, 120592.43it/s]  9%|▊         | 1528096/17903413 [00:30<02:15, 120702.89it/s]  9%|▊         | 1540172/17903413 [00:30<02:16, 120076.69it/s]  9%|▊         | 1552276/17903413 [00:30<02:15, 120361.32it/s]  9%|▊         | 1564355/17903413 [00:30<02:15, 120488.13it/s]  9%|▉         | 1576436/17903413 [00:30<02:15, 120582.11it/s]  9%|▉         | 1588496/17903413 [00:31<02:16, 119787.83it/s]  9%|▉         | 1600503/17903413 [00:31<02:16, 119869.10it/s]  9%|▉         | 1612568/17903413 [00:31<02:15, 120101.37it/s]  9%|▉         | 1624787/17903413 [00:31<02:14, 120725.75it/s]  9%|▉         | 1636932/17903413 [00:31<02:14, 120940.96it/s]  9%|▉         | 1649175/17903413 [00:31<02:13, 121384.09it/s]  9%|▉         | 1661409/17903413 [00:31<02:13, 121668.42it/s]  9%|▉         | 1673577/17903413 [00:31<02:13, 121161.53it/s]  9%|▉         | 1685732/17903413 [00:31<02:13, 121275.28it/s]  9%|▉         | 1697861/17903413 [00:32<02:14, 120697.82it/s] 10%|▉         | 1710134/17903413 [00:32<02:13, 121303.98it/s] 10%|▉         | 1722395/17903413 [00:32<02:12, 121692.78it/s] 10%|▉         | 1734566/17903413 [00:32<02:12, 121666.02it/s] 10%|▉         | 1746844/17903413 [00:32<02:12, 121999.34it/s] 10%|▉         | 1759101/17903413 [00:32<02:12, 122170.26it/s] 10%|▉         | 1771400/17903413 [00:32<02:11, 122413.27it/s] 10%|▉         | 1783642/17903413 [00:32<02:11, 122334.88it/s] 10%|█         | 1795876/17903413 [00:32<02:12, 121755.26it/s] 10%|█         | 1808151/17903413 [00:32<02:11, 122052.26it/s] 10%|█         | 1820409/17903413 [00:33<02:11, 122207.04it/s] 10%|█         | 1832631/17903413 [00:33<02:12, 121335.20it/s] 10%|█         | 1844942/17903413 [00:33<02:11, 121862.88it/s] 10%|█         | 1857224/17903413 [00:33<02:11, 122146.84it/s] 10%|█         | 1869468/17903413 [00:33<02:11, 122232.45it/s] 11%|█         | 1881715/17903413 [00:33<02:10, 122303.16it/s] 11%|█         | 1893946/17903413 [00:33<02:11, 121911.55it/s] 11%|█         | 1906221/17903413 [00:33<02:10, 122161.58it/s] 11%|█         | 1918508/17903413 [00:33<02:10, 122372.42it/s] 11%|█         | 1930746/17903413 [00:33<02:12, 120675.35it/s] 11%|█         | 1942819/17903413 [00:34<02:12, 120413.21it/s] 11%|█         | 1955045/17903413 [00:34<02:11, 120961.11it/s] 11%|█         | 1967213/17903413 [00:34<02:11, 121173.86it/s] 11%|█         | 1979370/17903413 [00:34<02:11, 121291.67it/s] 11%|█         | 1991501/17903413 [00:34<02:11, 120590.38it/s] 11%|█         | 2003638/17903413 [00:34<02:11, 120821.88it/s] 11%|█▏        | 2015951/17903413 [00:34<02:10, 121508.59it/s] 11%|█▏        | 2028166/17903413 [00:34<02:10, 121700.36it/s] 11%|█▏        | 2040454/17903413 [00:34<02:09, 122051.50it/s] 11%|█▏        | 2052784/17903413 [00:34<02:09, 122424.81it/s] 12%|█▏        | 2065075/17903413 [00:35<02:09, 122567.44it/s] 12%|█▏        | 2077355/17903413 [00:35<02:09, 122635.79it/s] 12%|█▏        | 2089619/17903413 [00:35<02:09, 122107.06it/s] 12%|█▏        | 2101909/17903413 [00:35<02:09, 122341.46it/s] 12%|█▏        | 2114232/17903413 [00:35<02:08, 122606.72it/s] 12%|█▏        | 2126551/17903413 [00:35<02:08, 122779.07it/s] 12%|█▏        | 2138860/17903413 [00:35<02:08, 122870.08it/s] 12%|█▏        | 2151164/17903413 [00:35<02:08, 122920.61it/s] 12%|█▏        | 2163481/17903413 [00:35<02:07, 122993.48it/s] 12%|█▏        | 2175781/17903413 [00:35<02:08, 122793.90it/s] 12%|█▏        | 2188061/17903413 [00:36<02:08, 122570.26it/s] 12%|█▏        | 2200420/17903413 [00:36<02:07, 122873.67it/s] 12%|█▏        | 2212708/17903413 [00:36<02:07, 122747.45it/s] 12%|█▏        | 2224983/17903413 [00:36<02:07, 122717.41it/s] 12%|█▏        | 2237255/17903413 [00:36<02:08, 122237.36it/s] 13%|█▎        | 2249490/17903413 [00:36<02:08, 122270.02it/s] 13%|█▎        | 2261753/17903413 [00:36<02:07, 122374.79it/s] 13%|█▎        | 2273991/17903413 [00:36<02:08, 121944.15it/s] 13%|█▎        | 2286186/17903413 [00:36<02:08, 121483.77it/s] 13%|█▎        | 2298435/17903413 [00:36<02:08, 121783.64it/s] 13%|█▎        | 2310673/17903413 [00:37<02:07, 121960.35it/s] 13%|█▎        | 2322870/17903413 [00:37<02:07, 121738.60it/s] 13%|█▎        | 2335045/17903413 [00:37<02:08, 121135.45it/s] 13%|█▎        | 2347160/17903413 [00:37<02:08, 121100.04it/s] 13%|█▎        | 2359367/17903413 [00:37<02:08, 121388.71it/s] 13%|█▎        | 2371586/17903413 [00:37<02:07, 121628.16it/s] 13%|█▎        | 2383750/17903413 [00:37<02:07, 121478.18it/s] 13%|█▎        | 2396040/17903413 [00:37<02:07, 121902.20it/s] 13%|█▎        | 2408329/17903413 [00:37<02:06, 122197.83it/s] 14%|█▎        | 2420622/17903413 [00:37<02:06, 122414.37it/s] 14%|█▎        | 2432864/17903413 [00:38<02:06, 122048.97it/s] 14%|█▎        | 2445121/17903413 [00:38<02:06, 122202.54it/s] 14%|█▎        | 2457342/17903413 [00:38<02:07, 120846.10it/s] 14%|█▍        | 2469441/17903413 [00:38<02:07, 120886.08it/s] 14%|█▍        | 2481650/17903413 [00:38<02:07, 121244.03it/s] 14%|█▍        | 2493924/17903413 [00:38<02:06, 121690.40it/s] 14%|█▍        | 2506137/17903413 [00:38<02:06, 121821.81it/s] 14%|█▍        | 2518425/17903413 [00:38<02:05, 122135.72it/s] 14%|█▍        | 2530640/17903413 [00:38<02:05, 122011.42it/s] 14%|█▍        | 2542935/17903413 [00:38<02:05, 122291.03it/s] 14%|█▍        | 2555165/17903413 [00:39<02:05, 122110.84it/s] 14%|█▍        | 2567377/17903413 [00:39<02:06, 121110.13it/s] 14%|█▍        | 2579490/17903413 [00:39<02:07, 120484.46it/s] 14%|█▍        | 2591541/17903413 [00:39<02:07, 120449.55it/s] 15%|█▍        | 2603856/17903413 [00:39<02:06, 121252.71it/s] 15%|█▍        | 2616162/17903413 [00:39<02:05, 121789.75it/s] 15%|█▍        | 2628343/17903413 [00:39<02:05, 121767.10it/s] 15%|█▍        | 2640651/17903413 [00:39<02:04, 122158.25it/s] 15%|█▍        | 2652898/17903413 [00:39<02:04, 122248.60it/s] 15%|█▍        | 2665124/17903413 [00:39<02:04, 121942.17it/s] 15%|█▍        | 2677319/17903413 [00:40<02:05, 121695.65it/s] 15%|█▌        | 2689563/17903413 [00:40<02:04, 121916.26it/s] 15%|█▌        | 2701872/17903413 [00:40<02:04, 122266.22it/s] 15%|█▌        | 2714111/17903413 [00:40<02:04, 122303.24it/s] 15%|█▌        | 2726342/17903413 [00:40<02:04, 121809.68it/s] 15%|█▌        | 2738615/17903413 [00:40<02:04, 122082.64it/s] 15%|█▌        | 2750854/17903413 [00:40<02:04, 122173.51it/s] 15%|█▌        | 2763072/17903413 [00:40<02:03, 122113.50it/s] 16%|█▌        | 2775284/17903413 [00:40<02:03, 122004.75it/s] 16%|█▌        | 2787604/17903413 [00:40<02:03, 122359.76it/s] 16%|█▌        | 2799841/17903413 [00:41<02:23, 105491.69it/s] 16%|█▌        | 2811928/17903413 [00:41<02:17, 109636.16it/s] 16%|█▌        | 2824123/17903413 [00:41<02:13, 113057.89it/s] 16%|█▌        | 2836391/17903413 [00:41<02:10, 115792.40it/s] 16%|█▌        | 2848668/17903413 [00:41<02:07, 117804.92it/s] 16%|█▌        | 2860710/17903413 [00:41<02:06, 118567.34it/s] 16%|█▌        | 2873006/17903413 [00:41<02:05, 119858.82it/s] 16%|█▌        | 2885179/17903413 [00:41<02:04, 120410.28it/s] 16%|█▌        | 2897361/17903413 [00:41<02:04, 120828.46it/s] 16%|█▋        | 2909582/17903413 [00:41<02:03, 121237.42it/s] 16%|█▋        | 2921767/17903413 [00:42<02:03, 121420.13it/s] 16%|█▋        | 2934055/17903413 [00:42<02:02, 121856.55it/s] 16%|█▋        | 2946306/17903413 [00:42<02:02, 122050.87it/s] 17%|█▋        | 2958521/17903413 [00:42<02:03, 121314.24it/s] 17%|█▋        | 2970689/17903413 [00:42<02:02, 121422.88it/s] 17%|█▋        | 2982837/17903413 [00:42<02:02, 121359.48it/s] 17%|█▋        | 2995006/17903413 [00:42<02:02, 121456.37it/s] 17%|█▋        | 3007155/17903413 [00:42<02:02, 121323.09it/s] 17%|█▋        | 3019290/17903413 [00:42<02:03, 120847.08it/s] 17%|█▋        | 3031442/17903413 [00:42<02:02, 121047.92it/s] 17%|█▋        | 3043549/17903413 [00:43<02:02, 120887.94it/s] 17%|█▋        | 3055639/17903413 [00:43<02:03, 120649.51it/s] 17%|█▋        | 3067860/17903413 [00:43<02:02, 121113.59it/s] 17%|█▋        | 3080034/17903413 [00:43<02:02, 121298.56it/s] 17%|█▋        | 3092306/17903413 [00:43<02:01, 121723.39it/s] 17%|█▋        | 3104507/17903413 [00:43<02:01, 121805.82it/s] 17%|█▋        | 3116688/17903413 [00:43<02:01, 121218.93it/s] 17%|█▋        | 3128880/17903413 [00:43<02:01, 121426.88it/s] 18%|█▊        | 3141024/17903413 [00:43<02:01, 121380.20it/s] 18%|█▊        | 3153163/17903413 [00:44<02:01, 121000.72it/s] 18%|█▊        | 3165289/17903413 [00:44<02:01, 121076.26it/s] 18%|█▊        | 3177549/17903413 [00:44<02:01, 121529.77it/s] 18%|█▊        | 3189703/17903413 [00:44<02:01, 120669.84it/s] 18%|█▊        | 3201772/17903413 [00:44<02:02, 119854.94it/s] 18%|█▊        | 3213760/17903413 [00:44<02:02, 119537.45it/s] 18%|█▊        | 3225870/17903413 [00:44<02:02, 120002.09it/s] 18%|█▊        | 3238065/17903413 [00:44<02:01, 120582.39it/s] 18%|█▊        | 3250125/17903413 [00:44<02:02, 119818.01it/s] 18%|█▊        | 3262271/17903413 [00:44<02:01, 120305.40it/s] 18%|█▊        | 3274567/17903413 [00:45<02:00, 121096.76it/s] 18%|█▊        | 3286796/17903413 [00:45<02:00, 121453.12it/s] 18%|█▊        | 3299126/17903413 [00:45<01:59, 122003.90it/s] 18%|█▊        | 3311328/17903413 [00:45<02:00, 121451.19it/s] 19%|█▊        | 3323632/17903413 [00:45<01:59, 121924.27it/s] 19%|█▊        | 3335845/17903413 [00:45<01:59, 121983.83it/s] 19%|█▊        | 3348045/17903413 [00:45<01:59, 121795.65it/s] 19%|█▉        | 3360316/17903413 [00:45<01:59, 122068.22it/s] 19%|█▉        | 3372587/17903413 [00:45<01:58, 122259.29it/s] 19%|█▉        | 3384897/17903413 [00:45<01:58, 122510.77it/s] 19%|█▉        | 3397149/17903413 [00:46<01:58, 122266.14it/s] 19%|█▉        | 3409376/17903413 [00:46<01:59, 121787.04it/s] 19%|█▉        | 3421623/17903413 [00:46<01:58, 121988.41it/s] 19%|█▉        | 3433849/17903413 [00:46<01:58, 122067.94it/s] 19%|█▉        | 3446057/17903413 [00:46<01:58, 121972.69it/s] 19%|█▉        | 3458377/17903413 [00:46<01:58, 122338.07it/s] 19%|█▉        | 3470629/17903413 [00:46<01:57, 122390.34it/s] 19%|█▉        | 3482869/17903413 [00:46<01:58, 121999.86it/s] 20%|█▉        | 3495100/17903413 [00:46<01:58, 122091.44it/s] 20%|█▉        | 3507310/17903413 [00:46<01:58, 121606.66it/s] 20%|█▉        | 3519538/17903413 [00:47<01:58, 121805.67it/s] 20%|█▉        | 3531720/17903413 [00:47<01:58, 121720.15it/s] 20%|█▉        | 3543893/17903413 [00:47<01:58, 121116.58it/s] 20%|█▉        | 3556139/17903413 [00:47<01:58, 121516.55it/s] 20%|█▉        | 3568333/17903413 [00:47<01:57, 121640.54it/s] 20%|█▉        | 3580571/17903413 [00:47<01:57, 121861.05it/s] 20%|██        | 3592758/17903413 [00:47<01:57, 121811.59it/s] 20%|██        | 3604940/17903413 [00:47<01:57, 121393.96it/s] 20%|██        | 3617118/17903413 [00:47<01:57, 121506.97it/s] 20%|██        | 3629270/17903413 [00:47<01:57, 121176.23it/s] 20%|██        | 3641389/17903413 [00:48<01:57, 121015.32it/s] 20%|██        | 3653583/17903413 [00:48<01:57, 121291.00it/s] 20%|██        | 3665713/17903413 [00:48<02:02, 116643.85it/s] 21%|██        | 3678069/17903413 [00:48<01:59, 118657.30it/s] 21%|██        | 3690165/17903413 [00:48<01:59, 119331.22it/s] 21%|██        | 3702397/17903413 [00:48<01:58, 120213.56it/s] 21%|██        | 3714517/17903413 [00:48<01:57, 120505.17it/s] 21%|██        | 3726601/17903413 [00:48<01:57, 120603.14it/s] 21%|██        | 3738671/17903413 [00:48<01:57, 120607.11it/s] 21%|██        | 3750739/17903413 [00:48<01:57, 120395.98it/s] 21%|██        | 3762935/17903413 [00:49<01:56, 120862.10it/s] 21%|██        | 3775025/17903413 [00:49<01:56, 120853.90it/s] 21%|██        | 3787135/17903413 [00:49<01:56, 120924.68it/s] 21%|██        | 3799477/17903413 [00:49<01:55, 121671.45it/s] 21%|██▏       | 3811646/17903413 [00:49<01:56, 121369.96it/s] 21%|██▏       | 3823785/17903413 [00:49<01:56, 121046.08it/s] 21%|██▏       | 3835891/17903413 [00:49<01:57, 120042.17it/s] 21%|██▏       | 3848248/17903413 [00:49<01:56, 121089.79it/s] 22%|██▏       | 3860374/17903413 [00:49<01:56, 120856.66it/s] 22%|██▏       | 3872756/17903413 [00:49<01:55, 121739.18it/s] 22%|██▏       | 3885146/17903413 [00:50<01:54, 122384.75it/s] 22%|██▏       | 3897513/17903413 [00:50<01:54, 122766.46it/s] 22%|██▏       | 3909922/17903413 [00:50<01:53, 123160.39it/s] 22%|██▏       | 3922239/17903413 [00:50<01:54, 122562.52it/s] 22%|██▏       | 3934497/17903413 [00:50<01:54, 122474.72it/s] 22%|██▏       | 3946746/17903413 [00:50<01:54, 122317.97it/s] 22%|██▏       | 3959148/17903413 [00:50<01:53, 122826.23it/s] 22%|██▏       | 3971432/17903413 [00:50<01:53, 122746.75it/s] 22%|██▏       | 3983810/17903413 [00:50<01:53, 123053.80it/s] 22%|██▏       | 3996156/17903413 [00:50<01:52, 123174.63it/s] 22%|██▏       | 4008518/17903413 [00:51<01:52, 123306.10it/s] 22%|██▏       | 4020849/17903413 [00:51<01:53, 122756.51it/s] 23%|██▎       | 4033208/17903413 [00:51<01:52, 123003.48it/s] 23%|██▎       | 4045509/17903413 [00:51<01:53, 122444.14it/s] 23%|██▎       | 4057796/17903413 [00:51<01:52, 122569.64it/s] 23%|██▎       | 4070054/17903413 [00:51<01:53, 122260.72it/s] 23%|██▎       | 4082393/17903413 [00:51<01:52, 122595.74it/s] 23%|██▎       | 4094654/17903413 [00:51<01:53, 121862.85it/s] 23%|██▎       | 4106907/17903413 [00:51<01:53, 122060.46it/s] 23%|██▎       | 4119114/17903413 [00:51<01:53, 121377.77it/s] 23%|██▎       | 4131299/17903413 [00:52<01:53, 121515.28it/s] 23%|██▎       | 4143514/17903413 [00:52<01:53, 121703.40it/s] 23%|██▎       | 4155851/17903413 [00:52<01:52, 122199.07it/s] 23%|██▎       | 4168072/17903413 [00:52<01:52, 121893.28it/s] 23%|██▎       | 4180352/17903413 [00:52<01:52, 122163.86it/s] 23%|██▎       | 4192569/17903413 [00:52<01:54, 120153.47it/s] 23%|██▎       | 4204825/17903413 [00:52<01:53, 120863.57it/s] 24%|██▎       | 4216918/17903413 [00:52<01:53, 120688.71it/s] 24%|██▎       | 4229148/17903413 [00:52<01:52, 121166.44it/s] 24%|██▎       | 4241268/17903413 [00:52<01:52, 121169.16it/s] 24%|██▍       | 4253565/17903413 [00:53<01:52, 121704.69it/s] 24%|██▍       | 4265738/17903413 [00:53<01:53, 120562.13it/s] 24%|██▍       | 4278062/17903413 [00:53<01:52, 121358.60it/s] 24%|██▍       | 4290383/17903413 [00:53<01:51, 121909.95it/s] 24%|██▍       | 4302577/17903413 [00:53<01:51, 121625.38it/s] 24%|██▍       | 4314742/17903413 [00:53<01:51, 121454.38it/s] 24%|██▍       | 4326889/17903413 [00:53<01:52, 120970.66it/s] 24%|██▍       | 4339100/17903413 [00:53<01:51, 121308.36it/s] 24%|██▍       | 4351232/17903413 [00:53<01:51, 121236.91it/s] 24%|██▍       | 4363449/17903413 [00:53<01:51, 121514.91it/s] 24%|██▍       | 4375602/17903413 [00:54<01:52, 120445.51it/s] 25%|██▍       | 4387786/17903413 [00:54<01:51, 120860.54it/s] 25%|██▍       | 4399874/17903413 [00:54<01:51, 120659.87it/s] 25%|██▍       | 4411942/17903413 [00:54<01:51, 120609.52it/s] 25%|██▍       | 4424015/17903413 [00:54<01:51, 120644.19it/s] 25%|██▍       | 4436081/17903413 [00:54<01:51, 120511.67it/s] 25%|██▍       | 4448133/17903413 [00:54<01:52, 119280.36it/s] 25%|██▍       | 4460093/17903413 [00:54<01:52, 119374.49it/s] 25%|██▍       | 4472238/17903413 [00:54<01:51, 119991.67it/s] 25%|██▌       | 4484269/17903413 [00:54<01:51, 120085.50it/s] 25%|██▌       | 4496343/17903413 [00:55<01:51, 120279.21it/s] 25%|██▌       | 4508372/17903413 [00:55<01:52, 119355.03it/s] 25%|██▌       | 4520310/17903413 [00:55<01:52, 119261.02it/s] 25%|██▌       | 4532333/17903413 [00:55<01:51, 119549.56it/s] 25%|██▌       | 4544322/17903413 [00:55<01:51, 119651.08it/s] 25%|██▌       | 4556466/17903413 [00:55<01:51, 120186.00it/s] 26%|██▌       | 4568547/17903413 [00:55<01:50, 120370.82it/s] 26%|██▌       | 4580585/17903413 [00:55<01:50, 120212.94it/s] 26%|██▌       | 4592643/17903413 [00:55<01:50, 120321.09it/s] 26%|██▌       | 4604676/17903413 [00:55<01:50, 119898.99it/s] 26%|██▌       | 4616917/17903413 [00:56<01:50, 120649.51it/s] 26%|██▌       | 4629164/17903413 [00:56<01:49, 121192.06it/s] 26%|██▌       | 4641378/17903413 [00:56<01:49, 121473.22it/s] 26%|██▌       | 4653526/17903413 [00:56<01:49, 121320.49it/s] 26%|██▌       | 4665754/17903413 [00:56<01:48, 121605.97it/s] 26%|██▌       | 4678093/17903413 [00:56<01:48, 122138.99it/s] 26%|██▌       | 4690335/17903413 [00:56<01:48, 122222.73it/s] 26%|██▋       | 4702558/17903413 [00:56<01:48, 121399.50it/s] 26%|██▋       | 4714763/17903413 [00:56<01:48, 121592.04it/s] 26%|██▋       | 4726959/17903413 [00:56<01:48, 121701.89it/s] 26%|██▋       | 4739260/17903413 [00:57<01:47, 122093.27it/s] 27%|██▋       | 4751470/17903413 [00:57<01:47, 121786.20it/s] 27%|██▋       | 4763723/17903413 [00:57<01:47, 122005.83it/s] 27%|██▋       | 4775925/17903413 [00:57<01:47, 121854.26it/s] 27%|██▋       | 4788148/17903413 [00:57<01:47, 121965.87it/s] 27%|██▋       | 4800345/17903413 [00:57<01:48, 121012.49it/s] 27%|██▋       | 4812550/17903413 [00:57<01:47, 121319.89it/s] 27%|██▋       | 4824781/17903413 [00:57<01:47, 121613.66it/s] 27%|██▋       | 4836985/17903413 [00:57<01:47, 121740.48it/s] 27%|██▋       | 4849160/17903413 [00:57<01:47, 121078.25it/s] 27%|██▋       | 4861270/17903413 [00:58<01:47, 120885.61it/s] 27%|██▋       | 4873445/17903413 [00:58<01:47, 121142.55it/s] 27%|██▋       | 4885677/17903413 [00:58<01:47, 121493.55it/s] 27%|██▋       | 4897827/17903413 [00:58<01:47, 120458.22it/s] 27%|██▋       | 4910005/17903413 [00:58<01:47, 120851.30it/s] 27%|██▋       | 4922096/17903413 [00:58<01:47, 120866.87it/s] 28%|██▊       | 4934184/17903413 [00:58<01:47, 120357.22it/s] 28%|██▊       | 4946221/17903413 [00:58<01:47, 119993.50it/s] 28%|██▊       | 4958234/17903413 [00:58<01:47, 120033.55it/s] 28%|██▊       | 4970447/17903413 [00:58<01:47, 120657.17it/s] 28%|██▊       | 4982614/17903413 [00:59<01:46, 120959.62it/s] 28%|██▊       | 4994711/17903413 [00:59<01:48, 119161.38it/s] 28%|██▊       | 5006864/17903413 [00:59<01:47, 119860.72it/s] 28%|██▊       | 5019060/17903413 [00:59<01:46, 120484.73it/s] 28%|██▊       | 5031234/17903413 [00:59<01:46, 120856.29it/s] 28%|██▊       | 5043323/17903413 [00:59<01:46, 120683.30it/s] 28%|██▊       | 5055429/17903413 [00:59<01:46, 120794.43it/s] 28%|██▊       | 5067510/17903413 [00:59<01:46, 120121.92it/s] 28%|██▊       | 5079524/17903413 [00:59<01:46, 119917.85it/s] 28%|██▊       | 5091517/17903413 [01:00<01:47, 118651.77it/s] 29%|██▊       | 5103675/17903413 [01:00<01:47, 119517.67it/s] 29%|██▊       | 5115856/17903413 [01:00<01:46, 120197.70it/s] 29%|██▊       | 5128085/17903413 [01:00<01:45, 120820.24it/s] 29%|██▊       | 5140170/17903413 [01:00<01:45, 120585.51it/s] 29%|██▉       | 5152430/17903413 [01:00<01:45, 121186.19it/s] 29%|██▉       | 5164671/17903413 [01:00<01:44, 121549.44it/s] 29%|██▉       | 5176859/17903413 [01:00<01:44, 121646.88it/s] 29%|██▉       | 5189025/17903413 [01:00<01:45, 120136.23it/s] 29%|██▉       | 5201233/17903413 [01:00<01:45, 120712.94it/s] 29%|██▉       | 5213502/17903413 [01:01<01:44, 121300.48it/s] 29%|██▉       | 5225733/17903413 [01:01<01:44, 121601.13it/s] 29%|██▉       | 5237896/17903413 [01:01<01:45, 120000.09it/s] 29%|██▉       | 5250137/17903413 [01:01<01:44, 120712.71it/s] 29%|██▉       | 5262308/17903413 [01:01<01:44, 121008.02it/s] 29%|██▉       | 5274504/17903413 [01:01<01:44, 121289.07it/s] 30%|██▉       | 5286636/17903413 [01:01<01:44, 121129.05it/s] 30%|██▉       | 5298841/17903413 [01:01<01:43, 121401.46it/s] 30%|██▉       | 5310983/17903413 [01:01<01:44, 120649.60it/s] 30%|██▉       | 5323196/17903413 [01:01<01:43, 121090.03it/s] 30%|██▉       | 5335413/17903413 [01:02<01:43, 121411.08it/s] 30%|██▉       | 5347581/17903413 [01:02<01:43, 121490.76it/s] 30%|██▉       | 5359731/17903413 [01:02<01:43, 120913.65it/s] 30%|███       | 5371911/17903413 [01:02<01:43, 121178.21it/s] 30%|███       | 5384030/17903413 [01:02<01:43, 120885.95it/s] 30%|███       | 5396257/17903413 [01:02<01:43, 121297.68it/s] 30%|███       | 5408388/17903413 [01:02<01:43, 121229.12it/s] 30%|███       | 5420576/17903413 [01:02<01:42, 121423.60it/s] 30%|███       | 5432846/17903413 [01:02<01:42, 121805.46it/s] 30%|███       | 5445109/17903413 [01:02<01:42, 122051.26it/s] 30%|███       | 5457315/17903413 [01:03<01:42, 121243.68it/s] 31%|███       | 5469555/17903413 [01:03<01:42, 121586.54it/s] 31%|███       | 5481721/17903413 [01:03<01:42, 121607.84it/s] 31%|███       | 5493999/17903413 [01:03<01:41, 121955.83it/s] 31%|███       | 5506196/17903413 [01:03<01:41, 121902.32it/s] 31%|███       | 5518405/17903413 [01:03<01:41, 121955.60it/s] 31%|███       | 5530731/17903413 [01:03<01:41, 122343.89it/s] 31%|███       | 5543017/17903413 [01:03<01:40, 122497.67it/s] 31%|███       | 5555267/17903413 [01:03<01:40, 122492.10it/s] 31%|███       | 5567517/17903413 [01:03<01:40, 122354.71it/s] 31%|███       | 5579753/17903413 [01:04<01:41, 121973.68it/s] 31%|███       | 5591989/17903413 [01:04<01:40, 122088.83it/s] 31%|███▏      | 5604199/17903413 [01:04<02:13, 91874.33it/s]  31%|███▏      | 5616334/17903413 [01:04<02:04, 99050.47it/s] 31%|███▏      | 5628556/17903413 [01:04<01:56, 105029.35it/s] 32%|███▏      | 5640794/17903413 [01:04<01:51, 109702.74it/s] 32%|███▏      | 5652843/17903413 [01:04<01:48, 112700.01it/s] 32%|███▏      | 5664885/17903413 [01:04<01:46, 114892.81it/s] 32%|███▏      | 5676772/17903413 [01:04<01:45, 116040.46it/s] 32%|███▏      | 5688649/17903413 [01:05<01:44, 116837.33it/s] 32%|███▏      | 5700799/17903413 [01:05<01:43, 118207.34it/s] 32%|███▏      | 5713097/17903413 [01:05<01:41, 119617.87it/s] 32%|███▏      | 5725358/17903413 [01:05<01:41, 120505.05it/s] 32%|███▏      | 5737554/17903413 [01:05<01:40, 120937.59it/s] 32%|███▏      | 5749720/17903413 [01:05<01:40, 121150.59it/s] 32%|███▏      | 5761864/17903413 [01:05<01:40, 120781.13it/s] 32%|███▏      | 5774044/17903413 [01:05<01:40, 121084.81it/s] 32%|███▏      | 5786167/17903413 [01:05<01:40, 120982.94it/s] 32%|███▏      | 5798433/17903413 [01:05<01:39, 121483.08it/s] 32%|███▏      | 5810737/17903413 [01:06<01:39, 121946.77it/s] 33%|███▎      | 5822985/17903413 [01:06<01:38, 122103.99it/s] 33%|███▎      | 5835270/17903413 [01:06<01:38, 122326.26it/s] 33%|███▎      | 5847506/17903413 [01:06<01:38, 122041.78it/s] 33%|███▎      | 5859713/17903413 [01:06<01:39, 121614.40it/s] 33%|███▎      | 5871877/17903413 [01:06<01:39, 121372.83it/s] 33%|███▎      | 5884016/17903413 [01:06<01:39, 120733.70it/s] 33%|███▎      | 5896092/17903413 [01:06<01:39, 120740.72it/s] 33%|███▎      | 5908167/17903413 [01:06<01:39, 120592.52it/s] 33%|███▎      | 5920268/17903413 [01:06<01:39, 120715.90it/s] 33%|███▎      | 5932341/17903413 [01:07<01:39, 120561.43it/s] 33%|███▎      | 5944398/17903413 [01:07<01:39, 120409.21it/s] 33%|███▎      | 5956440/17903413 [01:07<01:39, 120325.81it/s] 33%|███▎      | 5968473/17903413 [01:07<01:39, 120273.81it/s] 33%|███▎      | 5980553/17903413 [01:07<01:39, 120429.13it/s] 33%|███▎      | 5992597/17903413 [01:07<01:38, 120327.41it/s] 34%|███▎      | 6004714/17903413 [01:07<01:38, 120577.13it/s] 34%|███▎      | 6016772/17903413 [01:07<01:38, 120489.54it/s] 34%|███▎      | 6029007/17903413 [01:07<01:38, 121046.70it/s] 34%|███▎      | 6041196/17903413 [01:07<01:37, 121298.36it/s] 34%|███▍      | 6053329/17903413 [01:08<01:37, 121305.28it/s] 34%|███▍      | 6065641/17903413 [01:08<01:37, 121847.82it/s] 34%|███▍      | 6077826/17903413 [01:08<01:37, 121732.31it/s] 34%|███▍      | 6090141/17903413 [01:08<01:36, 122156.39it/s] 34%|███▍      | 6102455/17903413 [01:08<01:36, 122448.61it/s] 34%|███▍      | 6114700/17903413 [01:08<01:36, 122349.95it/s] 34%|███▍      | 6126998/17903413 [01:08<01:36, 122537.78it/s] 34%|███▍      | 6139252/17903413 [01:08<01:36, 122205.06it/s] 34%|███▍      | 6151473/17903413 [01:08<01:36, 121769.25it/s] 34%|███▍      | 6163651/17903413 [01:08<01:36, 121530.54it/s] 34%|███▍      | 6175805/17903413 [01:09<01:36, 121212.79it/s] 35%|███▍      | 6187927/17903413 [01:09<01:36, 121073.13it/s] 35%|███▍      | 6200185/17903413 [01:09<01:36, 121520.63it/s] 35%|███▍      | 6212398/17903413 [01:09<01:36, 121700.50it/s] 35%|███▍      | 6224678/17903413 [01:09<01:35, 122027.95it/s] 35%|███▍      | 6236882/17903413 [01:09<01:35, 121655.29it/s] 35%|███▍      | 6249048/17903413 [01:09<01:36, 121066.84it/s] 35%|███▍      | 6261297/17903413 [01:09<01:35, 121490.21it/s] 35%|███▌      | 6273447/17903413 [01:09<01:35, 121383.17it/s] 35%|███▌      | 6285716/17903413 [01:09<01:35, 121771.92it/s] 35%|███▌      | 6297894/17903413 [01:10<01:35, 121360.62it/s] 35%|███▌      | 6310031/17903413 [01:10<01:36, 120725.34it/s] 35%|███▌      | 6322105/17903413 [01:10<01:36, 120348.76it/s] 35%|███▌      | 6334171/17903413 [01:10<01:36, 120440.85it/s] 35%|███▌      | 6346216/17903413 [01:10<01:36, 119831.57it/s] 36%|███▌      | 6358406/17903413 [01:10<01:35, 120447.52it/s] 36%|███▌      | 6370493/17903413 [01:10<01:35, 120571.11it/s] 36%|███▌      | 6382631/17903413 [01:10<01:35, 120812.64it/s] 36%|███▌      | 6394884/17903413 [01:10<01:34, 121324.14it/s] 36%|███▌      | 6407096/17903413 [01:10<01:34, 121561.92it/s] 36%|███▌      | 6419366/17903413 [01:11<01:34, 121900.10it/s] 36%|███▌      | 6431557/17903413 [01:11<01:34, 121459.12it/s] 36%|███▌      | 6443749/17903413 [01:11<01:34, 121596.38it/s] 36%|███▌      | 6455930/17903413 [01:11<01:34, 121659.23it/s] 36%|███▌      | 6468110/17903413 [01:11<01:33, 121700.99it/s] 36%|███▌      | 6480322/17903413 [01:11<01:33, 121824.24it/s] 36%|███▋      | 6492520/17903413 [01:11<01:33, 121868.79it/s] 36%|███▋      | 6504708/17903413 [01:11<01:33, 121681.52it/s] 36%|███▋      | 6516877/17903413 [01:11<01:33, 121579.63it/s] 36%|███▋      | 6529036/17903413 [01:11<01:33, 121200.24it/s] 37%|███▋      | 6541192/17903413 [01:12<01:33, 121306.37it/s] 37%|███▋      | 6553422/17903413 [01:12<01:33, 121603.53it/s] 37%|███▋      | 6565677/17903413 [01:12<01:33, 121886.25it/s] 37%|███▋      | 6577866/17903413 [01:12<01:33, 121647.20it/s] 37%|███▋      | 6590144/17903413 [01:12<01:32, 121986.24it/s] 37%|███▋      | 6602375/17903413 [01:12<01:32, 122082.12it/s] 37%|███▋      | 6614656/17903413 [01:12<01:32, 122299.41it/s] 37%|███▋      | 6626887/17903413 [01:12<01:32, 121596.33it/s] 37%|███▋      | 6639048/17903413 [01:12<01:32, 121569.72it/s] 37%|███▋      | 6651279/17903413 [01:12<01:32, 121789.00it/s] 37%|███▋      | 6663459/17903413 [01:13<01:32, 121475.43it/s] 37%|███▋      | 6675613/17903413 [01:13<01:32, 121493.56it/s] 37%|███▋      | 6687763/17903413 [01:13<01:32, 121420.32it/s] 37%|███▋      | 6699925/17903413 [01:13<01:32, 121477.96it/s] 37%|███▋      | 6712073/17903413 [01:13<01:32, 121421.12it/s] 38%|███▊      | 6724216/17903413 [01:13<01:32, 120780.94it/s] 38%|███▊      | 6736314/17903413 [01:13<01:32, 120839.38it/s] 38%|███▊      | 6748467/17903413 [01:13<01:32, 121045.40it/s] 38%|███▊      | 6760593/17903413 [01:13<01:32, 121107.33it/s] 38%|███▊      | 6772705/17903413 [01:13<01:32, 120593.95it/s] 38%|███▊      | 6784901/17903413 [01:14<01:31, 120999.61it/s] 38%|███▊      | 6797091/17903413 [01:14<01:31, 121266.29it/s] 38%|███▊      | 6809286/17903413 [01:14<01:31, 121469.63it/s] 38%|███▊      | 6821434/17903413 [01:14<01:31, 120711.24it/s] 38%|███▊      | 6833507/17903413 [01:14<01:31, 120575.17it/s] 38%|███▊      | 6845674/17903413 [01:14<01:31, 120899.56it/s] 38%|███▊      | 6857910/17903413 [01:14<01:31, 121334.14it/s] 38%|███▊      | 6870045/17903413 [01:14<01:31, 120578.69it/s] 38%|███▊      | 6882310/17903413 [01:14<01:30, 121195.97it/s] 39%|███▊      | 6894529/17903413 [01:14<01:30, 121491.49it/s] 39%|███▊      | 6906707/17903413 [01:15<01:30, 121574.87it/s] 39%|███▊      | 6918866/17903413 [01:15<01:30, 121117.54it/s] 39%|███▊      | 6930979/17903413 [01:15<01:31, 120188.90it/s] 39%|███▉      | 6943000/17903413 [01:15<01:31, 119784.31it/s] 39%|███▉      | 6955116/17903413 [01:15<01:31, 120191.37it/s] 39%|███▉      | 6967137/17903413 [01:15<01:31, 119580.27it/s] 39%|███▉      | 6979397/17903413 [01:15<01:30, 120478.62it/s] 39%|███▉      | 6991590/17903413 [01:15<01:30, 120911.57it/s] 39%|███▉      | 7003776/17903413 [01:15<01:29, 121193.08it/s] 39%|███▉      | 7015897/17903413 [01:15<01:30, 120704.10it/s] 39%|███▉      | 7027969/17903413 [01:16<01:30, 120642.75it/s] 39%|███▉      | 7040140/17903413 [01:16<01:29, 120959.37it/s] 39%|███▉      | 7052367/17903413 [01:16<01:29, 121349.06it/s] 39%|███▉      | 7064503/17903413 [01:16<01:29, 120828.74it/s] 40%|███▉      | 7076614/17903413 [01:16<01:29, 120910.64it/s] 40%|███▉      | 7088728/17903413 [01:16<01:29, 120978.58it/s] 40%|███▉      | 7100929/17903413 [01:16<01:29, 121284.27it/s] 40%|███▉      | 7113058/17903413 [01:16<01:29, 120625.78it/s] 40%|███▉      | 7125265/17903413 [01:16<01:29, 121055.07it/s] 40%|███▉      | 7137385/17903413 [01:16<01:28, 121095.68it/s] 40%|███▉      | 7149671/17903413 [01:17<01:28, 121621.82it/s] 40%|████      | 7161834/17903413 [01:17<01:29, 120627.92it/s] 40%|████      | 7173973/17903413 [01:17<01:28, 120852.76it/s] 40%|████      | 7186173/17903413 [01:17<01:28, 121192.61it/s] 40%|████      | 7198404/17903413 [01:17<01:28, 121524.81it/s] 40%|████      | 7210558/17903413 [01:17<01:28, 120840.55it/s] 40%|████      | 7222730/17903413 [01:17<01:28, 121101.03it/s] 40%|████      | 7234938/17903413 [01:17<01:27, 121391.43it/s] 40%|████      | 7247079/17903413 [01:17<01:28, 120940.70it/s] 41%|████      | 7259174/17903413 [01:17<01:28, 120407.63it/s] 41%|████      | 7271237/17903413 [01:18<01:28, 120472.76it/s] 41%|████      | 7283285/17903413 [01:18<01:28, 120329.29it/s] 41%|████      | 7295339/17903413 [01:18<01:28, 120391.26it/s] 41%|████      | 7307379/17903413 [01:18<01:28, 119921.15it/s] 41%|████      | 7319372/17903413 [01:18<01:28, 119896.77it/s] 41%|████      | 7331422/17903413 [01:18<01:28, 120076.89it/s] 41%|████      | 7343431/17903413 [01:18<01:27, 120021.67it/s] 41%|████      | 7355434/17903413 [01:18<01:28, 119231.26it/s] 41%|████      | 7367359/17903413 [01:18<01:28, 119107.24it/s] 41%|████      | 7379314/17903413 [01:18<01:28, 119239.01it/s] 41%|████▏     | 7391483/17903413 [01:19<01:27, 119970.05it/s] 41%|████▏     | 7403481/17903413 [01:19<01:28, 118510.42it/s] 41%|████▏     | 7415475/17903413 [01:19<01:28, 118934.24it/s] 41%|████▏     | 7427372/17903413 [01:19<01:28, 118878.07it/s] 42%|████▏     | 7439420/17903413 [01:19<01:27, 119355.12it/s] 42%|████▏     | 7451358/17903413 [01:19<01:27, 119056.61it/s] 42%|████▏     | 7463538/17903413 [01:19<01:27, 119874.78it/s] 42%|████▏     | 7475593/17903413 [01:19<01:26, 120075.20it/s] 42%|████▏     | 7487818/17903413 [01:19<01:26, 120726.14it/s] 42%|████▏     | 7499892/17903413 [01:19<01:26, 120050.97it/s] 42%|████▏     | 7512128/17903413 [01:20<01:26, 120737.31it/s] 42%|████▏     | 7524322/17903413 [01:20<01:25, 121093.68it/s] 42%|████▏     | 7536564/17903413 [01:20<01:25, 121489.32it/s] 42%|████▏     | 7548714/17903413 [01:20<01:26, 120346.03it/s] 42%|████▏     | 7560752/17903413 [01:20<01:26, 119770.31it/s] 42%|████▏     | 7572732/17903413 [01:20<01:26, 119691.70it/s] 42%|████▏     | 7584731/17903413 [01:20<01:26, 119779.51it/s] 42%|████▏     | 7596711/17903413 [01:20<01:26, 119391.06it/s] 42%|████▏     | 7608880/17903413 [01:20<01:25, 120073.98it/s] 43%|████▎     | 7621085/17903413 [01:21<01:25, 120662.24it/s] 43%|████▎     | 7633316/17903413 [01:21<01:24, 121153.84it/s] 43%|████▎     | 7645433/17903413 [01:21<01:24, 120819.33it/s] 43%|████▎     | 7657674/17903413 [01:21<01:24, 121294.37it/s] 43%|████▎     | 7669884/17903413 [01:21<01:24, 121535.35it/s] 43%|████▎     | 7682047/17903413 [01:21<01:24, 121563.30it/s] 43%|████▎     | 7694204/17903413 [01:21<01:24, 121201.92it/s] 43%|████▎     | 7706392/17903413 [01:21<01:23, 121403.58it/s] 43%|████▎     | 7718533/17903413 [01:21<01:23, 121255.37it/s] 43%|████▎     | 7730718/17903413 [01:21<01:23, 121430.70it/s] 43%|████▎     | 7742862/17903413 [01:22<01:23, 121050.06it/s] 43%|████▎     | 7755049/17903413 [01:22<01:23, 121292.75it/s] 43%|████▎     | 7767214/17903413 [01:22<01:23, 121397.80it/s] 43%|████▎     | 7779355/17903413 [01:22<01:23, 121168.48it/s] 44%|████▎     | 7791473/17903413 [01:22<01:24, 120259.31it/s] 44%|████▎     | 7803573/17903413 [01:22<01:23, 120479.73it/s] 44%|████▎     | 7815730/17903413 [01:22<01:23, 120802.48it/s] 44%|████▎     | 7827812/17903413 [01:22<01:23, 120595.35it/s] 44%|████▍     | 7839873/17903413 [01:22<01:24, 119503.89it/s] 44%|████▍     | 7851953/17903413 [01:22<01:23, 119888.69it/s] 44%|████▍     | 7864093/17903413 [01:23<01:23, 120338.42it/s] 44%|████▍     | 7876129/17903413 [01:23<01:23, 120237.18it/s] 44%|████▍     | 7888154/17903413 [01:23<01:23, 119928.60it/s] 44%|████▍     | 7900288/17903413 [01:23<01:23, 120347.19it/s] 44%|████▍     | 7912324/17903413 [01:23<01:23, 120312.45it/s] 44%|████▍     | 7924453/17903413 [01:23<01:22, 120604.44it/s] 44%|████▍     | 7936514/17903413 [01:23<01:23, 119809.42it/s] 44%|████▍     | 7948648/17903413 [01:23<01:22, 120263.99it/s] 44%|████▍     | 7960744/17903413 [01:23<01:22, 120469.66it/s] 45%|████▍     | 7972840/17903413 [01:23<01:22, 120613.53it/s] 45%|████▍     | 7984903/17903413 [01:24<01:22, 120226.14it/s] 45%|████▍     | 7996946/17903413 [01:24<01:22, 120285.30it/s] 45%|████▍     | 8009080/17903413 [01:24<01:22, 120599.55it/s] 45%|████▍     | 8021141/17903413 [01:24<01:22, 120296.02it/s] 45%|████▍     | 8033172/17903413 [01:24<01:22, 119647.99it/s] 45%|████▍     | 8045218/17903413 [01:24<01:22, 119888.64it/s] 45%|████▌     | 8057211/17903413 [01:24<01:22, 119899.49it/s] 45%|████▌     | 8069202/17903413 [01:24<01:22, 119892.24it/s] 45%|████▌     | 8081192/17903413 [01:24<01:22, 119081.47it/s] 45%|████▌     | 8093251/17903413 [01:24<01:22, 119529.96it/s] 45%|████▌     | 8105288/17903413 [01:25<01:21, 119777.92it/s] 45%|████▌     | 8117392/17903413 [01:25<01:21, 120154.38it/s] 45%|████▌     | 8129409/17903413 [01:25<01:21, 119920.47it/s] 45%|████▌     | 8141489/17903413 [01:25<01:21, 120181.63it/s] 46%|████▌     | 8153611/17903413 [01:25<01:20, 120491.42it/s] 46%|████▌     | 8165661/17903413 [01:25<01:20, 120331.76it/s] 46%|████▌     | 8177695/17903413 [01:25<01:21, 119471.00it/s] 46%|████▌     | 8189644/17903413 [01:25<01:21, 119088.23it/s] 46%|████▌     | 8201697/17903413 [01:25<01:21, 119517.36it/s] 46%|████▌     | 8213774/17903413 [01:25<01:20, 119889.53it/s] 46%|████▌     | 8225764/17903413 [01:26<01:21, 119029.23it/s] 46%|████▌     | 8237812/17903413 [01:26<01:20, 119461.20it/s] 46%|████▌     | 8249844/17903413 [01:26<01:20, 119717.45it/s] 46%|████▌     | 8261817/17903413 [01:26<01:20, 119541.31it/s] 46%|████▌     | 8273772/17903413 [01:26<01:21, 118809.74it/s] 46%|████▋     | 8285767/17903413 [01:26<01:20, 119148.16it/s] 46%|████▋     | 8297847/17903413 [01:26<01:20, 119641.29it/s] 46%|████▋     | 8309902/17903413 [01:26<01:20, 119909.86it/s] 46%|████▋     | 8322027/17903413 [01:26<01:19, 120309.69it/s] 47%|████▋     | 8334131/17903413 [01:26<01:19, 120527.16it/s] 47%|████▋     | 8346185/17903413 [01:27<01:19, 120220.99it/s] 47%|████▋     | 8358208/17903413 [01:27<01:19, 120120.80it/s] 47%|████▋     | 8370221/17903413 [01:27<01:19, 119418.00it/s] 47%|████▋     | 8382184/17903413 [01:27<01:19, 119478.46it/s] 47%|████▋     | 8394351/17903413 [01:27<01:19, 120130.78it/s] 47%|████▋     | 8406477/17903413 [01:27<01:18, 120467.14it/s] 47%|████▋     | 8418659/17903413 [01:27<01:18, 120870.83it/s] 47%|████▋     | 8430760/17903413 [01:27<01:18, 120910.74it/s] 47%|████▋     | 8442951/17903413 [01:27<01:18, 121209.12it/s] 47%|████▋     | 8455073/17903413 [01:27<01:18, 120538.61it/s] 47%|████▋     | 8467128/17903413 [01:28<01:18, 120398.18it/s] 47%|████▋     | 8479269/17903413 [01:28<01:18, 120700.05it/s] 47%|████▋     | 8491340/17903413 [01:28<01:18, 120622.96it/s] 47%|████▋     | 8503403/17903413 [01:28<01:18, 120492.61it/s] 48%|████▊     | 8515494/17903413 [01:28<01:17, 120617.04it/s] 48%|████▊     | 8527586/17903413 [01:28<01:17, 120707.63it/s] 48%|████▊     | 8539657/17903413 [01:28<01:17, 120689.75it/s] 48%|████▊     | 8551727/17903413 [01:28<01:17, 120309.77it/s] 48%|████▊     | 8563759/17903413 [01:28<01:18, 119218.00it/s] 48%|████▊     | 8575684/17903413 [01:28<01:18, 119197.12it/s] 48%|████▊     | 8587629/17903413 [01:29<01:18, 119270.52it/s] 48%|████▊     | 8599558/17903413 [01:29<01:18, 119196.91it/s] 48%|████▊     | 8611502/17903413 [01:29<01:17, 119267.84it/s] 48%|████▊     | 8623430/17903413 [01:29<01:17, 119233.74it/s] 48%|████▊     | 8635354/17903413 [01:29<01:18, 118339.40it/s] 48%|████▊     | 8647190/17903413 [01:29<01:18, 118045.05it/s] 48%|████▊     | 8659078/17903413 [01:29<01:18, 118292.20it/s] 48%|████▊     | 8670909/17903413 [01:29<01:18, 117783.79it/s] 48%|████▊     | 8682883/17903413 [01:29<01:17, 118366.21it/s] 49%|████▊     | 8694721/17903413 [01:29<01:17, 118361.85it/s] 49%|████▊     | 8706558/17903413 [01:30<01:17, 118196.35it/s] 49%|████▊     | 8718402/17903413 [01:30<01:17, 118267.22it/s] 49%|████▉     | 8730319/17903413 [01:30<01:17, 118535.20it/s] 49%|████▉     | 8742243/17903413 [01:30<01:17, 118745.41it/s] 49%|████▉     | 8754173/17903413 [01:30<01:16, 118910.45it/s] 49%|████▉     | 8766194/17903413 [01:30<01:16, 119298.08it/s] 49%|████▉     | 8778202/17903413 [01:30<01:16, 119531.11it/s] 49%|████▉     | 8790156/17903413 [01:30<01:16, 119286.48it/s] 49%|████▉     | 8802085/17903413 [01:30<01:16, 119151.27it/s] 49%|████▉     | 8814080/17903413 [01:30<01:16, 119387.89it/s] 49%|████▉     | 8826064/17903413 [01:31<01:15, 119523.19it/s] 49%|████▉     | 8838026/17903413 [01:31<01:15, 119551.64it/s] 49%|████▉     | 8849982/17903413 [01:31<01:15, 119279.06it/s] 49%|████▉     | 8861911/17903413 [01:31<01:15, 119254.88it/s] 50%|████▉     | 8873952/17903413 [01:31<01:15, 119600.28it/s] 50%|████▉     | 8886139/17903413 [01:31<01:14, 120280.28it/s] 50%|████▉     | 8898243/17903413 [01:31<01:14, 120507.36it/s] 50%|████▉     | 8910349/17903413 [01:31<01:14, 120671.28it/s] 50%|████▉     | 8922441/17903413 [01:31<01:14, 120744.95it/s] 50%|████▉     | 8934516/17903413 [01:31<01:14, 120548.33it/s] 50%|████▉     | 8946571/17903413 [01:32<01:14, 120257.93it/s] 50%|█████     | 8958794/17903413 [01:32<01:14, 120846.04it/s] 50%|█████     | 8970939/17903413 [01:32<01:13, 121024.51it/s] 50%|█████     | 8983240/17903413 [01:32<01:13, 121618.97it/s] 50%|█████     | 8995479/17903413 [01:32<01:13, 121848.97it/s] 50%|█████     | 9007665/17903413 [01:32<01:13, 121616.99it/s] 50%|█████     | 9019939/17903413 [01:32<01:12, 121950.27it/s] 50%|█████     | 9032135/17903413 [01:32<01:13, 121236.92it/s] 51%|█████     | 9044285/17903413 [01:32<01:13, 121315.14it/s] 51%|█████     | 9056511/17903413 [01:32<01:12, 121596.16it/s] 51%|█████     | 9068692/17903413 [01:33<01:12, 121658.63it/s] 51%|█████     | 9080871/17903413 [01:33<01:12, 121695.74it/s] 51%|█████     | 9093041/17903413 [01:33<01:12, 121256.32it/s] 51%|█████     | 9105272/17903413 [01:33<01:12, 121571.04it/s] 51%|█████     | 9117430/17903413 [01:33<01:12, 121329.27it/s] 51%|█████     | 9129564/17903413 [01:33<01:12, 120698.99it/s] 51%|█████     | 9141635/17903413 [01:33<01:12, 120361.49it/s] 51%|█████     | 9153672/17903413 [01:33<01:12, 119931.95it/s] 51%|█████     | 9165702/17903413 [01:33<01:12, 120039.61it/s] 51%|█████▏    | 9177889/17903413 [01:33<01:12, 120584.52it/s] 51%|█████▏    | 9189953/17903413 [01:34<01:12, 120600.89it/s] 51%|█████▏    | 9202113/17903413 [01:34<01:11, 120899.26it/s] 51%|█████▏    | 9214321/17903413 [01:34<01:11, 121251.72it/s] 52%|█████▏    | 9226447/17903413 [01:34<01:12, 120459.99it/s] 52%|█████▏    | 9238520/17903413 [01:34<01:11, 120538.79it/s] 52%|█████▏    | 9250674/17903413 [01:34<01:11, 120837.27it/s] 52%|█████▏    | 9262856/17903413 [01:34<01:11, 121129.61it/s] 52%|█████▏    | 9275135/17903413 [01:34<01:10, 121625.52it/s] 52%|█████▏    | 9287299/17903413 [01:34<01:10, 121499.19it/s] 52%|█████▏    | 9299496/17903413 [01:34<01:10, 121638.41it/s] 52%|█████▏    | 9311693/17903413 [01:35<01:10, 121734.67it/s] 52%|█████▏    | 9323867/17903413 [01:35<01:10, 121054.94it/s] 52%|█████▏    | 9335974/17903413 [01:35<01:10, 120976.35it/s] 52%|█████▏    | 9348160/17903413 [01:35<01:10, 121240.42it/s] 52%|█████▏    | 9360346/17903413 [01:35<01:10, 121423.95it/s] 52%|█████▏    | 9372505/17903413 [01:35<01:10, 121473.28it/s] 52%|█████▏    | 9384656/17903413 [01:35<01:10, 121482.49it/s] 52%|█████▏    | 9396883/17903413 [01:35<01:09, 121716.31it/s] 53%|█████▎    | 9409055/17903413 [01:35<01:10, 121221.82it/s] 53%|█████▎    | 9421178/17903413 [01:35<01:10, 120195.46it/s] 53%|█████▎    | 9433200/17903413 [01:36<01:10, 119578.84it/s] 53%|█████▎    | 9445298/17903413 [01:36<01:10, 119992.71it/s] 53%|█████▎    | 9457307/17903413 [01:36<01:10, 120019.26it/s] 53%|█████▎    | 9469463/17903413 [01:36<01:10, 120478.25it/s] 53%|█████▎    | 9481639/17903413 [01:36<01:09, 120859.65it/s] 53%|█████▎    | 9493840/17903413 [01:36<01:09, 121203.56it/s] 53%|█████▎    | 9505992/17903413 [01:36<01:09, 121298.12it/s] 53%|█████▎    | 9518123/17903413 [01:36<01:09, 120598.89it/s] 53%|█████▎    | 9530228/17903413 [01:36<01:09, 120732.40it/s] 53%|█████▎    | 9542366/17903413 [01:36<01:09, 120924.50it/s] 53%|█████▎    | 9554546/17903413 [01:37<01:08, 121186.12it/s] 53%|█████▎    | 9566666/17903413 [01:37<01:09, 120198.23it/s] 54%|█████▎    | 9578815/17903413 [01:37<01:09, 120580.80it/s] 54%|█████▎    | 9591004/17903413 [01:37<01:08, 120971.08it/s] 54%|█████▎    | 9603103/17903413 [01:37<01:08, 120933.07it/s] 54%|█████▎    | 9615198/17903413 [01:37<01:08, 120418.03it/s] 54%|█████▍    | 9627306/17903413 [01:37<01:08, 120612.86it/s] 54%|█████▍    | 9639488/17903413 [01:37<01:08, 120971.21it/s] 54%|█████▍    | 9651701/17903413 [01:37<01:08, 121317.00it/s] 54%|█████▍    | 9663929/17903413 [01:37<01:07, 121603.62it/s] 54%|█████▍    | 9676172/17903413 [01:38<01:07, 121849.71it/s] 54%|█████▍    | 9688358/17903413 [01:38<01:07, 121181.74it/s] 54%|█████▍    | 9700507/17903413 [01:38<01:07, 121273.24it/s] 54%|█████▍    | 9712636/17903413 [01:38<01:07, 120798.36it/s] 54%|█████▍    | 9724839/17903413 [01:38<01:07, 121163.47it/s] 54%|█████▍    | 9737044/17903413 [01:38<01:07, 121425.68it/s] 54%|█████▍    | 9749249/17903413 [01:38<01:07, 121611.94it/s] 55%|█████▍    | 9761458/17903413 [01:38<01:06, 121753.58it/s] 55%|█████▍    | 9773634/17903413 [01:38<01:06, 121684.69it/s] 55%|█████▍    | 9785815/17903413 [01:38<01:06, 121720.18it/s] 55%|█████▍    | 9797988/17903413 [01:39<01:06, 121140.29it/s] 55%|█████▍    | 9810103/17903413 [01:39<01:07, 120593.31it/s] 55%|█████▍    | 9822164/17903413 [01:39<01:07, 120557.95it/s] 55%|█████▍    | 9834331/17903413 [01:39<01:06, 120889.35it/s] 55%|█████▍    | 9846460/17903413 [01:39<01:06, 121006.53it/s] 55%|█████▌    | 9858662/17903413 [01:39<01:06, 121309.85it/s] 55%|█████▌    | 9870794/17903413 [01:39<01:06, 120647.93it/s] 55%|█████▌    | 9882917/17903413 [01:39<01:06, 120819.23it/s] 55%|█████▌    | 9895104/17903413 [01:39<01:06, 121131.16it/s] 55%|█████▌    | 9907218/17903413 [01:39<01:06, 120013.02it/s] 55%|█████▌    | 9919425/17903413 [01:40<01:06, 120622.44it/s] 55%|█████▌    | 9931579/17903413 [01:40<01:05, 120895.29it/s] 56%|█████▌    | 9943789/17903413 [01:40<01:05, 121254.15it/s] 56%|█████▌    | 9955969/17903413 [01:40<01:05, 121416.78it/s] 56%|█████▌    | 9968112/17903413 [01:40<01:05, 121135.86it/s] 56%|█████▌    | 9980232/17903413 [01:40<01:05, 121154.82it/s] 56%|█████▌    | 9992370/17903413 [01:40<01:05, 121219.75it/s] 56%|█████▌    | 10004493/17903413 [01:40<01:05, 120542.16it/s] 56%|█████▌    | 10016549/17903413 [01:40<01:05, 120546.40it/s] 56%|█████▌    | 10028651/17903413 [01:40<01:05, 120686.98it/s] 56%|█████▌    | 10040721/17903413 [01:41<01:05, 119887.36it/s] 56%|█████▌    | 10052712/17903413 [01:41<01:05, 119417.44it/s] 56%|█████▌    | 10064779/17903413 [01:41<01:05, 119789.49it/s] 56%|█████▋    | 10077024/17903413 [01:41<01:04, 120582.24it/s] 56%|█████▋    | 10089177/17903413 [01:41<01:04, 120862.57it/s] 56%|█████▋    | 10101265/17903413 [01:41<01:04, 120064.84it/s] 56%|█████▋    | 10113274/17903413 [01:41<01:05, 119767.92it/s] 57%|█████▋    | 10125252/17903413 [01:41<01:05, 119524.09it/s] 57%|█████▋    | 10137206/17903413 [01:41<01:05, 119057.32it/s] 57%|█████▋    | 10149115/17903413 [01:42<01:05, 119067.00it/s] 57%|█████▋    | 10161064/17903413 [01:42<01:04, 119191.54it/s] 57%|█████▋    | 10172993/17903413 [01:42<01:04, 119220.76it/s] 57%|█████▋    | 10184967/17903413 [01:42<01:04, 119374.15it/s] 57%|█████▋    | 10196905/17903413 [01:42<01:04, 118933.22it/s] 57%|█████▋    | 10208894/17903413 [01:42<01:04, 119216.83it/s] 57%|█████▋    | 10220872/17903413 [01:42<01:04, 119384.77it/s] 57%|█████▋    | 10232915/17903413 [01:42<01:04, 119695.31it/s] 57%|█████▋    | 10244885/17903413 [01:42<01:04, 119004.54it/s] 57%|█████▋    | 10256884/17903413 [01:42<01:04, 119297.64it/s] 57%|█████▋    | 10268896/17903413 [01:43<01:03, 119540.71it/s] 57%|█████▋    | 10280851/17903413 [01:43<01:03, 119441.00it/s] 57%|█████▋    | 10292796/17903413 [01:43<01:03, 119332.18it/s] 58%|█████▊    | 10304793/17903413 [01:43<01:03, 119522.69it/s] 58%|█████▊    | 10316818/17903413 [01:43<01:03, 119739.03it/s] 58%|█████▊    | 10328935/17903413 [01:43<01:03, 120165.30it/s] 58%|█████▊    | 10341123/17903413 [01:43<01:02, 120678.64it/s] 58%|█████▊    | 10353192/17903413 [01:43<01:02, 120411.71it/s] 58%|█████▊    | 10365390/17903413 [01:43<01:02, 120881.05it/s] 58%|█████▊    | 10377479/17903413 [01:43<01:02, 120867.02it/s] 58%|█████▊    | 10389566/17903413 [01:44<01:02, 120660.00it/s] 58%|█████▊    | 10401804/17903413 [01:44<01:01, 121173.22it/s] 58%|█████▊    | 10413935/17903413 [01:44<01:01, 121213.62it/s] 58%|█████▊    | 10426170/17903413 [01:44<01:01, 121553.20it/s] 58%|█████▊    | 10438326/17903413 [01:44<01:01, 121328.84it/s] 58%|█████▊    | 10450460/17903413 [01:44<01:01, 121105.50it/s] 58%|█████▊    | 10462689/17903413 [01:44<01:01, 121459.80it/s] 59%|█████▊    | 10474836/17903413 [01:44<01:01, 121092.68it/s] 59%|█████▊    | 10486946/17903413 [01:44<01:01, 120877.34it/s] 59%|█████▊    | 10499187/17903413 [01:44<01:01, 121334.98it/s] 59%|█████▊    | 10511371/17903413 [01:45<01:00, 121484.66it/s] 59%|█████▉    | 10523566/17903413 [01:45<01:00, 121623.01it/s] 59%|█████▉    | 10535729/17903413 [01:45<01:00, 121404.42it/s] 59%|█████▉    | 10547903/17903413 [01:45<01:00, 121503.78it/s] 59%|█████▉    | 10560119/17903413 [01:45<01:00, 121698.56it/s] 59%|█████▉    | 10572290/17903413 [01:45<01:00, 121241.95it/s] 59%|█████▉    | 10584415/17903413 [01:45<01:00, 120411.82it/s] 59%|█████▉    | 10596559/17903413 [01:45<01:00, 120716.72it/s] 59%|█████▉    | 10608632/17903413 [01:45<01:00, 120666.70it/s] 59%|█████▉    | 10620864/17903413 [01:45<01:00, 121158.14it/s] 59%|█████▉    | 10632998/17903413 [01:46<00:59, 121209.56it/s] 59%|█████▉    | 10645214/17903413 [01:46<00:59, 121493.92it/s] 60%|█████▉    | 10657364/17903413 [01:46<00:59, 120804.33it/s] 60%|█████▉    | 10669446/17903413 [01:46<01:00, 119952.32it/s] 60%|█████▉    | 10681443/17903413 [01:46<01:00, 119383.46it/s] 60%|█████▉    | 10693383/17903413 [01:46<01:00, 118954.21it/s] 60%|█████▉    | 10705588/17903413 [01:46<01:00, 119873.82it/s] 60%|█████▉    | 10717643/17903413 [01:46<00:59, 120073.55it/s] 60%|█████▉    | 10729770/17903413 [01:46<00:59, 120430.23it/s] 60%|█████▉    | 10741821/17903413 [01:46<00:59, 120453.86it/s] 60%|██████    | 10753944/17903413 [01:47<00:59, 120683.64it/s] 60%|██████    | 10766013/17903413 [01:47<00:59, 120542.51it/s] 60%|██████    | 10778068/17903413 [01:47<00:59, 119940.37it/s] 60%|██████    | 10790168/17903413 [01:47<00:59, 120254.10it/s] 60%|██████    | 10802195/17903413 [01:47<00:59, 120014.56it/s] 60%|██████    | 10814267/17903413 [01:47<00:58, 120223.53it/s] 60%|██████    | 10826376/17903413 [01:47<00:58, 120480.49it/s] 61%|██████    | 10838466/17903413 [01:47<00:58, 120604.85it/s] 61%|██████    | 10850609/17903413 [01:47<00:58, 120849.51it/s] 61%|██████    | 10862695/17903413 [01:47<00:58, 120483.43it/s] 61%|██████    | 10874744/17903413 [01:48<00:58, 120103.71it/s] 61%|██████    | 10886817/17903413 [01:48<00:58, 120288.36it/s] 61%|██████    | 10898853/17903413 [01:48<00:58, 120306.82it/s] 61%|██████    | 10910927/17903413 [01:48<00:58, 120434.90it/s] 61%|██████    | 10922971/17903413 [01:48<00:58, 119776.06it/s] 61%|██████    | 10935041/17903413 [01:48<00:58, 120051.24it/s] 61%|██████    | 10947074/17903413 [01:48<00:57, 120132.56it/s] 61%|██████    | 10959088/17903413 [01:48<00:57, 119896.99it/s] 61%|██████▏   | 10971079/17903413 [01:48<00:58, 119396.65it/s] 61%|██████▏   | 10983113/17903413 [01:48<00:57, 119675.35it/s] 61%|██████▏   | 10995243/17903413 [01:49<00:57, 120159.23it/s] 61%|██████▏   | 11007260/17903413 [01:49<00:57, 120103.28it/s] 62%|██████▏   | 11019304/17903413 [01:49<00:57, 120202.83it/s] 62%|██████▏   | 11031325/17903413 [01:49<00:57, 119930.07it/s] 62%|██████▏   | 11043396/17903413 [01:49<00:57, 120161.66it/s] 62%|██████▏   | 11055428/17903413 [01:49<00:56, 120207.99it/s] 62%|██████▏   | 11067450/17903413 [01:49<00:56, 119937.64it/s] 62%|██████▏   | 11079453/17903413 [01:49<00:56, 119964.80it/s] 62%|██████▏   | 11091450/17903413 [01:49<00:56, 119710.66it/s] 62%|██████▏   | 11103422/17903413 [01:49<00:57, 118871.08it/s] 62%|██████▏   | 11115389/17903413 [01:50<00:56, 119107.29it/s] 62%|██████▏   | 11127386/17903413 [01:50<00:56, 119362.60it/s] 62%|██████▏   | 11139324/17903413 [01:50<00:56, 119160.75it/s] 62%|██████▏   | 11151241/17903413 [01:50<00:56, 118712.43it/s] 62%|██████▏   | 11163164/17903413 [01:50<00:56, 118865.83it/s] 62%|██████▏   | 11175126/17903413 [01:50<00:56, 119089.86it/s] 62%|██████▏   | 11187036/17903413 [01:50<01:32, 72314.80it/s]  63%|██████▎   | 11198950/17903413 [01:50<01:21, 81963.30it/s] 63%|██████▎   | 11210869/17903413 [01:51<01:14, 90428.47it/s] 63%|██████▎   | 11222389/17903413 [01:51<01:09, 96502.06it/s] 63%|██████▎   | 11234268/17903413 [01:51<01:05, 102283.32it/s] 63%|██████▎   | 11246178/17903413 [01:51<01:02, 106830.08it/s] 63%|██████▎   | 11257866/17903413 [01:51<01:00, 109628.69it/s] 63%|██████▎   | 11269378/17903413 [01:51<01:00, 110480.50it/s] 63%|██████▎   | 11281456/17903413 [01:51<00:58, 113443.03it/s] 63%|██████▎   | 11293421/17903413 [01:51<00:57, 115249.09it/s] 63%|██████▎   | 11305646/17903413 [01:51<00:56, 117306.53it/s] 63%|██████▎   | 11317781/17903413 [01:51<00:55, 118500.56it/s] 63%|██████▎   | 11329738/17903413 [01:52<00:55, 118816.26it/s] 63%|██████▎   | 11341829/17903413 [01:52<00:54, 119437.42it/s] 63%|██████▎   | 11354124/17903413 [01:52<00:54, 120483.40it/s] 63%|██████▎   | 11366414/17903413 [01:52<00:53, 121202.85it/s] 64%|██████▎   | 11378629/17903413 [01:52<00:53, 121483.90it/s] 64%|██████▎   | 11390902/17903413 [01:52<00:53, 121856.59it/s] 64%|██████▎   | 11403153/17903413 [01:52<00:53, 122050.57it/s] 64%|██████▍   | 11415368/17903413 [01:52<00:53, 121746.14it/s] 64%|██████▍   | 11427550/17903413 [01:52<00:53, 121582.73it/s] 64%|██████▍   | 11439713/17903413 [01:52<00:53, 121445.59it/s] 64%|██████▍   | 11451861/17903413 [01:53<00:53, 121123.76it/s] 64%|██████▍   | 11464040/17903413 [01:53<00:53, 121321.50it/s] 64%|██████▍   | 11476349/17903413 [01:53<00:52, 121849.06it/s] 64%|██████▍   | 11488673/17903413 [01:53<00:52, 122264.61it/s] 64%|██████▍   | 11500913/17903413 [01:53<00:52, 122304.59it/s] 64%|██████▍   | 11513145/17903413 [01:53<00:52, 121783.89it/s] 64%|██████▍   | 11525325/17903413 [01:53<00:52, 121550.97it/s] 64%|██████▍   | 11537481/17903413 [01:53<00:52, 121249.55it/s] 65%|██████▍   | 11549640/17903413 [01:53<00:52, 121350.82it/s] 65%|██████▍   | 11561776/17903413 [01:53<00:52, 120410.10it/s] 65%|██████▍   | 11573995/17903413 [01:54<00:52, 120939.15it/s] 65%|██████▍   | 11586158/17903413 [01:54<00:52, 121144.81it/s] 65%|██████▍   | 11598432/17903413 [01:54<00:51, 121620.55it/s] 65%|██████▍   | 11610596/17903413 [01:54<00:51, 121425.27it/s] 65%|██████▍   | 11622740/17903413 [01:54<00:51, 121036.65it/s] 65%|██████▍   | 11634894/17903413 [01:54<00:51, 121184.96it/s] 65%|██████▌   | 11647062/17903413 [01:54<00:51, 121331.75it/s] 65%|██████▌   | 11659196/17903413 [01:54<00:51, 121271.94it/s] 65%|██████▌   | 11671406/17903413 [01:54<00:51, 121518.28it/s] 65%|██████▌   | 11683559/17903413 [01:54<00:51, 121520.43it/s] 65%|██████▌   | 11695712/17903413 [01:55<00:51, 121148.74it/s] 65%|██████▌   | 11707828/17903413 [01:55<00:51, 120845.13it/s] 65%|██████▌   | 11719994/17903413 [01:55<00:51, 121086.12it/s] 66%|██████▌   | 11732103/17903413 [01:55<00:51, 120789.95it/s] 66%|██████▌   | 11744240/17903413 [01:55<00:50, 120962.00it/s] 66%|██████▌   | 11756537/17903413 [01:55<00:50, 121560.06it/s] 66%|██████▌   | 11768820/17903413 [01:55<00:50, 121940.32it/s] 66%|██████▌   | 11781143/17903413 [01:55<00:50, 122325.12it/s] 66%|██████▌   | 11793376/17903413 [01:55<00:49, 122204.09it/s] 66%|██████▌   | 11805597/17903413 [01:55<00:50, 121560.47it/s] 66%|██████▌   | 11817973/17903413 [01:56<00:49, 122215.57it/s] 66%|██████▌   | 11830366/17903413 [01:56<00:49, 122725.20it/s] 66%|██████▌   | 11842772/17903413 [01:56<00:49, 123123.88it/s] 66%|██████▌   | 11855132/17903413 [01:56<00:49, 123265.82it/s] 66%|██████▋   | 11867499/17903413 [01:56<00:48, 123386.00it/s] 66%|██████▋   | 11879838/17903413 [01:56<00:49, 122420.45it/s] 66%|██████▋   | 11892082/17903413 [01:56<00:49, 121042.42it/s] 66%|██████▋   | 11904191/17903413 [01:56<00:49, 120704.16it/s] 67%|██████▋   | 11916427/17903413 [01:56<00:49, 121195.52it/s] 67%|██████▋   | 11928736/17903413 [01:56<00:49, 121756.91it/s] 67%|██████▋   | 11941184/17903413 [01:57<00:48, 122567.42it/s] 67%|██████▋   | 11953548/17903413 [01:57<00:48, 122885.25it/s] 67%|██████▋   | 11965838/17903413 [01:57<00:48, 122806.55it/s] 67%|██████▋   | 11978337/17903413 [01:57<00:47, 123458.80it/s] 67%|██████▋   | 11990736/17903413 [01:57<00:47, 123615.29it/s] 67%|██████▋   | 12003099/17903413 [01:57<00:48, 122147.11it/s] 67%|██████▋   | 12015460/17903413 [01:57<00:48, 122580.17it/s] 67%|██████▋   | 12027741/17903413 [01:57<00:47, 122648.27it/s] 67%|██████▋   | 12040130/17903413 [01:57<00:47, 123016.78it/s] 67%|██████▋   | 12052487/17903413 [01:57<00:47, 123182.07it/s] 67%|██████▋   | 12064807/17903413 [01:58<00:47, 123037.50it/s] 67%|██████▋   | 12077179/17903413 [01:58<00:47, 123239.94it/s] 68%|██████▊   | 12089504/17903413 [01:58<00:47, 123192.15it/s] 68%|██████▊   | 12101824/17903413 [01:58<00:47, 122412.33it/s] 68%|██████▊   | 12114125/17903413 [01:58<00:47, 122589.29it/s] 68%|██████▊   | 12126458/17903413 [01:58<00:47, 122809.28it/s] 68%|██████▊   | 12138781/17903413 [01:58<00:46, 122932.47it/s] 68%|██████▊   | 12151075/17903413 [01:58<00:46, 122721.96it/s] 68%|██████▊   | 12163438/17903413 [01:58<00:46, 122993.18it/s] 68%|██████▊   | 12175738/17903413 [01:58<00:46, 122974.89it/s] 68%|██████▊   | 12188105/17903413 [01:59<00:46, 123181.15it/s] 68%|██████▊   | 12200424/17903413 [01:59<00:46, 122193.77it/s] 68%|██████▊   | 12212767/17903413 [01:59<00:46, 122560.59it/s] 68%|██████▊   | 12225025/17903413 [01:59<00:46, 122296.02it/s] 68%|██████▊   | 12237287/17903413 [01:59<00:46, 122392.45it/s] 68%|██████▊   | 12249604/17903413 [01:59<00:46, 122622.63it/s] 68%|██████▊   | 12261867/17903413 [01:59<00:46, 122521.70it/s] 69%|██████▊   | 12274181/17903413 [01:59<00:45, 122705.59it/s] 69%|██████▊   | 12286522/17903413 [01:59<00:45, 122913.81it/s] 69%|██████▊   | 12298814/17903413 [01:59<00:45, 121980.48it/s] 69%|██████▉   | 12311014/17903413 [02:00<00:46, 120939.34it/s] 69%|██████▉   | 12323268/17903413 [02:00<00:45, 121414.11it/s] 69%|██████▉   | 12335412/17903413 [02:00<00:45, 121357.66it/s] 69%|██████▉   | 12347675/17903413 [02:00<00:45, 121735.59it/s] 69%|██████▉   | 12360003/17903413 [02:00<00:45, 122195.35it/s] 69%|██████▉   | 12372297/17903413 [02:00<00:45, 122417.74it/s] 69%|██████▉   | 12384604/17903413 [02:00<00:45, 122610.63it/s] 69%|██████▉   | 12396866/17903413 [02:00<00:45, 121964.18it/s] 69%|██████▉   | 12409086/17903413 [02:00<00:45, 122033.59it/s] 69%|██████▉   | 12421391/17903413 [02:00<00:44, 122337.03it/s] 69%|██████▉   | 12433708/17903413 [02:01<00:44, 122585.07it/s] 70%|██████▉   | 12445968/17903413 [02:01<00:44, 122021.10it/s] 70%|██████▉   | 12458236/17903413 [02:01<00:44, 122216.03it/s] 70%|██████▉   | 12470519/17903413 [02:01<00:44, 122396.89it/s] 70%|██████▉   | 12482823/17903413 [02:01<00:44, 122586.73it/s] 70%|██████▉   | 12495083/17903413 [02:01<00:44, 121834.63it/s] 70%|██████▉   | 12507268/17903413 [02:01<00:44, 121334.30it/s] 70%|██████▉   | 12519403/17903413 [02:01<00:44, 120778.42it/s] 70%|██████▉   | 12531482/17903413 [02:01<00:44, 120492.73it/s] 70%|███████   | 12543777/17903413 [02:02<00:44, 121223.42it/s] 70%|███████   | 12555901/17903413 [02:02<00:44, 121030.31it/s] 70%|███████   | 12568145/17903413 [02:02<00:43, 121449.36it/s] 70%|███████   | 12580376/17903413 [02:02<00:43, 121704.04it/s] 70%|███████   | 12592547/17903413 [02:02<00:44, 120618.85it/s] 70%|███████   | 12604638/17903413 [02:02<00:43, 120704.77it/s] 70%|███████   | 12616853/17903413 [02:02<00:43, 121134.76it/s] 71%|███████   | 12629065/17903413 [02:02<00:43, 121427.14it/s] 71%|███████   | 12641280/17903413 [02:02<00:43, 121641.53it/s] 71%|███████   | 12653469/17903413 [02:02<00:43, 121715.79it/s] 71%|███████   | 12665642/17903413 [02:03<00:43, 121554.59it/s] 71%|███████   | 12677834/17903413 [02:03<00:42, 121663.17it/s] 71%|███████   | 12690001/17903413 [02:03<00:42, 121300.65it/s] 71%|███████   | 12702235/17903413 [02:03<00:42, 121609.03it/s] 71%|███████   | 12714397/17903413 [02:03<00:42, 121598.46it/s] 71%|███████   | 12726643/17903413 [02:03<00:42, 121854.29it/s] 71%|███████   | 12738829/17903413 [02:03<00:42, 121799.99it/s] 71%|███████   | 12751172/17903413 [02:03<00:42, 122287.09it/s] 71%|███████▏  | 12763407/17903413 [02:03<00:42, 122304.50it/s] 71%|███████▏  | 12775686/17903413 [02:03<00:41, 122448.35it/s] 71%|███████▏  | 12787931/17903413 [02:04<00:41, 122082.28it/s] 71%|███████▏  | 12800178/17903413 [02:04<00:41, 122195.31it/s] 72%|███████▏  | 12812530/17903413 [02:04<00:41, 122590.59it/s] 72%|███████▏  | 12824892/17903413 [02:04<00:41, 122897.94it/s] 72%|███████▏  | 12837182/17903413 [02:04<00:41, 122696.13it/s] 72%|███████▏  | 12849452/17903413 [02:04<00:41, 122637.43it/s] 72%|███████▏  | 12861791/17903413 [02:04<00:41, 122861.92it/s] 72%|███████▏  | 12874078/17903413 [02:04<00:40, 122774.20it/s] 72%|███████▏  | 12886356/17903413 [02:04<00:41, 122086.74it/s] 72%|███████▏  | 12898672/17903413 [02:04<00:40, 122405.28it/s] 72%|███████▏  | 12910970/17903413 [02:05<00:40, 122575.49it/s] 72%|███████▏  | 12923291/17903413 [02:05<00:40, 122763.41it/s] 72%|███████▏  | 12935613/17903413 [02:05<00:40, 122898.17it/s] 72%|███████▏  | 12947972/17903413 [02:05<00:40, 123102.78it/s] 72%|███████▏  | 12960283/17903413 [02:05<00:40, 123098.47it/s] 72%|███████▏  | 12972594/17903413 [02:05<00:40, 122726.85it/s] 73%|███████▎  | 12984868/17903413 [02:05<00:40, 122137.69it/s] 73%|███████▎  | 12997083/17903413 [02:05<00:40, 120870.25it/s] 73%|███████▎  | 13009174/17903413 [02:05<00:40, 120881.65it/s] 73%|███████▎  | 13021279/17903413 [02:05<00:40, 120931.63it/s] 73%|███████▎  | 13033407/17903413 [02:06<00:40, 121034.24it/s] 73%|███████▎  | 13045517/17903413 [02:06<00:40, 121053.75it/s] 73%|███████▎  | 13057624/17903413 [02:06<00:40, 120948.73it/s] 73%|███████▎  | 13069720/17903413 [02:06<00:39, 120856.42it/s] 73%|███████▎  | 13081807/17903413 [02:06<00:40, 120438.53it/s] 73%|███████▎  | 13093930/17903413 [02:06<00:39, 120673.23it/s] 73%|███████▎  | 13105998/17903413 [02:06<00:39, 120410.36it/s] 73%|███████▎  | 13118213/17903413 [02:06<00:39, 120928.29it/s] 73%|███████▎  | 13130427/17903413 [02:06<00:39, 121288.68it/s] 73%|███████▎  | 13142557/17903413 [02:06<00:39, 120658.73it/s] 73%|███████▎  | 13154624/17903413 [02:07<00:39, 120059.42it/s] 74%|███████▎  | 13166631/17903413 [02:07<00:39, 119900.37it/s] 74%|███████▎  | 13178622/17903413 [02:07<00:39, 119611.28it/s] 74%|███████▎  | 13190743/17903413 [02:07<00:39, 120087.99it/s] 74%|███████▎  | 13203011/17903413 [02:07<00:38, 120859.55it/s] 74%|███████▍  | 13215113/17903413 [02:07<00:38, 120906.98it/s] 74%|███████▍  | 13227296/17903413 [02:07<00:38, 121181.12it/s] 74%|███████▍  | 13239579/17903413 [02:07<00:38, 121674.42it/s] 74%|███████▍  | 13251808/17903413 [02:07<00:38, 121857.38it/s] 74%|███████▍  | 13263995/17903413 [02:07<00:38, 121798.78it/s] 74%|███████▍  | 13276176/17903413 [02:08<00:38, 121336.10it/s] 74%|███████▍  | 13288481/17903413 [02:08<00:37, 121847.23it/s] 74%|███████▍  | 13300769/17903413 [02:08<00:37, 122156.12it/s] 74%|███████▍  | 13313014/17903413 [02:08<00:37, 122241.64it/s] 74%|███████▍  | 13325239/17903413 [02:08<00:37, 122198.44it/s] 74%|███████▍  | 13337530/17903413 [02:08<00:37, 122409.18it/s] 75%|███████▍  | 13349871/17903413 [02:08<00:37, 122707.04it/s] 75%|███████▍  | 13362142/17903413 [02:08<00:37, 122484.33it/s] 75%|███████▍  | 13374391/17903413 [02:08<00:37, 122156.78it/s] 75%|███████▍  | 13386693/17903413 [02:08<00:36, 122414.90it/s] 75%|███████▍  | 13398953/17903413 [02:09<00:36, 122468.16it/s] 75%|███████▍  | 13411201/17903413 [02:09<00:36, 122295.58it/s] 75%|███████▍  | 13423483/17903413 [02:09<00:36, 122452.00it/s] 75%|███████▌  | 13435729/17903413 [02:09<00:36, 122096.98it/s] 75%|███████▌  | 13448011/17903413 [02:09<00:36, 122312.48it/s] 75%|███████▌  | 13460243/17903413 [02:09<00:36, 122136.67it/s] 75%|███████▌  | 13472457/17903413 [02:09<00:36, 121717.75it/s] 75%|███████▌  | 13484655/17903413 [02:09<00:36, 121794.48it/s] 75%|███████▌  | 13496922/17903413 [02:09<00:36, 122053.53it/s] 75%|███████▌  | 13509234/17903413 [02:09<00:35, 122372.23it/s] 76%|███████▌  | 13521574/17903413 [02:10<00:35, 122677.34it/s] 76%|███████▌  | 13533864/17903413 [02:10<00:35, 122741.56it/s] 76%|███████▌  | 13546139/17903413 [02:10<00:35, 121939.09it/s] 76%|███████▌  | 13558335/17903413 [02:10<00:36, 120051.59it/s] 76%|███████▌  | 13570486/17903413 [02:10<00:35, 120479.84it/s] 76%|███████▌  | 13582822/17903413 [02:10<00:35, 121332.19it/s] 76%|███████▌  | 13595124/17903413 [02:10<00:35, 121833.55it/s] 76%|███████▌  | 13607403/17903413 [02:10<00:35, 122118.46it/s] 76%|███████▌  | 13619731/17903413 [02:10<00:34, 122465.29it/s] 76%|███████▌  | 13631980/17903413 [02:10<00:34, 122388.28it/s] 76%|███████▌  | 13644221/17903413 [02:11<00:34, 122374.03it/s] 76%|███████▋  | 13656460/17903413 [02:11<00:35, 121259.63it/s] 76%|███████▋  | 13668648/17903413 [02:11<00:34, 121442.64it/s] 76%|███████▋  | 13680907/17903413 [02:11<00:34, 121782.27it/s] 76%|███████▋  | 13693161/17903413 [02:11<00:34, 122005.99it/s] 77%|███████▋  | 13705428/17903413 [02:11<00:34, 122202.61it/s] 77%|███████▋  | 13717697/17903413 [02:11<00:34, 122348.15it/s] 77%|███████▋  | 13729933/17903413 [02:11<00:34, 122029.30it/s] 77%|███████▋  | 13742137/17903413 [02:11<00:34, 121985.64it/s] 77%|███████▋  | 13754364/17903413 [02:11<00:33, 122070.62it/s] 77%|███████▋  | 13766572/17903413 [02:12<00:34, 119965.13it/s] 77%|███████▋  | 13778577/17903413 [02:12<00:34, 119981.14it/s] 77%|███████▋  | 13790752/17903413 [02:12<00:34, 120503.89it/s] 77%|███████▋  | 13803168/17903413 [02:12<00:33, 121593.19it/s] 77%|███████▋  | 13815505/17903413 [02:12<00:33, 122120.68it/s] 77%|███████▋  | 13827946/17903413 [02:12<00:33, 122803.00it/s] 77%|███████▋  | 13840288/17903413 [02:12<00:33, 122985.95it/s] 77%|███████▋  | 13852589/17903413 [02:12<00:33, 122307.40it/s] 77%|███████▋  | 13864822/17903413 [02:12<00:33, 122200.69it/s] 78%|███████▊  | 13877044/17903413 [02:12<00:33, 121735.32it/s] 78%|███████▊  | 13889271/17903413 [02:13<00:32, 121892.26it/s] 78%|███████▊  | 13901622/17903413 [02:13<00:32, 122372.90it/s] 78%|███████▊  | 13914003/17903413 [02:13<00:32, 122800.06it/s] 78%|███████▊  | 13926347/17903413 [02:13<00:32, 122990.03it/s] 78%|███████▊  | 13938647/17903413 [02:13<00:32, 122988.75it/s] 78%|███████▊  | 13950947/17903413 [02:13<00:32, 122499.79it/s] 78%|███████▊  | 13963252/17903413 [02:13<00:32, 122662.04it/s] 78%|███████▊  | 13975519/17903413 [02:13<00:32, 122471.25it/s] 78%|███████▊  | 13987767/17903413 [02:13<00:32, 122190.84it/s] 78%|███████▊  | 14000075/17903413 [02:13<00:31, 122456.23it/s] 78%|███████▊  | 14012321/17903413 [02:14<00:31, 122269.40it/s] 78%|███████▊  | 14024622/17903413 [02:14<00:31, 122488.37it/s] 78%|███████▊  | 14036888/17903413 [02:14<00:31, 122537.43it/s] 78%|███████▊  | 14049142/17903413 [02:14<00:31, 122049.63it/s] 79%|███████▊  | 14061348/17903413 [02:14<00:31, 121523.00it/s] 79%|███████▊  | 14073714/17903413 [02:14<00:31, 122157.71it/s] 79%|███████▊  | 14086047/17903413 [02:14<00:31, 122507.15it/s] 79%|███████▊  | 14098299/17903413 [02:14<00:31, 121566.70it/s] 79%|███████▉  | 14110542/17903413 [02:14<00:31, 121822.35it/s] 79%|███████▉  | 14122841/17903413 [02:14<00:30, 122170.08it/s] 79%|███████▉  | 14135137/17903413 [02:15<00:30, 122404.92it/s] 79%|███████▉  | 14147379/17903413 [02:15<00:30, 121899.15it/s] 79%|███████▉  | 14159584/17903413 [02:15<00:30, 121941.97it/s] 79%|███████▉  | 14171863/17903413 [02:15<00:30, 122193.57it/s] 79%|███████▉  | 14184201/17903413 [02:15<00:30, 122546.60it/s] 79%|███████▉  | 14196535/17903413 [02:15<00:30, 122783.39it/s] 79%|███████▉  | 14208814/17903413 [02:15<00:30, 122442.32it/s] 79%|███████▉  | 14221103/17903413 [02:15<00:30, 122573.75it/s] 80%|███████▉  | 14233447/17903413 [02:15<00:29, 122832.19it/s] 80%|███████▉  | 14245731/17903413 [02:15<00:29, 122205.13it/s] 80%|███████▉  | 14258094/17903413 [02:16<00:29, 122628.32it/s] 80%|███████▉  | 14270416/17903413 [02:16<00:29, 122802.32it/s] 80%|███████▉  | 14282697/17903413 [02:16<00:29, 122703.78it/s] 80%|███████▉  | 14294968/17903413 [02:16<00:29, 122652.19it/s] 80%|███████▉  | 14307234/17903413 [02:16<00:29, 122448.86it/s] 80%|███████▉  | 14319480/17903413 [02:16<00:29, 121969.75it/s] 80%|████████  | 14331794/17903413 [02:16<00:29, 122318.86it/s] 80%|████████  | 14344027/17903413 [02:16<00:29, 121691.77it/s] 80%|████████  | 14356342/17903413 [02:16<00:29, 122124.56it/s] 80%|████████  | 14368556/17903413 [02:16<00:28, 122036.37it/s] 80%|████████  | 14380905/17903413 [02:17<00:28, 122469.79it/s] 80%|████████  | 14393153/17903413 [02:17<00:28, 122132.48it/s] 80%|████████  | 14405367/17903413 [02:17<00:28, 121230.87it/s] 81%|████████  | 14417492/17903413 [02:17<00:28, 120771.25it/s] 81%|████████  | 14429571/17903413 [02:17<00:28, 119877.13it/s] 81%|████████  | 14441561/17903413 [02:17<00:28, 119740.20it/s] 81%|████████  | 14453537/17903413 [02:17<00:28, 119616.42it/s] 81%|████████  | 14465634/17903413 [02:17<00:28, 120019.20it/s] 81%|████████  | 14477714/17903413 [02:17<00:28, 120250.40it/s] 81%|████████  | 14489846/17903413 [02:17<00:28, 120567.50it/s] 81%|████████  | 14501976/17903413 [02:18<00:28, 120784.10it/s] 81%|████████  | 14514078/17903413 [02:18<00:28, 120853.67it/s] 81%|████████  | 14526164/17903413 [02:18<00:28, 119999.41it/s] 81%|████████  | 14538166/17903413 [02:18<00:28, 118500.56it/s] 81%|████████▏ | 14550259/17903413 [02:18<00:28, 119217.37it/s] 81%|████████▏ | 14562382/17903413 [02:18<00:27, 119813.18it/s] 81%|████████▏ | 14574585/17903413 [02:18<00:27, 120472.49it/s] 81%|████████▏ | 14586652/17903413 [02:18<00:27, 120528.94it/s] 82%|████████▏ | 14598784/17903413 [02:18<00:27, 120765.46it/s] 82%|████████▏ | 14610867/17903413 [02:18<00:27, 120781.88it/s] 82%|████████▏ | 14623238/17903413 [02:19<00:26, 121658.63it/s] 82%|████████▏ | 14635405/17903413 [02:19<00:26, 121187.16it/s] 82%|████████▏ | 14647525/17903413 [02:19<00:26, 121110.49it/s] 82%|████████▏ | 14659922/17903413 [02:19<00:26, 121965.27it/s] 82%|████████▏ | 14672281/17903413 [02:19<00:26, 122451.02it/s] 82%|████████▏ | 14684665/17903413 [02:19<00:26, 122866.10it/s] 82%|████████▏ | 14696953/17903413 [02:19<00:26, 122748.83it/s] 82%|████████▏ | 14709342/17903413 [02:19<00:25, 123090.29it/s] 82%|████████▏ | 14721677/17903413 [02:19<00:25, 123167.55it/s] 82%|████████▏ | 14733994/17903413 [02:19<00:25, 122649.87it/s] 82%|████████▏ | 14746322/17903413 [02:20<00:25, 122836.45it/s] 82%|████████▏ | 14758607/17903413 [02:20<00:25, 122372.70it/s] 83%|████████▎ | 14770989/17903413 [02:20<00:25, 122803.55it/s] 83%|████████▎ | 14783287/17903413 [02:20<00:25, 122855.39it/s] 83%|████████▎ | 14795639/17903413 [02:20<00:25, 123052.36it/s] 83%|████████▎ | 14807945/17903413 [02:20<00:25, 122268.54it/s] 83%|████████▎ | 14820338/17903413 [02:20<00:25, 122763.46it/s] 83%|████████▎ | 14832616/17903413 [02:20<00:25, 121988.05it/s] 83%|████████▎ | 14844930/17903413 [02:20<00:25, 122330.23it/s] 83%|████████▎ | 14857172/17903413 [02:20<00:24, 122355.15it/s] 83%|████████▎ | 14869418/17903413 [02:21<00:24, 122382.95it/s] 83%|████████▎ | 14881717/17903413 [02:21<00:24, 122562.37it/s] 83%|████████▎ | 14893986/17903413 [02:21<00:24, 122600.36it/s] 83%|████████▎ | 14906247/17903413 [02:21<00:24, 122332.11it/s] 83%|████████▎ | 14918544/17903413 [02:21<00:24, 122522.35it/s] 83%|████████▎ | 14930797/17903413 [02:21<00:24, 121962.88it/s] 83%|████████▎ | 14943091/17903413 [02:21<00:24, 122254.50it/s] 84%|████████▎ | 14955318/17903413 [02:21<00:24, 121927.23it/s] 84%|████████▎ | 14967692/17903413 [02:21<00:23, 122466.71it/s] 84%|████████▎ | 14979943/17903413 [02:21<00:23, 122476.99it/s] 84%|████████▎ | 14992222/17903413 [02:22<00:23, 122570.56it/s] 84%|████████▍ | 15004616/17903413 [02:22<00:23, 122980.23it/s] 84%|████████▍ | 15016940/17903413 [02:22<00:23, 123057.50it/s] 84%|████████▍ | 15029246/17903413 [02:22<00:23, 122050.10it/s] 84%|████████▍ | 15041453/17903413 [02:22<00:23, 121580.07it/s] 84%|████████▍ | 15053789/17903413 [02:22<00:23, 122109.00it/s] 84%|████████▍ | 15066095/17903413 [02:22<00:23, 122392.73it/s] 84%|████████▍ | 15078452/17903413 [02:22<00:23, 122744.63it/s] 84%|████████▍ | 15090728/17903413 [02:22<00:23, 122229.22it/s] 84%|████████▍ | 15103106/17903413 [02:23<00:22, 122689.52it/s] 84%|████████▍ | 15115376/17903413 [02:23<00:22, 122564.33it/s] 84%|████████▍ | 15127634/17903413 [02:23<00:22, 121844.17it/s] 85%|████████▍ | 15139820/17903413 [02:23<00:22, 121668.88it/s] 85%|████████▍ | 15152001/17903413 [02:23<00:22, 121710.15it/s] 85%|████████▍ | 15164356/17903413 [02:23<00:22, 122259.34it/s] 85%|████████▍ | 15176642/17903413 [02:23<00:22, 122438.22it/s] 85%|████████▍ | 15189042/17903413 [02:23<00:22, 122903.80it/s] 85%|████████▍ | 15201333/17903413 [02:23<00:22, 122312.29it/s] 85%|████████▍ | 15213638/17903413 [02:23<00:21, 122532.42it/s] 85%|████████▌ | 15225892/17903413 [02:24<00:21, 122214.62it/s] 85%|████████▌ | 15238160/17903413 [02:24<00:21, 122351.19it/s] 85%|████████▌ | 15250519/17903413 [02:24<00:21, 122721.13it/s] 85%|████████▌ | 15262853/17903413 [02:24<00:21, 122903.13it/s] 85%|████████▌ | 15275144/17903413 [02:24<00:21, 122657.64it/s] 85%|████████▌ | 15287506/17903413 [02:24<00:21, 122943.94it/s] 85%|████████▌ | 15299811/17903413 [02:24<00:21, 122973.90it/s] 86%|████████▌ | 15312119/17903413 [02:24<00:21, 123004.23it/s] 86%|████████▌ | 15324420/17903413 [02:24<00:21, 122095.39it/s] 86%|████████▌ | 15336662/17903413 [02:24<00:21, 122190.25it/s] 86%|████████▌ | 15349081/17903413 [02:25<00:20, 122785.85it/s] 86%|████████▌ | 15361361/17903413 [02:25<00:20, 122774.88it/s] 86%|████████▌ | 15373640/17903413 [02:25<00:20, 122762.62it/s] 86%|████████▌ | 15385917/17903413 [02:25<00:20, 122635.16it/s] 86%|████████▌ | 15398181/17903413 [02:25<00:20, 122534.55it/s] 86%|████████▌ | 15410440/17903413 [02:25<00:20, 122548.13it/s] 86%|████████▌ | 15422695/17903413 [02:25<00:20, 121810.87it/s] 86%|████████▌ | 15435040/17903413 [02:25<00:20, 122298.37it/s] 86%|████████▋ | 15447429/17903413 [02:25<00:20, 122772.94it/s] 86%|████████▋ | 15459776/17903413 [02:25<00:19, 122979.72it/s] 86%|████████▋ | 15472075/17903413 [02:26<00:19, 122796.79it/s] 86%|████████▋ | 15484356/17903413 [02:26<00:19, 122800.43it/s] 87%|████████▋ | 15496644/17903413 [02:26<00:19, 122822.89it/s] 87%|████████▋ | 15508927/17903413 [02:26<00:19, 122338.92it/s] 87%|████████▋ | 15521162/17903413 [02:26<00:19, 121979.83it/s] 87%|████████▋ | 15533371/17903413 [02:26<00:19, 122010.34it/s] 87%|████████▋ | 15545667/17903413 [02:26<00:19, 122294.26it/s] 87%|████████▋ | 15557897/17903413 [02:26<00:19, 122037.18it/s] 87%|████████▋ | 15570113/17903413 [02:26<00:19, 122071.51it/s] 87%|████████▋ | 15582421/17903413 [02:26<00:18, 122371.26it/s] 87%|████████▋ | 15594673/17903413 [02:27<00:18, 122414.62it/s] 87%|████████▋ | 15606915/17903413 [02:27<00:18, 122270.38it/s] 87%|████████▋ | 15619143/17903413 [02:27<00:18, 121660.09it/s] 87%|████████▋ | 15631411/17903413 [02:27<00:18, 121963.38it/s] 87%|████████▋ | 15643608/17903413 [02:27<00:18, 121821.14it/s] 87%|████████▋ | 15655791/17903413 [02:27<00:18, 121746.22it/s] 88%|████████▊ | 15667966/17903413 [02:27<00:18, 121218.85it/s] 88%|████████▊ | 15680089/17903413 [02:27<00:18, 120692.95it/s] 88%|████████▊ | 15692348/17903413 [02:27<00:18, 121257.38it/s] 88%|████████▊ | 15704475/17903413 [02:27<00:18, 121170.77it/s] 88%|████████▊ | 15716593/17903413 [02:28<00:18, 120581.70it/s] 88%|████████▊ | 15728804/17903413 [02:28<00:17, 121035.05it/s] 88%|████████▊ | 15740938/17903413 [02:28<00:17, 121126.01it/s] 88%|████████▊ | 15753052/17903413 [02:28<00:17, 121057.71it/s] 88%|████████▊ | 15765341/17903413 [02:28<00:17, 121604.41it/s] 88%|████████▊ | 15777568/17903413 [02:28<00:17, 121802.64it/s] 88%|████████▊ | 15789837/17903413 [02:28<00:17, 122067.07it/s] 88%|████████▊ | 15802044/17903413 [02:28<00:17, 122018.28it/s] 88%|████████▊ | 15814247/17903413 [02:28<00:17, 122019.39it/s] 88%|████████▊ | 15826561/17903413 [02:28<00:16, 122354.43it/s] 88%|████████▊ | 15838825/17903413 [02:29<00:16, 122439.22it/s] 89%|████████▊ | 15851070/17903413 [02:29<00:16, 122426.99it/s] 89%|████████▊ | 15863313/17903413 [02:29<00:16, 121509.15it/s] 89%|████████▊ | 15875520/17903413 [02:29<00:16, 121675.04it/s] 89%|████████▊ | 15887760/17903413 [02:29<00:16, 121891.03it/s] 89%|████████▉ | 15899951/17903413 [02:29<00:16, 121565.66it/s] 89%|████████▉ | 15912109/17903413 [02:29<00:16, 121310.67it/s] 89%|████████▉ | 15924241/17903413 [02:29<00:16, 121255.10it/s] 89%|████████▉ | 15936415/17903413 [02:29<00:16, 121398.75it/s] 89%|████████▉ | 15948556/17903413 [02:29<00:16, 121260.67it/s] 89%|████████▉ | 15960683/17903413 [02:30<00:16, 121184.55it/s] 89%|████████▉ | 15972802/17903413 [02:30<00:15, 120911.45it/s] 89%|████████▉ | 15984894/17903413 [02:30<00:15, 120904.47it/s] 89%|████████▉ | 15996985/17903413 [02:30<00:15, 120800.89it/s] 89%|████████▉ | 16009066/17903413 [02:30<00:15, 120505.47it/s] 89%|████████▉ | 16021117/17903413 [02:30<00:15, 120387.56it/s] 90%|████████▉ | 16033246/17903413 [02:30<00:15, 120654.86it/s] 90%|████████▉ | 16045312/17903413 [02:30<00:15, 120510.29it/s] 90%|████████▉ | 16057364/17903413 [02:30<00:15, 119153.88it/s] 90%|████████▉ | 16069561/17903413 [02:30<00:15, 119989.76it/s] 90%|████████▉ | 16081835/17903413 [02:31<00:15, 120806.34it/s] 90%|████████▉ | 16093999/17903413 [02:31<00:14, 121052.70it/s] 90%|████████▉ | 16106179/17903413 [02:31<00:14, 121275.84it/s] 90%|█████████ | 16118467/17903413 [02:31<00:14, 121755.65it/s] 90%|█████████ | 16130743/17903413 [02:31<00:14, 122056.15it/s] 90%|█████████ | 16142950/17903413 [02:31<00:14, 121932.54it/s] 90%|█████████ | 16155242/17903413 [02:31<00:14, 122228.10it/s] 90%|█████████ | 16167466/17903413 [02:31<00:14, 122066.34it/s] 90%|█████████ | 16179673/17903413 [02:31<00:14, 121623.18it/s] 90%|█████████ | 16191836/17903413 [02:31<00:14, 120261.91it/s] 91%|█████████ | 16203947/17903413 [02:32<00:14, 120513.28it/s] 91%|█████████ | 16216233/17903413 [02:32<00:13, 121211.89it/s] 91%|█████████ | 16228524/17903413 [02:32<00:13, 121717.77it/s] 91%|█████████ | 16240841/17903413 [02:32<00:13, 122149.72it/s] 91%|█████████ | 16253201/17903413 [02:32<00:13, 122581.54it/s] 91%|█████████ | 16265514/17903413 [02:32<00:13, 122744.15it/s] 91%|█████████ | 16277790/17903413 [02:32<00:13, 122634.26it/s] 91%|█████████ | 16290055/17903413 [02:32<00:13, 121612.62it/s] 91%|█████████ | 16302219/17903413 [02:32<00:13, 119954.43it/s] 91%|█████████ | 16314363/17903413 [02:32<00:13, 120391.31it/s] 91%|█████████ | 16326697/17903413 [02:33<00:13, 121265.90it/s] 91%|█████████▏| 16339020/17903413 [02:33<00:12, 121850.51it/s] 91%|█████████▏| 16351327/17903413 [02:33<00:12, 122213.86it/s] 91%|█████████▏| 16363591/17903413 [02:33<00:12, 122339.11it/s] 91%|█████████▏| 16375827/17903413 [02:33<00:12, 122183.68it/s] 92%|█████████▏| 16388047/17903413 [02:33<00:12, 121706.06it/s] 92%|█████████▏| 16400219/17903413 [02:33<00:12, 121502.56it/s] 92%|█████████▏| 16412371/17903413 [02:33<00:12, 120850.17it/s] 92%|█████████▏| 16424641/17903413 [02:33<00:12, 121400.81it/s] 92%|█████████▏| 16436911/17903413 [02:33<00:12, 121788.45it/s] 92%|█████████▏| 16449139/17903413 [02:34<00:11, 121934.67it/s] 92%|█████████▏| 16461398/17903413 [02:34<00:11, 122128.48it/s] 92%|█████████▏| 16473746/17903413 [02:34<00:11, 122531.63it/s] 92%|█████████▏| 16486000/17903413 [02:34<00:11, 122102.21it/s] 92%|█████████▏| 16498211/17903413 [02:34<00:11, 122076.46it/s] 92%|█████████▏| 16510443/17903413 [02:34<00:11, 122147.02it/s] 92%|█████████▏| 16522659/17903413 [02:34<00:11, 122107.61it/s] 92%|█████████▏| 16534937/17903413 [02:34<00:11, 122308.54it/s] 92%|█████████▏| 16547169/17903413 [02:34<00:11, 122149.06it/s] 92%|█████████▏| 16559434/17903413 [02:34<00:10, 122296.25it/s] 93%|█████████▎| 16571664/17903413 [02:35<00:10, 122275.66it/s] 93%|█████████▎| 16583892/17903413 [02:35<00:10, 121862.75it/s] 93%|█████████▎| 16596151/17903413 [02:35<00:10, 122077.95it/s] 93%|█████████▎| 16608486/17903413 [02:35<00:10, 122457.30it/s] 93%|█████████▎| 16620809/17903413 [02:35<00:10, 122686.87it/s] 93%|█████████▎| 16633078/17903413 [02:35<00:10, 121226.38it/s] 93%|█████████▎| 16645273/17903413 [02:35<00:10, 121440.57it/s] 93%|█████████▎| 16657539/17903413 [02:35<00:10, 121803.14it/s] 93%|█████████▎| 16669766/17903413 [02:35<00:10, 121940.52it/s] 93%|█████████▎| 16681962/17903413 [02:35<00:10, 121583.16it/s] 93%|█████████▎| 16694207/17903413 [02:36<00:09, 121841.87it/s] 93%|█████████▎| 16706497/17903413 [02:36<00:09, 122156.73it/s] 93%|█████████▎| 16718753/17903413 [02:36<00:09, 122277.40it/s] 93%|█████████▎| 16730982/17903413 [02:36<00:09, 122211.91it/s] 94%|█████████▎| 16743204/17903413 [02:36<00:09, 120504.72it/s] 94%|█████████▎| 16755474/17903413 [02:36<00:09, 121154.74it/s] 94%|█████████▎| 16767791/17903413 [02:36<00:09, 121753.28it/s] 94%|█████████▎| 16779970/17903413 [02:36<00:09, 121504.34it/s] 94%|█████████▍| 16792304/17903413 [02:36<00:09, 122050.19it/s] 94%|█████████▍| 16804613/17903413 [02:36<00:08, 122359.88it/s] 94%|█████████▍| 16816933/17903413 [02:37<00:08, 122610.86it/s] 94%|█████████▍| 16829199/17903413 [02:37<00:08, 122625.09it/s] 94%|█████████▍| 16841481/17903413 [02:37<00:08, 122682.29it/s] 94%|█████████▍| 16853812/17903413 [02:37<00:08, 122869.59it/s] 94%|█████████▍| 16866100/17903413 [02:37<00:08, 122198.34it/s] 94%|█████████▍| 16878321/17903413 [02:37<00:08, 121623.07it/s] 94%|█████████▍| 16890542/17903413 [02:37<00:08, 121795.65it/s] 94%|█████████▍| 16902894/17903413 [02:37<00:08, 122308.42it/s] 94%|█████████▍| 16915126/17903413 [02:37<00:08, 122000.94it/s] 95%|█████████▍| 16927327/17903413 [02:37<00:08, 121546.91it/s] 95%|█████████▍| 16939483/17903413 [02:38<00:07, 121148.28it/s] 95%|█████████▍| 16951797/17903413 [02:38<00:07, 121740.28it/s] 95%|█████████▍| 16964080/17903413 [02:38<00:07, 122064.44it/s] 95%|█████████▍| 16976288/17903413 [02:38<00:07, 119891.92it/s] 95%|█████████▍| 16988499/17903413 [02:38<00:07, 120547.12it/s] 95%|█████████▍| 17000714/17903413 [02:38<00:07, 121021.18it/s] 95%|█████████▌| 17012979/17903413 [02:38<00:07, 121505.46it/s] 95%|█████████▌| 17025134/17903413 [02:38<00:07, 121481.96it/s] 95%|█████████▌| 17037345/17903413 [02:38<00:07, 121667.87it/s] 95%|█████████▌| 17049521/17903413 [02:38<00:07, 121692.61it/s] 95%|█████████▌| 17061692/17903413 [02:39<00:06, 121681.00it/s] 95%|█████████▌| 17073862/17903413 [02:39<00:06, 121155.66it/s] 95%|█████████▌| 17086031/17903413 [02:39<00:06, 121314.92it/s] 96%|█████████▌| 17098164/17903413 [02:39<00:06, 121126.47it/s] 96%|█████████▌| 17110380/17903413 [02:39<00:06, 121432.66it/s] 96%|█████████▌| 17122614/17903413 [02:39<00:06, 121702.47it/s] 96%|█████████▌| 17134936/17903413 [02:39<00:06, 122155.06it/s] 96%|█████████▌| 17147176/17903413 [02:39<00:06, 122225.53it/s] 96%|█████████▌| 17159399/17903413 [02:39<00:06, 122195.03it/s] 96%|█████████▌| 17171619/17903413 [02:39<00:06, 121379.59it/s] 96%|█████████▌| 17183870/17903413 [02:40<00:05, 121715.77it/s] 96%|█████████▌| 17196043/17903413 [02:40<00:05, 121691.79it/s] 96%|█████████▌| 17208213/17903413 [02:40<00:05, 120778.39it/s] 96%|█████████▌| 17220407/17903413 [02:40<00:05, 121123.12it/s] 96%|█████████▋| 17232573/17903413 [02:40<00:05, 121281.07it/s] 96%|█████████▋| 17244735/17903413 [02:40<00:05, 121381.21it/s] 96%|█████████▋| 17256980/17903413 [02:40<00:05, 121700.74it/s] 96%|█████████▋| 17269151/17903413 [02:40<00:05, 121278.80it/s] 97%|█████████▋| 17281430/17903413 [02:40<00:05, 121727.76it/s] 97%|█████████▋| 17293721/17903413 [02:40<00:04, 122081.11it/s] 97%|█████████▋| 17305930/17903413 [02:41<00:04, 120806.78it/s] 97%|█████████▋| 17318014/17903413 [02:41<00:04, 120816.09it/s] 97%|█████████▋| 17330200/17903413 [02:41<00:04, 121127.32it/s] 97%|█████████▋| 17342437/17903413 [02:41<00:04, 121496.50it/s] 97%|█████████▋| 17354739/17903413 [02:41<00:04, 121949.35it/s] 97%|█████████▋| 17366936/17903413 [02:41<00:04, 121286.74it/s] 97%|█████████▋| 17379067/17903413 [02:41<00:04, 121291.82it/s] 97%|█████████▋| 17391198/17903413 [02:41<00:04, 121167.69it/s] 97%|█████████▋| 17403400/17903413 [02:41<00:04, 121419.44it/s] 97%|█████████▋| 17415543/17903413 [02:41<00:04, 121399.16it/s] 97%|█████████▋| 17427684/17903413 [02:42<00:03, 120590.02it/s] 97%|█████████▋| 17439828/17903413 [02:42<00:03, 120841.13it/s] 97%|█████████▋| 17451940/17903413 [02:42<00:03, 120921.89it/s] 98%|█████████▊| 17464034/17903413 [02:42<00:03, 120413.74it/s] 98%|█████████▊| 17476077/17903413 [02:42<00:03, 120361.75it/s] 98%|█████████▊| 17488134/17903413 [02:42<00:03, 120423.76it/s] 98%|█████████▊| 17500202/17903413 [02:42<00:03, 120498.48it/s] 98%|█████████▊| 17512292/17903413 [02:42<00:03, 120617.79it/s] 98%|█████████▊| 17524355/17903413 [02:42<00:03, 119666.79it/s] 98%|█████████▊| 17536631/17903413 [02:43<00:03, 120585.76it/s] 98%|█████████▊| 17548698/17903413 [02:43<00:02, 120608.72it/s] 98%|█████████▊| 17560761/17903413 [02:43<00:02, 120570.07it/s] 98%|█████████▊| 17573090/17903413 [02:43<00:02, 121382.48it/s] 98%|█████████▊| 17585438/17903413 [02:43<00:02, 122010.57it/s] 98%|█████████▊| 17597640/17903413 [02:43<00:02, 119777.69it/s] 98%|█████████▊| 17609628/17903413 [02:43<00:02, 118186.27it/s] 98%|█████████▊| 17622077/17903413 [02:43<00:02, 120039.90it/s] 98%|█████████▊| 17634523/17903413 [02:43<00:02, 121346.21it/s] 99%|█████████▊| 17646793/17903413 [02:43<00:02, 121741.37it/s] 99%|█████████▊| 17658994/17903413 [02:44<00:02, 121821.19it/s] 99%|█████████▊| 17671395/17903413 [02:44<00:01, 122472.34it/s] 99%|█████████▉| 17683795/17903413 [02:44<00:01, 122926.62it/s] 99%|█████████▉| 17696091/17903413 [02:44<00:01, 122479.63it/s] 99%|█████████▉| 17708477/17903413 [02:44<00:01, 122891.93it/s] 99%|█████████▉| 17720804/17903413 [02:44<00:01, 123004.70it/s] 99%|█████████▉| 17733106/17903413 [02:44<00:01, 122932.01it/s] 99%|█████████▉| 17745464/17903413 [02:44<00:01, 123124.41it/s] 99%|█████████▉| 17757778/17903413 [02:44<00:01, 122632.62it/s] 99%|█████████▉| 17770043/17903413 [02:44<00:01, 122630.07it/s] 99%|█████████▉| 17782431/17903413 [02:45<00:00, 123003.03it/s] 99%|█████████▉| 17794759/17903413 [02:45<00:00, 123084.94it/s] 99%|█████████▉| 17807102/17903413 [02:45<00:00, 123185.63it/s]100%|█████████▉| 17819500/17903413 [02:45<00:00, 123423.49it/s]100%|█████████▉| 17831843/17903413 [02:45<00:00, 123286.59it/s]100%|█████████▉| 17844172/17903413 [02:45<00:00, 122906.51it/s]100%|█████████▉| 17856463/17903413 [02:45<00:00, 122024.75it/s]100%|█████████▉| 17868733/17903413 [02:45<00:00, 122225.47it/s]100%|█████████▉| 17880977/17903413 [02:45<00:00, 122287.98it/s]100%|█████████▉| 17893389/17903413 [02:45<00:00, 122832.88it/s]100%|██████████| 17903413/17903413 [02:53<00:00, 103245.74it/s]
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:799: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  data_age['variable'] = 'Age'
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:800: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  data_age.rename(columns={'AGE':'value'}, inplace=True)
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:804: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  data_gen['variable'] = 'Gender'
-/home/guest3/STraTS/src/preprocess_mimic_iii_large.py:805: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  data_gen.rename(columns={'GENDER':'value'}, inplace=True)

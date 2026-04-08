@@ -5,8 +5,95 @@ from tqdm import tqdm
 import torch
 from utils import CycleIndex
 import os
+import re
 
 SRC_DIR = os.path.dirname(os.path.abspath(__file__))
+ACCEPTED_ID_COLUMNS = ['ts_id', 'icustay_id', 'ICUSTAY_ID']
+
+
+def canonicalize_stay_id_series(series):
+    def normalize_value(value):
+        if pd.isna(value):
+            return value
+        value = str(value).strip()
+        if re.fullmatch(r'[+-]?\d+\.0+', value):
+            value = value.split('.', 1)[0]
+        if value.startswith('+'):
+            value = value[1:]
+        return value
+
+    return series.apply(normalize_value)
+
+
+def normalize_id_column(df, df_name):
+    present_id_columns = [col for col in ACCEPTED_ID_COLUMNS if col in df.columns]
+    if not present_id_columns:
+        raise KeyError(
+            f"{df_name} is missing a stay identifier column. "
+            f"Accepted columns: {ACCEPTED_ID_COLUMNS}. "
+            f"Present columns: {list(df.columns)}"
+        )
+
+    normalized_df = df.copy()
+    normalized_ids = pd.DataFrame(
+        {col: canonicalize_stay_id_series(normalized_df[col]) for col in present_id_columns},
+        index=normalized_df.index,
+    )
+    canonical_ts_id = normalized_ids.bfill(axis=1).iloc[:, 0]
+
+    for col in present_id_columns:
+        mismatch = canonical_ts_id.notna() & normalized_ids[col].notna() & (
+            canonical_ts_id != normalized_ids[col]
+        )
+        if mismatch.any():
+            sample_rows = normalized_ids.loc[mismatch, present_id_columns].head(5)
+            raise ValueError(
+                f"{df_name} has inconsistent stay identifier columns among {present_id_columns}. "
+                f"Sample rows: {sample_rows.to_dict(orient='records')}"
+            )
+
+    normalized_df['ts_id'] = canonical_ts_id
+    drop_columns = [col for col in present_id_columns if col != 'ts_id']
+    if drop_columns:
+        normalized_df = normalized_df.drop(columns=drop_columns)
+    return normalized_df
+
+
+def _canonicalize_id_array(values, array_name):
+    normalized_values = canonicalize_stay_id_series(pd.Series(values, copy=False))
+    if normalized_values.isna().any():
+        raise ValueError(f"{array_name} contains missing stay identifiers after normalization.")
+    return normalized_values.to_numpy(dtype=object)
+
+
+def _stay_id_sort_key(value):
+    if pd.isna(value):
+        return (2, 0, '')
+    if re.fullmatch(r'[+-]?\d+', value):
+        return (0, int(value), '')
+    return (1, 0, value)
+
+
+def _sorted_unique_ids(values):
+    unique_values = pd.Index(values).unique().tolist()
+    return np.array(sorted(unique_values, key=_stay_id_sort_key), dtype=object)
+
+
+def _intersect_canonical_ids(left_ids, right_ids):
+    right_id_set = set(right_ids)
+    return _sorted_unique_ids([stay_id for stay_id in left_ids if stay_id in right_id_set])
+
+
+def _setdiff_canonical_ids(left_ids, right_ids):
+    right_id_set = set(right_ids)
+    return _sorted_unique_ids([stay_id for stay_id in left_ids if stay_id not in right_id_set])
+
+
+def _format_id_sample(values, max_items=10):
+    sample = list(values)[:max_items]
+    if len(values) > max_items:
+        return sample + ['...']
+    return sample
 
 
 class Dataset:
@@ -16,6 +103,11 @@ class Dataset:
             SRC_DIR, '..', 'data', 'processed', args.dataset + '.pkl'
         ))
         data, oc, train_ids, val_ids, test_ids = pickle.load(open(filepath,'rb'))
+        data = normalize_id_column(data, 'processed events')
+        oc = normalize_id_column(oc, 'processed outcomes')
+        train_ids = _canonicalize_id_array(train_ids, 'train_ids')
+        val_ids = _canonicalize_id_array(val_ids, 'val_ids')
+        test_ids = _canonicalize_id_array(test_ids, 'test_ids')
         run, totalruns = list(map(int, args.run.split('o')))
         num_train = int(np.ceil(args.train_frac*len(train_ids)))
         start = int(np.linspace(0,len(train_ids)-num_train,totalruns)[run-1])
@@ -37,9 +129,9 @@ class Dataset:
         args.logger.write('Removing variables not in training set: '+str(delete_variables))
         data = data.loc[data.variable.isin(train_variables)]
         curr_ids = data.ts_id.unique()
-        train_ids = np.intersect1d(train_ids, curr_ids)
-        val_ids = np.intersect1d(val_ids, curr_ids)
-        test_ids = np.intersect1d(test_ids, curr_ids)
+        train_ids = _intersect_canonical_ids(train_ids, curr_ids)
+        val_ids = _intersect_canonical_ids(val_ids, curr_ids)
+        test_ids = _intersect_canonical_ids(test_ids, curr_ids)
         args.logger.write('# train, val, test TS: '+str([len(train_ids), len(val_ids), len(test_ids)]))
         sup_ts_ids = np.concatenate((train_ids, val_ids, test_ids))
         raw_ts_id_to_ind = {ts_id:i for i,ts_id in enumerate(sup_ts_ids)}
@@ -48,20 +140,28 @@ class Dataset:
 
         # Get y and N
         latent_df = pd.read_csv(args.latent_csv_path)
-        latent_df['ts_id'] = latent_df['ts_id'].astype(str)
+        latent_df = normalize_id_column(latent_df, 'latent CSV')
 
-        sup_ts_ids_str = [str(x) for x in sup_ts_ids]
+        sup_ts_ids_str = list(sup_ts_ids)
         str_ts_id_to_ind = {ts_id: i for i, ts_id in enumerate(sup_ts_ids_str)}
 
         latent_df = latent_df.loc[latent_df['ts_id'].isin(sup_ts_ids_str)].copy()
 
         missing_ids = set(sup_ts_ids_str) - set(latent_df['ts_id'])
         if missing_ids:
-            raise ValueError(f"Missing latent labels for {len(missing_ids)} supervised ts_ids")
+            missing_id_sample = _format_id_sample(sorted(missing_ids))
+            raise ValueError(
+                f"latent CSV is missing labels for {len(missing_ids)} supervised ts_id values. "
+                f"Sample missing IDs: {missing_id_sample}"
+            )
 
         if latent_df['ts_id'].duplicated().any():
-            dup_ids = latent_df.loc[latent_df['ts_id'].duplicated(), 'ts_id'].tolist()
-            raise ValueError(f"Duplicate ts_id values found in latent CSV, e.g. {dup_ids[:10]}")
+            dup_ids = latent_df.loc[latent_df['ts_id'].duplicated(keep=False), 'ts_id']
+            dup_id_sample = _format_id_sample(dup_ids.drop_duplicates().tolist())
+            raise ValueError(
+                f"latent CSV has duplicate labels for {dup_ids.nunique()} normalized ts_id values. "
+                f"Sample duplicate IDs: {dup_id_sample}"
+            )
 
         target_columns = [c for c in latent_df.columns if c != 'ts_id']
         latent_df['ts_ind'] = latent_df['ts_id'].map(str_ts_id_to_ind)

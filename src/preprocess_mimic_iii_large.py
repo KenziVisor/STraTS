@@ -4,9 +4,58 @@ import pickle
 import numpy as np
 import os
 import yaml
+import re
 
 
 RAW_DATA_PATH = '../mimiciii'
+
+
+def canonicalize_stay_id_series(series):
+    def normalize_value(value):
+        if pd.isna(value):
+            return value
+        value = str(value).strip()
+        if re.fullmatch(r'[+-]?\d+\.0+', value):
+            value = value.split('.', 1)[0]
+        if value.startswith('+'):
+            value = value[1:]
+        return value
+
+    return series.apply(normalize_value)
+
+
+def canonicalize_stay_id_array(values, array_name):
+    normalized_values = canonicalize_stay_id_series(pd.Series(values, copy=False))
+    if normalized_values.isna().any():
+        raise ValueError(f'{array_name} contains missing stay identifiers before saving.')
+    return normalized_values.to_numpy(dtype=object)
+
+
+def validate_processed_artifact(events, oc, train_ids, valid_ids, test_ids):
+    if 'ts_id' not in events.columns:
+        raise KeyError("events must contain canonical 'ts_id' before saving.")
+    if 'ts_id' not in oc.columns:
+        raise KeyError("oc must contain canonical 'ts_id' before saving.")
+
+    events = events.copy()
+    oc = oc.copy()
+    events['ts_id'] = canonicalize_stay_id_series(events['ts_id'])
+    oc['ts_id'] = canonicalize_stay_id_series(oc['ts_id'])
+    train_ids = canonicalize_stay_id_array(train_ids, 'train_ids')
+    valid_ids = canonicalize_stay_id_array(valid_ids, 'valid_ids')
+    test_ids = canonicalize_stay_id_array(test_ids, 'test_ids')
+
+    event_id_set = set(events['ts_id'].dropna())
+    for split_name, split_ids in [('train_ids', train_ids),
+                                  ('valid_ids', valid_ids),
+                                  ('test_ids', test_ids)]:
+        missing_ids = sorted(set(split_ids) - event_id_set)
+        if missing_ids:
+            raise ValueError(
+                f"{split_name} contains IDs not present in events.ts_id. "
+                f"Sample missing IDs: {missing_ids[:10]}"
+            )
+    return events, oc, train_ids, valid_ids, test_ids
 
 # Get all ICU stays.
 icu = pd.read_csv(os.path.join(RAW_DATA_PATH,'ICUSTAYS.csv'), 
@@ -846,6 +895,17 @@ def f(x):
     else:
         return ','.join(x)
 events['TABLE'] = events['TABLE'].apply(f)
+
+# Raw MIMIC stay identity is exported under STraTS' canonical ts_id field.
+# The processed STraTS artifact remains the split-aware 5-object payload:
+# [events, oc, train_ids, valid_ids, test_ids]
+events, oc, train_ids, valid_ids, test_ids = validate_processed_artifact(
+    events,
+    oc,
+    train_ids,
+    valid_ids,
+    test_ids,
+)
 
 # Save data.
 os.makedirs('../data/processed', exist_ok=True)
