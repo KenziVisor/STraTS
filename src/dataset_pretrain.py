@@ -2,7 +2,12 @@ import pickle
 import numpy as np
 from utils import CycleIndex
 import torch
-from dataset import Dataset
+from dataset import (
+    Dataset,
+    _canonicalize_id_array,
+    _setdiff_canonical_ids,
+    normalize_id_column,
+)
 import os
 
 SRC_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -14,6 +19,10 @@ class PretrainDataset(Dataset):
             SRC_DIR, '..', 'data', 'processed', args.dataset + '.pkl'
         ))
         data, _, train_ids, val_ids, test_ids = pickle.load(open(filepath,'rb'))
+        data = normalize_id_column(data, 'processed events')
+        train_ids = _canonicalize_id_array(train_ids, 'train_ids')
+        val_ids = _canonicalize_id_array(val_ids, 'val_ids')
+        test_ids = _canonicalize_id_array(test_ids, 'test_ids')
         args.logger.write('\nPreparing dataset '+args.dataset)
         static_varis = self.get_static_varis(args.dataset)
         if args.dataset=='mimic_iii':
@@ -22,10 +31,10 @@ class PretrainDataset(Dataset):
             self.max_minute = 24*60
         elif args.dataset=='physionet_2012':
             self.max_minute = 48*60
-            
+
         # remove test data, update train_ids for pretraining
         data = data.loc[~data.ts_id.isin(test_ids)]
-        train_ids = np.setdiff1d(data.ts_id.unique(), val_ids)
+        train_ids = _setdiff_canonical_ids(data.ts_id.unique(), val_ids)
 
         # keep variables seen in training set only
         train_variables = data.loc[data.ts_id.isin(train_ids)].variable.unique()

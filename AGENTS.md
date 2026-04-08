@@ -43,6 +43,7 @@ Notes:
 - `oc` is mostly leftover lineage from the original repo. Current supervised training does not use it for targets.
 - MIMIC preprocessing also stores a `TABLE` column, but training ignores it.
 - `physionet_2012` preprocessing converts `ICUType` into `ICUType_1` to `ICUType_4` before saving.
+- STraTS canonicalizes stay identity to `ts_id` internally. Loader boundaries accept `ts_id`, `icustay_id`, or `ICUSTAY_ID` and normalize immediately; the thesis repo's unsplit `[ts, oc, ts_ids]` artifact is a separate contract and is not used here.
 
 ### Latent CSV
 
@@ -50,12 +51,12 @@ Required for supervised mode via `--latent_csv_path`.
 
 Expected shape:
 
-- one `ts_id` column
+- one stay-ID column normalized to `ts_id` at load time; accepted boundary names are `ts_id`, `icustay_id`, or `ICUSTAY_ID`
 - every other column is treated as a binary latent-tag target
 
 Loader behavior:
 
-- casts CSV `ts_id` to string
+- canonicalizes the accepted stay-ID column to string `ts_id`
 - keeps only rows matching the supervised split ids
 - raises on missing labels or duplicate `ts_id`
 - sets `args.num_targets`, `args.target_columns`, and `args.pos_class_weight`
