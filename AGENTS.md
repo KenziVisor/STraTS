@@ -193,6 +193,7 @@ Auto output-dir naming:
 - pretrain: `../outputs/<dataset>/<prefix>pretrain/`
 - supervised: `../outputs/<dataset>/<prefix><model_type>...|train_frac:<x>|run:<y>`
 - when `load_ckpt_path` is set, `finetune_` is prepended to the output prefix
+- normal training invocations (`max_steps > 0`) also write `training_summary.txt` into `output_dir`; export-only reuse flows with `--max_epochs 0` intentionally do not rewrite that summary
 
 ## Known issues / limitations (by code inspection)
 

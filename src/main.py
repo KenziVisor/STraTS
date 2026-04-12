@@ -33,6 +33,74 @@ def clear_cuda_cache(device: torch.device) -> None:
         torch.cuda.empty_cache()
 
 
+def format_summary_value(value):
+    if value is None:
+        return 'N/A'
+    if isinstance(value, (bool, np.bool_)):
+        return str(bool(value))
+    if isinstance(value, (int, np.integer)):
+        return str(int(value))
+    if isinstance(value, (float, np.floating)):
+        return f'{float(value):.6f}'
+    return str(value)
+
+
+def get_first_metric_value(results, keys):
+    if results is None:
+        return None
+    for key in keys:
+        value = results.get(key)
+        if value is not None:
+            return value
+    return None
+
+
+def write_metric_block(handle, title, results):
+    handle.write(title + '\n')
+    handle.write('-' * len(title) + '\n')
+    handle.write(
+        'loss: '
+        + format_summary_value(get_first_metric_value(results, ['loss']))
+        + '\n'
+    )
+    handle.write(
+        'accuracy: '
+        + format_summary_value(get_first_metric_value(results, ['accuracy', 'acc']))
+        + '\n'
+    )
+    handle.write(
+        'auroc: '
+        + format_summary_value(get_first_metric_value(results, ['auroc', 'auc_roc']))
+        + '\n'
+    )
+    handle.write(
+        'f1: '
+        + format_summary_value(get_first_metric_value(results, ['f1', 'f1_score']))
+        + '\n'
+    )
+    for extra_key in ['loss_neg', 'auprc', 'minrp']:
+        if results is not None and extra_key in results:
+            handle.write(extra_key + ': ' + format_summary_value(results.get(extra_key)) + '\n')
+    handle.write('\n')
+
+
+def write_training_summary(args, output_path, best_val_res, best_test_res,
+                           best_selection_metric_name):
+    with open(output_path, 'w', encoding='utf-8') as handle:
+        handle.write('Training Summary\n')
+        handle.write('================\n')
+        handle.write('dataset: ' + str(args.dataset) + '\n')
+        handle.write('model_type: ' + str(args.model_type) + '\n')
+        handle.write('output_dir: ' + str(args.output_dir) + '\n')
+        handle.write('run: ' + str(args.run) + '\n')
+        handle.write('train_frac: ' + format_summary_value(args.train_frac) + '\n')
+        handle.write('pretrain: ' + format_summary_value(bool(args.pretrain)) + '\n\n')
+        handle.write('checkpoint_selection_metric: '
+                     + str(best_selection_metric_name) + '\n\n')
+        write_metric_block(handle, 'Validation', best_val_res)
+        write_metric_block(handle, 'Test', best_test_res)
+
+
 
 def parse_args() -> argparse.Namespace:
     """Function to parse arguments."""
@@ -228,6 +296,7 @@ if __name__ == "__main__":
     wait, patience_reached = args.patience, False
     best_val_metric  = -np.inf
     best_val_res, best_test_res = None, None
+    best_selection_metric_name = 'loss_neg' if args.pretrain else 'auprc + auroc'
     optimizer = AdamW(filter(lambda p:p.requires_grad, model.parameters()), lr=args.lr)
     train_bar = tqdm(range(args.max_steps))
     evaluator = PretrainEvaluator(args) if args.pretrain==1 else Evaluator(args)
@@ -300,6 +369,16 @@ if __name__ == "__main__":
     # print final res
     args.logger.write('Final val res: '+str(best_val_res))
     args.logger.write('Final test res: '+str(best_test_res))
+    if args.max_steps > 0:
+        summary_path = os.path.join(args.output_dir, 'training_summary.txt')
+        write_training_summary(
+            args,
+            summary_path,
+            best_val_res,
+            best_test_res,
+            best_selection_metric_name,
+        )
+        args.logger.write('Saved training summary to: ' + summary_path)
 
     if args.save_pred_csv_path is not None:
         if os.path.exists(model_path_best):
