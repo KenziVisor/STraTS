@@ -1,0 +1,26 @@
+# Python cache and virtualenvs
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Editor and OS files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Test/tool caches
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# Training artifacts
+outputs/
+checkpoint_best.bin
+log.txt
+training_summary.txt
+pt_saved_variables.pkl
