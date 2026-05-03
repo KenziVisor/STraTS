@@ -187,6 +187,7 @@ All supervised backends now call `project_logits(...)`, so finetune mode consist
   - supervised: `auprc + auroc`
 - best checkpoint path: `checkpoint_best.bin`
 - log file: `log.txt`
+- validation events refresh learning-curve artifacts in `output_dir`: `learning_curve_history.csv`, `learning_curve_metrics.png`, and `learning_curve_loss.png`
 
 Auto output-dir naming:
 

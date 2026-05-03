@@ -17,6 +17,7 @@ from torch.optim import AdamW
 from models import count_parameters
 from evaluator import Evaluator
 from evaluator_pretrain import PretrainEvaluator
+from learning_curves import append_learning_curve_row, save_learning_curves
 
 SRC_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -293,6 +294,8 @@ if __name__ == "__main__":
     if args.validate_every is None:
         args.validate_every = int(np.ceil(num_batches_per_epoch))
     cum_train_loss, num_steps, num_batches_trained = 0,0,0
+    curve_train_loss_sum, curve_train_loss_count = 0.0, 0
+    learning_curve_history = []
     wait, patience_reached = args.patience, False
     best_val_metric  = -np.inf
     best_val_res, best_test_res = None, None
@@ -303,11 +306,22 @@ if __name__ == "__main__":
 
     # results before any training
     if args.validate_after<0:
-        results = evaluator.evaluate(model, dataset, 'val',  train_step=-1)
+        val_res = evaluator.evaluate(model, dataset, 'val',  train_step=-1)
         if not(args.pretrain):
             evaluator.evaluate(model, dataset, 'eval_train', train_step=-1)
-            evaluator.evaluate(model, dataset, 'test', train_step=-1)
+            test_res = evaluator.evaluate(model, dataset, 'test', train_step=-1)
+        else:
+            test_res = None
         clear_cuda_cache(args.device)
+        append_learning_curve_row(
+            learning_curve_history,
+            train_step=0,
+            epoch=0.0,
+            recent_mean_train_loss=None,
+            val_res=val_res,
+            test_res=test_res,
+        )
+        save_learning_curves(learning_curve_history, args.output_dir)
 
     model.train()
     for step in train_bar:
@@ -327,7 +341,10 @@ if __name__ == "__main__":
                 optimizer.zero_grad()
 
         # add to cum loss
-        cum_train_loss += loss.item()
+        loss_value = loss.item()
+        cum_train_loss += loss_value
+        curve_train_loss_sum += loss_value
+        curve_train_loss_count += 1
         num_steps += 1
         num_batches_trained += 1
 
@@ -350,6 +367,23 @@ if __name__ == "__main__":
             clear_cuda_cache(args.device)
             model.train(True)
 
+            recent_curve_train_loss = None
+            if curve_train_loss_count > 0:
+                recent_curve_train_loss = curve_train_loss_sum / curve_train_loss_count
+            epoch_estimate = None
+            if num_batches_per_epoch > 0:
+                epoch_estimate = num_steps / num_batches_per_epoch
+            append_learning_curve_row(
+                learning_curve_history,
+                train_step=num_steps,
+                epoch=epoch_estimate,
+                recent_mean_train_loss=recent_curve_train_loss,
+                val_res=val_res,
+                test_res=test_res,
+            )
+            save_learning_curves(learning_curve_history, args.output_dir)
+            curve_train_loss_sum, curve_train_loss_count = 0.0, 0
+
             # Save ckpt if there is an improvement.
             curr_val_metric = val_res['loss_neg'] if args.pretrain \
                                 else val_res['auprc'] + val_res['auroc']
@@ -365,6 +399,8 @@ if __name__ == "__main__":
                 if wait==0:
                     args.logger.write('Patience reached')
                     break
+
+    save_learning_curves(learning_curve_history, args.output_dir)
 
     # print final res
     args.logger.write('Final val res: '+str(best_val_res))
