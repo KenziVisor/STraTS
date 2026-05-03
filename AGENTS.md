@@ -207,8 +207,8 @@ Auto output-dir naming:
 3. `preprocess_mimic_iii_large.py` still writes `oc.in_hospital_mortality` for lineage.
    Supervised training ignores that column and instead reads targets from `--latent_csv_path`.
 
-4. `requirements.txt` is incomplete for current imports.
-   At minimum, `transformers` and `pytz` are imported by runtime code but not listed.
+4. `requirements.txt` now lists the runtime `transformers` and `pytz` imports.
+   `preprocess_mimic_iii_large.py` still imports `yaml`; remove that unused import or add PyYAML only if preprocessing actually needs it.
 
 ## Fast re-entry
 
