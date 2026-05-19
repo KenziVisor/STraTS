@@ -7,15 +7,18 @@ import numpy as np
 import pandas as pd
 
 
-TRACKED_METRICS = ['loss_neg', 'auroc', 'auprc', 'minrp']
+TRACKED_METRICS = ['loss', 'loss_neg', 'auroc', 'auprc', 'minrp']
+PLOTTED_METRICS = ['auroc', 'auprc', 'minrp']
 BASE_COLUMNS = [
     'train_step',
     'epoch',
     'recent_mean_train_loss',
+    'val_loss',
     'val_loss_neg',
     'val_auroc',
     'val_auprc',
     'val_minrp',
+    'test_loss',
     'test_loss_neg',
     'test_auroc',
     'test_auprc',
@@ -117,7 +120,7 @@ def _plot_columns(df, columns, output_path, title, ylabel):
 def plot_learning_curves(history, output_dir):
     df = _history_to_frame(history)
     metric_columns = []
-    for metric in TRACKED_METRICS:
+    for metric in PLOTTED_METRICS:
         for prefix in ['val', 'test']:
             column = f'{prefix}_{metric}'
             if column in df.columns and df[column].notna().any():
@@ -132,10 +135,10 @@ def plot_learning_curves(history, output_dir):
     )
     _plot_columns(
         df,
-        ['recent_mean_train_loss'],
+        ['recent_mean_train_loss', 'val_loss', 'test_loss'],
         os.path.join(output_dir, 'learning_curve_loss.png'),
-        'Recent Mean Training Loss',
-        'training loss',
+        'Training, Validation, and Test Loss',
+        'loss',
     )
 
 

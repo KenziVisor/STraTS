@@ -16,18 +16,24 @@ class Evaluator:
         pbar = tqdm(range(0, num_samples, self.args.eval_batch_size),
                     desc='running forward pass')
         true, pred = [], []
+        total_loss, total_loss_count = 0.0, 0
         for start in pbar:
             batch_ind = eval_ind[start:min(num_samples,
                                            start + self.args.eval_batch_size)]
             batch = dataset.get_batch(batch_ind)
             true.append(batch['labels'])
-            del batch['labels']
             batch = {k: v.to(self.args.device) for k, v in batch.items()}
+            batch_size = batch['labels'].size(0)
+            batch_without_labels = {k: v for k, v in batch.items() if k != 'labels'}
             with torch.no_grad():
-                pred.append(model(**batch).cpu())
+                eval_loss = model(**batch)
+                pred.append(model(**batch_without_labels).cpu())
+            total_loss += eval_loss.detach().item() * batch_size
+            total_loss_count += batch_size
 
         true = torch.cat(true).numpy()   # shape: (N, K)
         pred = torch.cat(pred).numpy()   # shape: (N, K)
+        mean_loss = total_loss / total_loss_count
 
         per_target_auroc = []
         per_target_auprc = []
@@ -62,6 +68,7 @@ class Evaluator:
                 'auprc': float(np.mean(per_target_auprc)),
                 'minrp': float(np.mean(per_target_minrp)),
             }
+        result.update({'loss': float(mean_loss), 'loss_neg': float(-mean_loss)})
 
         if train_step is not None:
             self.args.logger.write(
