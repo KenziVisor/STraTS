@@ -188,6 +188,7 @@ All supervised backends now call `project_logits(...)`, so finetune mode consist
 - best checkpoint path: `checkpoint_best.bin`
 - log file: `log.txt`
 - validation events refresh learning-curve artifacts in `output_dir`: `learning_curve_history.csv`, `learning_curve_metrics.png`, and `learning_curve_loss.png`
+- zero-step invocations leave learning-curve artifacts untouched; this prevents the `--max_epochs 0 --validate_after 0` export commands that reuse a training `output_dir` from overwriting training curves with empty CSV/PNG artifacts
 
 Auto output-dir naming:
 

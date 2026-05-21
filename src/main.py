@@ -34,6 +34,22 @@ def clear_cuda_cache(device: torch.device) -> None:
         torch.cuda.empty_cache()
 
 
+def save_run_learning_curves(args, history):
+    if args.max_steps <= 0:
+        args.logger.write(
+            'Skipping learning-curve save because this invocation has '
+            'no training steps; existing artifacts in output_dir are left untouched.'
+        )
+        return None
+    if not history:
+        args.logger.write(
+            'Skipping learning-curve save because no evaluation rows were '
+            'appended in this invocation; existing artifacts in output_dir are left untouched.'
+        )
+        return None
+    return save_learning_curves(history, args.output_dir, logger=args.logger)
+
+
 def format_summary_value(value):
     if value is None:
         return 'N/A'
@@ -293,6 +309,23 @@ if __name__ == "__main__":
     args.max_steps = int(round(num_batches_per_epoch)*args.max_epochs)
     if args.validate_every is None:
         args.validate_every = int(np.ceil(num_batches_per_epoch))
+    args.logger.write(
+        'Learning-curve schedule: max_steps=' + str(args.max_steps)
+        + ', num_batches_per_epoch=' + str(num_batches_per_epoch)
+        + ', validate_after=' + str(args.validate_after)
+        + ', validate_every=' + str(args.validate_every)
+    )
+    if args.max_steps <= 0:
+        args.logger.write(
+            'No training steps are scheduled. This run will not refresh '
+            'learning-curve artifacts.'
+        )
+    elif args.validate_every > args.max_steps or args.validate_after > args.max_steps:
+        args.logger.write(
+            'The validation schedule has no guaranteed post-training validation '
+            'before max_steps; check validate_after and validate_every if curves '
+            'only show the initial row.'
+        )
     cum_train_loss, num_steps, num_batches_trained = 0,0,0
     curve_train_loss_sum, curve_train_loss_count = 0.0, 0
     learning_curve_history = []
@@ -320,8 +353,9 @@ if __name__ == "__main__":
             recent_mean_train_loss=None,
             val_res=val_res,
             test_res=test_res,
+            logger=args.logger,
         )
-        save_learning_curves(learning_curve_history, args.output_dir)
+        save_run_learning_curves(args, learning_curve_history)
 
     model.train()
     for step in train_bar:
@@ -380,8 +414,9 @@ if __name__ == "__main__":
                 recent_mean_train_loss=recent_curve_train_loss,
                 val_res=val_res,
                 test_res=test_res,
+                logger=args.logger,
             )
-            save_learning_curves(learning_curve_history, args.output_dir)
+            save_run_learning_curves(args, learning_curve_history)
             curve_train_loss_sum, curve_train_loss_count = 0.0, 0
 
             # Save ckpt if there is an improvement.
@@ -400,7 +435,7 @@ if __name__ == "__main__":
                     args.logger.write('Patience reached')
                     break
 
-    save_learning_curves(learning_curve_history, args.output_dir)
+    save_run_learning_curves(args, learning_curve_history)
 
     # print final res
     args.logger.write('Final val res: '+str(best_val_res))
