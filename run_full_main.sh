@@ -105,7 +105,7 @@ python main.py \
   --load_ckpt_path ../outputs/physionet_2012/pretrain/checkpoint_best.bin \
   --train_frac ${TRAIN_FRAC} \
   --run ${RUN_ID} \
-  --output_dir "../outputs/physionet_2012/strats,num_layers:2,hid_dim:64,num_heads:16,dropout:0.2,attention_dropout:0.2,lr:5e-5|train_frac:${TRAIN_FRAC}|run:${RUN_ID}" \
+  --output_dir "../outputs/physionet_2012/strats" \
   --latent_csv_path ../data/physionet_latent_tags.csv \
   --save_pred_csv_path ../outputs/predicted_physionet_latent_tags_strats.csv \
   --predict_split all \
@@ -121,7 +121,7 @@ python main.py \
   --lr 5e-4 \
   --train_frac ${TRAIN_FRAC} \
   --run ${RUN_ID} \
-  --output_dir "../outputs/physionet_2012/gru|train_frac:${TRAIN_FRAC}|run:${RUN_ID}" \
+  --output_dir "../outputs/physionet_2012/gru" \
   --latent_csv_path ../data/physionet_latent_tags.csv \
   --save_pred_csv_path ../outputs/predicted_physionet_latent_tags_gru.csv \
   --predict_split all \
@@ -137,7 +137,7 @@ python main.py \
   --lr 5e-4 \
   --train_frac ${TRAIN_FRAC} \
   --run ${RUN_ID} \
-  --output_dir "../outputs/physionet_2012/grud|train_frac:${TRAIN_FRAC}|run:${RUN_ID}" \
+  --output_dir "../outputs/physionet_2012/grud" \
   --latent_csv_path ../data/physionet_latent_tags.csv \
   --save_pred_csv_path ../outputs/predicted_physionet_latent_tags_grud.csv \
   --predict_split all \
@@ -155,7 +155,7 @@ python main.py \
   --lr 5e-4 \
   --train_frac ${TRAIN_FRAC} \
   --run ${RUN_ID} \
-  --output_dir "../outputs/physionet_2012/tcn|train_frac:${TRAIN_FRAC}|run:${RUN_ID}" \
+  --output_dir "../outputs/physionet_2012/tcn" \
   --latent_csv_path ../data/physionet_latent_tags.csv \
   --save_pred_csv_path ../outputs/predicted_physionet_latent_tags_tcn.csv \
   --predict_split all \
@@ -174,7 +174,7 @@ python main.py \
   --lr 5e-4 \
   --train_frac ${TRAIN_FRAC} \
   --run ${RUN_ID} \
-  --output_dir "../outputs/physionet_2012/sand|train_frac:${TRAIN_FRAC}|run:${RUN_ID}" \
+  --output_dir "../outputs/physionet_2012/sand" \
   --latent_csv_path ../data/physionet_latent_tags.csv \
   --save_pred_csv_path ../outputs/predicted_physionet_latent_tags_sand.csv \
   --predict_split all \
@@ -279,7 +279,7 @@ python main.py \
   --load_ckpt_path ../outputs/mimic_iii/pretrain/checkpoint_best.bin \
   --train_frac ${TRAIN_FRAC} \
   --run ${RUN_ID} \
-  --output_dir "../outputs/mimic_iii/strats,num_layers:2,hid_dim:64,num_heads:16,dropout:0.2,attention_dropout:0.2,lr:5e-5|train_frac:${TRAIN_FRAC}|run:${RUN_ID}" \
+  --output_dir "../outputs/mimic_iii/strats" \
   --latent_csv_path ../data/mimic_latent_tags.csv \
   --save_pred_csv_path ../outputs/predicted_latent_tags_strats_mimic.csv \
   --predict_split all \
@@ -295,7 +295,7 @@ python main.py \
   --lr 5e-4 \
   --train_frac ${TRAIN_FRAC} \
   --run ${RUN_ID} \
-  --output_dir "../outputs/mimic_iii/gru|train_frac:${TRAIN_FRAC}|run:${RUN_ID}" \
+  --output_dir "../outputs/mimic_iii/gru" \
   --latent_csv_path ../data/mimic_latent_tags.csv \
   --save_pred_csv_path ../outputs/predicted_latent_tags_gru_mimic.csv \
   --predict_split all \
@@ -311,7 +311,7 @@ python main.py \
   --lr 5e-4 \
   --train_frac ${TRAIN_FRAC} \
   --run ${RUN_ID} \
-  --output_dir "../outputs/mimic_iii/grud|train_frac:${TRAIN_FRAC}|run:${RUN_ID}" \
+  --output_dir "../outputs/mimic_iii/grud" \
   --latent_csv_path ../data/mimic_latent_tags.csv \
   --save_pred_csv_path ../outputs/predicted_latent_tags_grud_mimic.csv \
   --predict_split all \
@@ -329,7 +329,7 @@ python main.py \
   --lr 5e-4 \
   --train_frac ${TRAIN_FRAC} \
   --run ${RUN_ID} \
-  --output_dir "../outputs/mimic_iii/tcn|train_frac:${TRAIN_FRAC}|run:${RUN_ID}" \
+  --output_dir "../outputs/mimic_iii/tcn" \
   --latent_csv_path ../data/mimic_latent_tags.csv \
   --save_pred_csv_path ../outputs/predicted_latent_tags_tcn_mimic.csv \
   --predict_split all \
@@ -348,7 +348,7 @@ python main.py \
   --lr 5e-4 \
   --train_frac ${TRAIN_FRAC} \
   --run ${RUN_ID} \
-  --output_dir "../outputs/mimic_iii/sand|train_frac:${TRAIN_FRAC}|run:${RUN_ID}" \
+  --output_dir "../outputs/mimic_iii/sand" \
   --latent_csv_path ../data/mimic_latent_tags.csv \
   --save_pred_csv_path ../outputs/predicted_latent_tags_sand_mimic.csv \
   --predict_split all \
